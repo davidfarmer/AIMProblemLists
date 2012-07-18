@@ -13,6 +13,7 @@ mathematics.
  * LaTeX (pdflatex and relevant fonts)
  * Python 2.7.x
  * couchdbkit (Python library)
+ * MathJax 2.x
 
 ## Configuration
 
@@ -23,12 +24,13 @@ The following configuration needs to be added to CouchDB:
 
 ## Installation
 
-1. Install the above dependencies, and add the above configuration.
-2. Install the CouchApp, which is located in the `couchapp/aimpl` directory. 
+1. Install the above dependencies, with the above CouchDB configuration.
+2. Install MathJax: `git submodule init; git submodule update`.
+3. Install the CouchApp, which is located in the `couchapp/aimpl` directory. 
 
         couchapp push http://user:password@127.0.0.1:5984/aimpldb
 
-3. Start the Node.js application.
+4. Start the Node.js application.
 
         node app/app.js
 
