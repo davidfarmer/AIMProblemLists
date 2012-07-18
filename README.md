@@ -26,11 +26,11 @@ The following configuration needs to be added to CouchDB:
 1. Install the above dependencies, and add the above configuration.
 2. Install the CouchApp, which is located in the `couchapp/aimpl` directory. 
 
-    couchapp push http://user:password@127.0.0.1:5984/aimpldb
+        couchapp push http://user:password@127.0.0.1:5984/aimpldb
 
 3. Start the Node.js application.
 
-    node app/app.js
+        node app/app.js
 
 ## Hosted Setup
 
