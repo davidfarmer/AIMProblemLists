@@ -1,0 +1,31 @@
+<h2>Register</h2>
+
+{{ error }}
+
+<form method="post" action="" id="register-form">
+  <table>
+    <tr>
+      <th><label for="id_name">Name:</label></th>
+      <td><input type="text" name="name" id="id_name" value="{{ name }}"></td>
+    </tr>
+    <tr>
+      <th><label for="id_email">Email:</label></th>
+      <td><input type="text" name="email" id="id_email" value="{{ email }}"></td>
+    </tr>
+    <tr>
+      <th><label for="id_password">Password:</label></th>
+      <td><input type="password" name="password" id="id_password" value="{{ password }}"></td>
+    </tr>
+    <tr>
+      <th><label for="id_password2">Password (again):</label></th>
+      <td><input type="password" name="password2" id="id_password2" value="{{ password2 }}"></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <label for="id_terms"><input type="checkbox" name="terms" id="id_terms" value="1"{{#terms}} checked{{/terms}}>
+        I accept the terms and conditions</label>
+      </td>
+    </tr>
+  </table>
+  <input type="submit" value="Register account">
+</form>

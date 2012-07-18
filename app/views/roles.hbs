@@ -1,0 +1,16 @@
+<table id="user-table">
+  <thead>
+    <th>Name</th><th>Role</th><th>Remove</th>
+  </thead>
+</table>
+
+<p>
+  <select id="user-select"></select>
+  <select id="role-select"></select>
+  <input type="button" value="Add" class="add">
+
+<script>
+  var users = {{{ users }}},
+      userRoles = {{{ userRoles }}};
+</script>
+<script src="/media/roles.js"></script>

@@ -1,0 +1,86 @@
+<div>
+  <div style="display: none">
+    {{{ MACROS }}}
+  </div>
+
+  <div id="admin">
+    {{#perms/problem/add}}<p{{^problems}} class="highlight"{{/problems}}><a class="edit" data-id="{{ sec/_id }}" data-type="problem" href="#">Add new problem</a></p>{{/perms/problem/add}}
+    {{#perms/section/edit}}<p><a class="edit" data-id="{{ sec/_id }}" data-type="section" href="#">Modify section title/intro</a></p>{{/perms/section/edit}}
+    {{#perms/problem/add}}<p><a class="reorder" href="javascript:void()">Enable reordering</a>{{/perms/problem/add}} 
+  </div>
+  <div class="content-main editable" data-id="{{ sec/_id }}" data-type="section">
+    <div class="render">
+      <h2 class="section-title">{{sec_num}}. {{sec/title}}</h2>
+      {{{ sec/intro }}}
+    </div>
+    <ul class="pending-changes"></ul>
+    <div id="section-form"></div>
+
+    {{^problems}}
+    {{#perms/problem/add}}
+      <p class="help">Click "add new problem" to add a new problem to this section.
+    {{/perms/problem/add}}
+    {{/problems}}
+
+    <ol class="{{#perms/section/edit}}sortable {{/perms/section/edit}}nonumbers children">
+      {{#problems}}
+        <li data-id="{{_id}}" class="problem">
+          <div class="probc editable" data-id="{{_id}}" data-type="problem">
+            <div class="render">
+              {{{ render }}}
+            </div>
+            <div style="clear: right"></div>
+            <ul class="pending-changes"></ul>
+
+            <ol class="{{#perms/section/edit}}sortable {{/perms/section/edit}}children nonumbers">
+              {{#remarks}}
+                <li data-id="{{_id}}" class="remark">
+                  <div class="editable" data-id="{{_id}}" data-type="remark">
+                    <div class="render">
+                      {{{ render }}}
+                    </div>
+                    <ul class="pending-additions"></ul>
+                    <ul class="pending-changes"></ul>
+                  </div>
+                </li>
+              {{/remarks}}
+            </ol>
+            <ul class="pending-additions"></ul>
+            <div style="clear: right"></div>
+          </div>
+        </li>
+      {{/problems}}
+    </ol>
+    <ul class="pending-additions"></ul>
+    <div id="new-form"></div>
+  </div>
+  <p>Cite this as: <em>{{{ citeAs }}}</em></p>
+</div>
+<script>
+  var pl_name = "{{ sec/list_name }}";
+  var sec_num = "{{ sec_num }}";
+  var sec_id = "{{ sec/_id }}";
+  
+  var matches = window.location.toString().match(/^[^#]*(#.+)$/);
+  if (!matches) {
+    var current_location = window.location.pathname.split("/");
+    var probtag = current_location[current_location.length-1];
+    if (probtag.split(".").length > 1) {
+      window.location = window.location.toString() + "#" + probtag;
+    }
+  }
+  var templates = typeof templates !== 'undefined' ? templates : {};
+  templates.section = {{{ templates/section }}};
+  templates.problem = {{{ templates/problem }}};
+  templates.remark = {{{ templates/remark }}};
+  var allData = {{{ data }}};
+</script>
+
+<div id="move" style="display: none">
+  <p>Choose a section to move this problem to.
+  <ul>
+    {{#sections}}
+      <li><a href="#" data-id="{{ _id }}">{{ title }}</a>
+    {{/sections}}
+  </ul>
+</div>

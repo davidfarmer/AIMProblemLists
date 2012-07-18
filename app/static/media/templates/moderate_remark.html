@@ -1,0 +1,14 @@
+<li class="prob">
+  <h3>New Remark(s) on <a href="{{{path}}}">{{prob}}</a></h3>
+  <ul>
+    {{#rems}}
+      <li class="remark">
+        {{by}} - {{email}}
+        <div class="math">{{{remark}}}</div>
+        <input type="button" name="published" value="Publish" id="{{pblock_id}}!{{rem_id}}">
+        <input type="button" name="denied" value="Deny" id="{{pblock_id}}!{{rem_id}}">
+        
+      </li>
+    {{/rems}}
+  </ul>
+</li>

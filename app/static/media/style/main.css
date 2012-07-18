@@ -1,0 +1,464 @@
+/* add styles here */
+body {
+  background: #fff;
+  /* font-family: Helvetica, "MS Trebuchet", sans-serif; */
+  font-family: serif;
+  margin: 8px;
+}
+
+a {
+  color: blue;
+}
+
+a:hover {
+  color: black;
+}
+
+h1 { 
+  /* text-align: center; */
+  font-family: serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 26pt
+}
+
+h2 { 
+  /* text-align: center; */
+  font-family: serif;
+  font-style: italic;
+  font-weight: normal;
+  margin: .5em 0;
+  /*font-size: 26pt*/
+}
+
+h3 { 
+  font-family: serif;
+  font-style: italic;
+  font-weight: normal;
+  margin: .5em 0;
+}
+
+.editors {
+  margin: .5em 0 1.5em 0;
+}
+
+.clear {
+  clear: both;
+}
+
+#header {
+  background: #eee;
+  border-radius: 5px;
+  /* padding: 8px 16px;*/
+  border: 1px solid #000 ;
+}
+
+#header img {
+}
+
+#header h1 {
+  /*float:left;
+  height:4em;
+  margin: 8px 16px 8px 8px; */
+  margin-left : 16px;
+/*display:none;*/
+}
+
+#header h2 {
+  /*float:left;*/
+  /*height:4em;
+  margin: 8px 16px 8px 8px; */
+  margin-left: 16px;
+}
+
+#header p {
+  margin-left: 16px;
+}
+
+
+.nav-inner, #admin {
+  border: 1px solid #000;
+  border-radius: 5px;
+  background: #eee;
+  margin: 0;
+  padding: 8px 16px;
+  /* margin: 8px 16px; */
+}
+
+#admin {
+  margin-top: 10px;
+}
+
+#admin p {
+  padding: 2px 0;
+}
+
+#nav {
+  float: left;
+  width: 200px;
+}
+
+#content {
+  margin: 0px 0px 8px 200px;
+  padding: 0px 16px;
+  display: block;
+  width: 630px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding: 4px;
+  margin: 1px;
+}
+
+#nav li {
+  background: #eee ;
+}
+
+.makeremark {
+  /*background:#edf;*/
+  clear: right;
+  float: right;
+}
+
+.remark {
+  padding: 0;
+  margin: .5em 0;
+}
+
+.remark .label {
+  font-style: italic;
+}
+
+li.problem {
+  border-top-width: 1px; 
+  border-top-style: dotted;
+  border-top-color: #000;
+  margin: 2px 0 0 0;
+  padding: .5em 0 0;
+}
+
+/*
+.prob {
+border-top-width:1px; 
+border-top-style:solid;
+border-top-color: #000;
+padding: 20px 0px 0px 0px;
+margin: 20px 0px 0px 0px;
+
+solid #000;
+}
+ */
+
+.probhead {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+.probheadby {
+  font-weight: normal;
+  display: inline-block;
+  margin: 0 .5em 0 0;
+}
+
+.probbody {
+  font-style: italic;
+}
+
+.probname {
+  font-style: italic;
+  font-size: 16pt;
+  margin: 4px 0px 0px 0px;
+}
+
+.intro {
+  margin-bottom: .5em;
+}
+
+.remarks form {
+  padding: 4px;
+  border: 1px solid #000;
+  background: #eef;
+}
+
+.remarks .save {
+  display: none;
+}
+
+.edit_pb input[type="text"] {
+  width: 550px;
+}
+
+input#by, input#id_by {
+  width: 300px;
+}
+
+textarea#status {
+  height: 75px;
+}
+
+.edit_pb textarea, .edit textarea {
+  width: 542px;
+  height: 100px;
+}
+
+.faq {
+  display: none;
+}
+
+.faqbody {
+  display: none;
+}
+
+a.edit, a.delete, a.move {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+}
+
+#admin a {
+  float: none;
+  font-size: 14px;
+}
+
+div.edit {
+  background: #eee;
+  border: solid black 1px;
+  border-radius: 5px;
+  padding: 0 10px 10px;
+  clear: right;
+}
+
+.makeremarks {
+  font-size: 90%;
+  margin: 10px 0 10px 0;
+}
+
+.probd,
+.remarks {
+  margin-top: .5em;
+  display: block;
+}
+
+.distremark {
+  margin-bottom: .5em;
+}
+
+#loading {
+  padding: 20px;
+  background: #333;
+  color: #fff;
+  font-style: italic;
+}
+
+ol.nonumbers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+span.bibnum {
+  width: 2em;
+  text-align: right;
+  display: block;
+  float: left;
+}
+
+div.bibitem {
+  margin-left: 2.5em;
+}
+
+.problem h4, .problem h5 {
+  display: inline-block;
+  margin: 0 .5em 0 0;
+}
+
+a.pdflink, a.texlink {
+  padding: 5px 20px 5px 0;
+  background: transparent no-repeat center right;
+}
+
+a.pdflink {
+  background-image: url(../img/icon_pdf.gif);
+}
+
+a.texlink {
+  background-image: url(../img/icon_txt.gif);
+}
+
+div.content-main {
+  margin-right: 0px;
+}
+
+.bibliography li:target {
+  background: #def;
+}
+
+#breadcrumbs {
+  clear: both;
+  padding: 8px;
+}
+
+ul.ui-tabs-nav {
+  height: 46px;
+}
+
+/* edit forms */
+
+input {
+  margin: 0;
+}
+
+.edit label {
+  width: 140px;
+  display: block;
+  float: left;
+  text-align: right;
+  padding-right: .5em;
+}
+
+label.nofloat {
+  float: none;
+  display: inline;
+}
+
+ul.by-options {
+  float: left;
+}
+
+ul.by-options li {
+  float: left;
+}
+
+/* LHS sidebar */
+
+ul.downloads li {
+  float: left;
+}
+
+hr {
+  clear: left;
+}
+
+#nav p {
+  margin: .2em 0;
+}
+
+.pl-title, .section-title {
+  font-variant: small-caps;
+}
+
+.section-title {
+  text-align: center;
+}
+
+#session {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+#login label {
+  width: 100px;
+  display: block;
+  float: left;
+  clear: left;
+}
+
+.pending-changes {
+  border-right: solid black 5px;
+  padding-left: 10px;
+}
+
+#footer {
+  clear: both;
+  text-align: center;
+  padding: 1em 0;
+  width: 990px;
+}
+
+#register-form th {
+  text-align: right;
+}
+
+.index #content {
+  margin: 0;
+}
+
+ol {
+  padding: 0 1em;
+}
+
+.edit-delete {
+  clear: right;
+  float: right;
+  width: 140px;
+}
+
+.edit-delete a.edit, .edit-delete a.delete {
+  float: none;
+}
+
+.embargo {
+  background: #ccc;
+}
+
+span.status {
+  display: block;
+  margin: 3px 0;
+}
+
+#wrapper {
+  width: 990px;
+  position: relative;
+}
+
+#admin {
+  display: none;
+}
+
+.children .edit-delete {
+  margin-right: -150px;
+}
+
+.pending-additions, .pending-changes {
+  background: #eee;
+}
+
+.leftcol {
+  padding-left: 20px;
+  float: left;
+  width: 300px;
+}
+
+.rightcol {
+  float: left;
+  width: 300px;
+}
+
+div.help, p.help {
+  padding: 8px;
+  background: #98fb98;
+}
+
+.blur {
+  color: #666;
+  font-style: italic;
+}
+
+.fixed {
+  position: fixed;
+}
+
+p.highlight a { font-weight: bold; font-style: italic; font-size: 1em !important; }
+
+form.remark-edit { padding-right: .5em; }
+form.remark-edit textarea { width: 99%; }
+form.remark-edit label { display: inline; width: auto; }
+
+h5.theorem { display: inline-block; margin: .5em .5em .5em 0; font-style: normal; }

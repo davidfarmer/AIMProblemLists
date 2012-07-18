@@ -1,0 +1,1105 @@
+% LaTeX class specification.  Any changes will not appear in the final version
+\documentclass[12pt,letterpaper, reqno]{amsart}
+
+% Only the following packages are available.
+% If these are not sufficient, then you must submit a special request
+% for a new package to be includade.  (We apologize for any inconvenience,
+% but we cannot maintain these documents indefinitely without such restrictions).
+\usepackage{amssymb,latexsym, amsmath, amsxtra, xy}
+\usepackage[dvips]{graphics}
+
+% The aimpl style file is necessary in order for the latex version
+% to faithfully mimic the appearance of the problem list after it is
+% uploaded. The file aimpl.sty should be in same directory as this file.
+
+\usepackage{aimpl_2}
+
+% New macros.
+% If at all possible, please do not define any new macros.  Each
+% macro you introduce has the potential to cause problems with the
+% long-term maintenance of the problem list.
+\newcommand{\Cat}{{\rm Cat}}
+\newcommand{\A}{\mathcal A}
+\newcommand{\freestar}{ \framebox[7pt]{$\star$} }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Document begins below.
+%
+% Lines beginning with ZZZZ indicate standard material
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\title{Low Eigenvalues of Laplace and Schr\"{o}dinger Operator}
+%\author{ZZZZ Author goes here}
+
+\maketitle
+
+Following are brief statements of some problems raised during the
+AIM Workshop on \emph{Low Eigenvalues of Laplace and Schr\"{o}dinger
+Operators}, May 22--26, 2006, and the MFO Oberwolfach, February 9--13, 2009. The name of the participant who
+mentioned the problem is stated in most cases, along with a brief
+reference to more information. This participant is not necessarily
+the original proposer of the problem in the literature, of course.
+
+The problem statements given below include some editorial additions
+by the organizers, which may not reflect the views of the person who
+mentioned the problem.
+
+Corrections and updates will be gratefully received at
+\texttt{rlfrank@math.princeton.edu}
+(for P\'olya and Lieb--Thirring inequalities)
+ and \texttt{Laugesen@illinois.edu}
+(for Gap and Laplace eigenvalue inequalities).
+
+
+\section{ P\'{o}lya and Related Inequalities}
+
+Consider eigenvalues of the Dirichlet Laplacian on a bounded domain
+$\Omega \subset \R^n$:
+\[
+\begin{cases}
+-\Delta u_j = E_j u_j & \text{in $\Omega$,} \\
+u_j = 0 & \text{on $\partial \Omega$.}
+\end{cases}
+\]
+Assume $n \geq 2$.
+
+
+\begin{problemblock}
+\by{Michael Loss, Timo Weidl}
+
+\begin{problem}
+The P\'{o}lya Conjecture claims
+that the Weyl asymptotic formula provides a lower bound:
+\[
+E_j \geq (2\pi)^2 (n/ |S^{n-1}| |\Omega|)^{2/n} j^{2/n} , \qquad j =
+1,2,3,\ldots .
+\]
+\end{problem}
+
+The conjecture remains open even for $j=3$.
+
+\begin{remark}
+The best partial result known is with a factor of $n/(n+2)$ (which
+is less than $1$) on the right hand side, as one deduces by
+estimating $E_j \leq E_J$ in the following inequality due to Li and Yau,
+\[
+\sum_{j=1}^J E_j \geq \frac{n}{n+2} (2\pi)^2 (n/ |S^{n-1}|
+|\Omega|)^{2/n} J^{(n+2)/n} , \qquad J=1,2,3,\ldots .
+\]
+\end{remark}
+
+\begin{remark}
+Berezin proved in 1972 that
+\[
+\sum_j (E - E_j)_+^\sigma \leq \frac{|\Omega|}{(2\pi)^n} \int_\R^n (E
+- |p|^2)_+^\sigma \, dp , \qquad \sigma \geq 1, \quad E>0.
+\]
+The cases $0 \leq \sigma < 1$ remain open. The P\'{o}lya conjecture is exactly the case $\sigma=0$.
+The inequality for $\sigma=1$ implies the Li--Yau inequality via the Legendre transform.
+\end{remark}
+
+\end{problemblock}
+
+\begin{problemblock}
+
+
+\begin{problem}
+\by{Timo Weid} Can one strengthen the Li--Yau result by
+including a correction term, perhaps involving the surface area of
+the boundary?
+\end{problem}
+
+This has been done for the discrete
+Laplacian on domains in a lattice; J. K. Freericks, E. H. Lieb, D. Ueltschi, \emph{Phase separation due to quantum mechanical correlations}, Phys. Rev. Lett. 88, 106401 1-4 (2002).
+
+\begin{remark}
+There is a result by Melas of Li--Yau type with
+corrections involving \emph{moments of inertia} rather than surface
+area, see A. Melas, \emph{A lower bound for sums of eigenvalues of the Laplacian},
+Proc. Amer. Math. Soc. 131 (2003), 631--636.
+\end{remark}
+
+\begin{remark}
+\when{February 2009} The result of Melas has been strengthened by inclusion
+of a correction term involving the surface area of the boundary; see
+H. Kovarik, S. Vugalter, T. Weidl, \emph{Two-dimensional Berezin--Li--Yau
+inequalities with a correction term}, Comm. Math. Phys. 287 (2009),
+959--981. An earlier improvement for $\gamma\geq 3/2$, involving
+a notion of effective boundary, is due to T. Weidl, \emph{Improved
+Berezin--Li--Yau inequalities with a remainder term}, in: Spectral
+theory of differential operators, T. Suslina and D. Yafaev (eds.),
+Amer. Math. Soc. Transl. Ser. 2, 225 (2008). For $\gamma<3/2$ further
+improvements seem possible and desirable.
+\end{remark}
+
+\end{problemblock}
+
+
+\begin{problemblock}
+
+\by{Timo Weidl} 
+
+There are analogues of the P\'{o}lya and Li--Yau inequalities under
+Neumann boundary conditions, with the inequality signs reversed. The P\'{o}lya Conjecture
+remains open for Neumann boundary conditions for $j \geq 2$, except it was recently proved for $j=2$ in two dimensions by A. Girouard \emph{et al.}, J. Diff.\ Geometry, to appear. The analogue
+of Li--Yau was proved by Pawel Kr\"{o}ger; see P. Kr\"{o}ger, \emph{Upper bounds for the Neumann eigenvalues on a bounded domain in Euclidean space}, J. Funct. Anal.  106  (1992),  no. 2, 353--357, and also A. Laptev \emph{Dirichlet and Neumann
+eigenvalue problems on domains in Euclidean spaces}, J. Funct. Anal.
+151 (1997), 531--545. 
+
+\begin{problem}
+Can one strengthen the Kr\"{o}ger result by including a correction term?
+
+\end{problem}
+
+\end{problemblock}
+
+\begin{problem}\by{Timo Weidl} 
+ The questions raised above are meaningful in the presence of a magnetic field. For more information and some progress see Problem \eqref{it:blymag} below.
+\end{problem}
+
+
+\begin{problemblock}
+\by{Evans Harrell, Joachim Stubbe}
+For $\sigma\geq 2$ the mapping
+\begin{equation*}
+   r_{\sigma}: E\mapsto E^{-\sigma-d/2}\bigg(\frac{|\Omega|}{(2\pi)^n}\int_{\mathbb{R}^n}(E-|p|^2)^{\sigma}dp -\sum_j(E-E_j)_{+}^{\sigma}\bigg)
+\end{equation*}
+is non-increasing. This was proved in E.~M. Harrell and L. Hermi, \textit{Differential inequalities for
+Riesz means and Weyl-type bounds for eigenvalues}, {J. Funct.
+Analysis} \textbf{254} (2008), 3173--3191, using the trace identities of E.~M. Harrell and J. Stubbe, \textit{On trace identities and universal eigenvalue estimates for some partial differential
+operators}, {Trans.\ Amer.\ Math.\ Soc.} \textbf{349} (1997),
+1797--1809, and \textit{Universal bounds and
+semiclassical estimates for eigenvalues of abstract Schr\"odinger
+operators}, preprint 2008, available as arXiv:0808.1133.
+
+\begin{problem}\label{hsmono}
+According to Weyl's asymptotic formula
+$r_{\sigma}(E)$ tends to zero as $E$ tends to infinity and
+therefore $r_{\sigma}(E)\geq 0$, which is the
+Berezin--Li--Yau-inequality. Can one strengthen this bound in the
+trace identity of Harrell--Stubbe to obtain correction
+terms involving the surface area of the boundary?
+\end{problem}
+
+ For the
+Laplacian with periodic boundary conditions a similar monotonicity
+property holds (for details see E.~M. Harrell and J. Stubbe, \textit{Trace identities for
+commutators, with applications to the distribution of
+eigenvalues}, preprint 2009, available as arXiv:0903.0563). In this case the
+search for the correction term is related to the famous Gauss
+circle problem (or lattice point problem).
+\end{problemblock}
+
+
+\begin{problemblock}
+
+\by{Evans Harrell, Joachim Stubbe}
+\begin{problem}
+Prove monotonicity results like in Problem~\ref{hsmono} for higher
+order operators (e.g. clamped plate problem) and fractional powers
+of Laplacians.
+\end{problem}
+
+For some results on $\sqrt{-\Delta}$ see E.~M.
+Harrell and S. Y{\i}ld{\i}r{\i}m Yolcu, \emph{Eigenvalue
+inequalities for Klein-Gordon Operators}, accepted for publication
+in J. Funct.\ Analysis, leading to Berezin-Li-Yau inequalities for
+these operators.
+
+\end{problemblock}
+
+\begin{problemblock}\by{Evans Harrell, Joachim Stubbe}
+For $p>0$ let
+\begin{equation}\label{ev-moments}
+    M_{p}(J):=\bigg(\frac{n+2p}{n}\frac1{J}\sum_{j=1}^JE_j^p\bigg)^{\frac1{p}}
+\end{equation}
+and for $p=0$ define
+\begin{equation}\label{geom-mean}
+    M_{0}(J):=e^{\frac{2}{n}}\bigg(\prod_{j=1}^JE_j\bigg)^{\frac1{J}}.
+\end{equation}
+According the the Weyl asymptotic formula, for all $p\geq 0$,
+\begin{equation*}
+    M_{p}(J) \sim (2\pi)^2(n/|S^{n-1}||\Omega|)^{2/n}J^{2/n}
+\end{equation*}
+as $J\rightarrow\infty$. In E.~M. Harrell and J. Stubbe, \textit{On trace identities and
+universal eigenvalue estimates for some partial differential
+operators}, {Trans.\ Amer.\ Math.\ Soc.} \textbf{349} (1997),
+1797--1809, it has been shown that
+\begin{equation*}
+    M_1^2(J)-M_{2}(J)\geq \frac1{4}(E_{J+1}-E_J)^2 (\geq 0)
+\end{equation*}
+and
+\begin{equation*}
+    M_1(J)-\sqrt{M_1^2(J)-M_{2}(J)}\leq E_J\leq E_{J+1}\leq
+    M_1(J)+\sqrt{M_1^2(J)-M_{2}(J)}.
+\end{equation*}
+Both inequalities are sharp in the Weyl limit. For extensions to
+other $M_p(J)$ see E.~M. Harrell and J. Stubbe, \textit{Universal bounds and
+semiclassical estimates for eigenvalues of abstract Schr\"odinger
+operators}, preprint 2008, available as arXiv:0808.1133.
+\begin{problem}
+For $p>0$ find an upper bound of
+the form
+\begin{equation*}
+    M_p^{2p}(J)-M_{2p}^p(J)\leq C(p,\Omega)E_1^{2p}J^{2p\kappa}
+\end{equation*}
+with $\kappa<2/n$.
+
+\end{problem}
+
+\end{problemblock}
+
+\begin{problemblock}\by{Evans Harrell, Joachim Stubbe}
+
+
+\begin{problem}
+With the above notations does
+\begin{equation*}
+    E_J\leq M_p(J)
+\end{equation*}
+hold for all $J$ and all $p\geq 0$?
+Can one find $\Omega$ and $J$ such that the inequality
+\begin{equation*}
+    M_1^2(J)-M_{2}(J)\geq \frac1{4}(E_{J+1}-E_J)^2
+\end{equation*}
+is saturated?
+\end{problem}
+
+
+\end{problemblock}
+
+
+\section{Lieb--Thirring Inequalities}
+
+ Write $E_1 < E_2 \leq
+E_3 \leq \cdots \leq 0$ for the eigenvalues of $-\Delta - V$ on
+$L^2(\R^n)$, meaning
+\[
+(-\Delta - V)u_j = E_j u_j .
+\]
+The eigenfunctions $u_j$ represent bound states with energies $E_j$.
+For simplicity we assume $\boxed{V \geq 0}$. Assume $n \geq 1$.
+
+The Lieb--Thirring inequality can be written as
+\[
+\sum_j |E_j|^\gamma \leq L_{n,\gamma} \int_\R^n V^{\gamma + n/2} \,
+dx ,
+\]
+This inequality holds (with a constant $L_{n,\gamma}$ independent of $V$) iff the parameter $\gamma$ satisfies $\gamma\geq 1/2$ if $n=1$, $\gamma>0$ if $n=2$ and $\gamma\geq 0$ if $n\geq 3$. The case $\gamma = 0$ (counting eigenvalues)
+is the Cwikel--Lieb--Rozenblum Inequality (CLR).
+
+In other words
+\[
+\text{Tr} \left( -\Delta - V \right)_-^\gamma \leq
+\frac{C_{n,\gamma}}{(2\pi)^n} \int_\R^n \int_\R^n (|p|^2 -
+V(x))_-^\gamma \, dp dx ,
+\]
+where
+\[
+C_{n,\gamma} = \frac{L_{n,\gamma}}{L^{\text{cl}}_{n,\gamma}} \qquad
+\text{and} \quad L^{\text{cl}}_{n,\gamma} = \frac{1}{(2\pi)^n}
+\int_\R^n (|p|^2-1)_-^\gamma \, dp .
+\]
+The constant $L^{\text{cl}}_{n,\gamma}$ is called the semiclassical
+Lieb--Thirring constant.
+
+Note that $C_{n,\gamma} \geq 1$ always, by the Weyl asymptotics, and
+that $C_{n,\gamma}$ is decreasing in $\gamma$ for each fixed $n$, by
+the Aizenman--Lieb monotonicity result.
+
+To start with, let us summarize some known results on the constants
+$C_{n,\gamma}$, along with conjectures about best (smallest) values
+of $C_{n,\gamma}$.
+%
+\begin{center}
+%
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}[h]{|r|l|c|cc|c|}
+\hline $n$ & $\gamma$ & Best known $C_{n,\gamma}$ & Best constant? & status & last updated\\
+\hline \hline
+$1$ & $\frac{1}{2}$ & $2$ & $2$ & known & \\
+& $(\frac{1}{2},\frac{3}{2})$ & $2$* & $2 \! \left( \frac{\gamma - 1/2}{\gamma + 1/2} \right)^{\gamma - 1/2}$ & conjectured & \\
+& $[\frac{3}{2},\infty)$ & $1$ & $1$ & known & \\
+\hline
+$2$ & $(0,\frac{1}{2})$ & ? & & &\\
+& $[\frac{1}{2},1)$ & $3.64$ & & & Feb. 2009\\
+& $[1,\frac{3}{2})$ & $1.82$ & & & Feb. 2009\\
+& $[\frac{3}{2},\infty)$ & $1$ & $1$ & known &\\
+\hline
+$= 3$ & $[0,\frac{1}{2})$ & $6.87$ & $8/\sqrt{3}\simeq 4.62$ & conjectured &\\
+& $[\frac{1}{2},1)$ & $3.64$ & & & Feb. 2009\\
+& $[1,\frac{3}{2})$ & $1.82$ & $1$ & conjectured & Feb. 2009\\
+& $[\frac{3}{2},\infty)$ & $1$ & $1$ & known & \\
+\hline
+$\geq 4$ & $[0,\frac{1}{2})$ & $10.34$ & & & Feb. 2009\\
+& $[\frac{1}{2},1)$ & $3.64$ & & & Feb. 2009\\
+& $[1,\frac{3}{2})$ & $1.82$ & $1$ & conjectured & Feb. 2009\\
+& $[\frac{3}{2},\infty)$ & $1$ & $1$ & known & \\
+\hline
+\end{tabular}
+%
+
+\hspace*{6pt} *better is known for $\gamma \in [1,\frac{3}{2})$,
+\textit{e.g.}\ $C_{1,1} \leq \frac{\pi}{\sqrt{3}} \simeq 1.82$ via
+work of Eden--Foias.
+\end{center}
+%
+\noindent \emph{Remark.} References to the results in the table and
+to many of the questions below can be found in the lecture notes by
+Michael Loss and Timo Weidl, and in the survey paper by Dirk
+Hundertmark (which further states some better estimates on
+$C_{n,\gamma}$ for special values of $n$ and $\gamma$).
+
+For February 2009 updates see J. Dolbeault, A. Laptev, M. Loss, \emph{Lieb--Thirring inequalities with improved constants}, J. Eur. Math. Soc. 10 (2008), and R. L. Frank, E. H. Lieb, R.~Seiringer, \emph{Number of bound states of Schr\"odinger operators with matrix-valued potentials}, Lett. Math. Phys. 82, 107 (2007).
+
+\vspace{6pt}
+Now we state open problems on Lieb--Thirring
+inequalities.
+
+
+
+\begin{problem}
+\by{Richard Laugesen} Must an optimal potential $V$ exist, for
+those Lieb--Thirring inequalities in which the best constant is not
+known? In particular this question is open for $n=1$ and
+$\frac{1}{2} < \gamma < \frac{3}{2}$.
+\end{problem}
+
+\begin{problem}
+A restricted version of the problem asks: within the class of
+potentials having $m$ bound states (where $m \geq 1$ is given), does
+an optimal potential exist?
+\end{problem}
+
+
+
+
+\begin{problemblock}
+
+
+\begin{problem}
+\by{Richard Laugesen} If an optimal potential
+exists, then does it have just a single bound state?
+\end{problem}
+
+In other
+words, does $-\Delta - V$ have just a single eigenvalue?
+
+
+\begin{remark}
+When $n=1$
+and $\frac{1}{2} < \gamma < \frac{3}{2}$, the natural conjecture is
+that the optimal potential is the one found by J. B. Keller when he
+determined the best constant in $|E_1|^\gamma \leq C \int_\R
+V^{\gamma + 1/2} \, dx$ (see J. Mathematical Phys.\ 2:262--266,
+1961).
+\end{remark}
+
+\begin{remark}
+This ``single bound state'' conjecture is due to Lieb and Thirring,
+1976. In dimension $n=1$, the conjecture is known to be true in the
+endpoint cases $\gamma=1/2$ (in which case $V$ is a delta function)
+and $\gamma=3/2$ (in which case $V$ is a transparent or
+reflectionless potential).
+\end{remark}
+
+\end{problemblock}
+
+\begin{problemblock}
+
+\begin{problem}
+\by{Eric Carlen}  Does there exist a bound of the
+form $\sum_j |E_j|^\gamma \leq C |E_1|^\gamma$? 
+\end{problem}
+
+ Here the factor $C$
+could depend on $n,\gamma$, and on the integrability of a power of
+$V$ sufficient to guarantee that the lefthand side is finite.
+
+\end{problemblock}
+
+\begin{problemblock}
+
+
+\begin{problem}
+\by{Rafael Benguria}  The use of Korteweg--de Vries
+(KdV) integrable system methods when $n=1, \gamma=3/2$, suggests
+that one might similarly study Lieb--Thirring inequalities for the
+linear equation associated with the Benjamin--Ono equation (another
+integrable system).
+\end{problem}
+
+Tomas Ekholm, Rupert Frank and Dirk Hundertmark
+made progress during the Workshop already, by obtaining the analog
+of the Aizenman--Lieb ``monotonicity toward best constants'' result.
+The Lax pair for the Benjamin--Ono equation can be found for example
+in R.L. Anderson and E. Tafflin, \emph{The Benjamin-Ono equation
+-Recursivity of linearization maps- Lax pairs},
+Letters in Mathematical Physics, 9 (1985), 299--311. See also,
+D.J. Kaup and Y. Matsuno, \emph{The inverse scattering transform
+for the Benjamin--Ono equation},
+Studies in applied mathematics 101 (1998), 73--98.
+
+\end{problemblock}
+
+\begin{problemblock}
+\by{Rupert Frank} The best constant when $n=1,
+\gamma=1$, is due to Eden--Foias
+(see A. Eden and C. Foias, \emph{A simple proof of the
+generalized Lieb--Thirring inequalities of one--space dimension},
+Journal of mathematical analysis and applications, 162 (1991), 250--254.)
+More precisely, they proved a Sobolev inequality, which then gives a
+Lieb--Thirring inequality via the Legendre transform.
+
+\begin{problem}
+Can one find a more direct proof of this Lieb--Thirring
+inequality?
+
+Also, can one sharpen the Eden--Foias bound by including correction terms in their argument?
+\end{problem}
+
+\begin{remark}
+\when{February 2009} An operator-valued version of the Eden--Foias bound
+has been proved by J. Dolbeault, A. Laptev, M. Loss, \emph{Lieb-Thirring
+inequalities with improved constants}, J. Eur. Math. Soc. 10 (2008). By
+the `lifting of dimension'-argument this result leads to the best
+known values for the constants in the Lieb--Thirring inequalities for
+$\gamma\geq 1$ if $n=1$ and for $\gamma\geq 1/2$ if $n\geq 2$.
+\end{remark}
+
+\end{problemblock}
+
+\begin{problemblock}
+
+
+\begin{problem}
+\by{Timo Weidl} Can one find a way to directly
+estimate the sum of the eigenvalues, without going through the
+Birman--Schwinger transformation (which \emph{counts} the
+eigenvalues rather than summing them)?
+\end{problem}
+\end{problemblock}
+
+\begin{problemblock}
+\by{Almut Burchard}  \emph{The Ovals Problem} %need a way to "name" problems
+Consider a smooth closed curve $\gamma$ of length $2\pi$ in
+${\mathbb R}^3$, and let  $\kappa(s)$ be its curvature as a function
+of arclength. The curve determines the one-dimensional Schr\"odinger
+operator $H_C=-d^2/ds^2 + \kappa^2$ acting on $2\pi$-periodic
+functions. This operator appears in the equation for the tension of
+a smooth, elastic, inextensible loop [5], and in connection with a
+Lieb--Thirring inequality in one dimension [4]; similar
+Schr\"odinger operators with quadratic curvature potentials have
+been studied in connection with quantum mechanics on narrow channels
+[2], Dirac operators on the sphere [3], and curvature-driven flows
+describing the motion of interfaces in reaction-diffusion
+equations~[1].
+
+\begin{problem}
+A natural conjecture is that the principal eigenvalue $e(\gamma)$ is
+minimal when $\gamma$ is a circle, where it takes the value $1$.
+\end{problem}
+
+This question is open even for planar loops that enclose convex sets
+(\emph{`ovals'}).
+
+\begin{remark}
+ It is known that the value $e(\gamma)=1$ is
+attained for an entire family of planar curves whose curvature is
+given by $\kappa(s) = \bigl(\alpha^2\cos^2 s + \alpha^{-2}\sin^2 s
+\bigr)^{-1}$. When $\alpha\to 0$, these curves collapse onto two
+straight line segments of length $\pi$ joined at the ends. The
+inequality $e(\gamma)\ge 1$ has recently been shown for curves in
+some neighborhood of the family~[5], and for curves satisfying
+additional geometric constraints [6]. The best universal lower bound
+on $e(\gamma)$ that is currently known is $0.6085$ [6].
+
+\end{remark}
+
+\begin{remark}
+Several participants at the Workshop had worked on this problem
+previously (including Benguria, Loss, Burchard, Thomas, and Linde).
+All agreed that classical Calculus of Variations techniques may be
+exhausted at this point, and that rearrangement techniques seem to
+fail. Linde and Burchard claimed that minimizers can be shown to
+exist, and should be convex, but could conceivably contain one
+corner, or two corners joined by a straight line segment.  Benguria
+pointed to the family of putative minimizers (which look like
+ellipses in polar coordinates) as evidence that the problem may have
+a hidden affine symmetry. Carlen, Mazzeo, and Benguria proposed to
+search for geometric flows that drive $e(\gamma)$ towards its
+minimum. The affine curvature flow [7] was mentioned as a promising
+candidate. Rapti and Lee proposed to analyze the Euler--Lagrange
+equation using ODE methods. Laugesen suggested applying the
+Birman--Schwinger transformation, after which the conjecture becomes
+that the largest eigenvalue of the operator $T = \kappa (d^2/ds^2 +
+\gamma)^{-1} \kappa$ is larger than $1$, for each constant
+$0<\gamma<1$. Equivalently, take $\gamma=1$ and try to show the
+largest eigenvalue of $T$ is larger than $1$, when $T$ acts on
+functions $\psi$ with $\kappa \psi$ orthogonal to $\sin s$ and $\cos
+s$. The hope is that a good choice of trial function (in the
+variational principle for the largest eigenvalue) might suffice to
+prove this conjecture.
+\end{remark}
+
+\vspace{6pt} \noindent \emph{References for the ovals problem}
+
+\begin{itemize}
+
+\item[{[1]}] E. M. Harrell and M. Loss. \emph{On the Laplace operator
+penalized by mean curvature.} Commun. Math. Phys. 195:643-650
+(1998).
+
+\item[{[2]}] P. Exner, E. M. Harrell and M. Loss. \emph{Optimal
+eigenvalues  for some Laplacians and Schr\"odinger operators
+depending on curvature.} Oper. Theory Adv. Appl. 108:47-58 (1999).
+
+\item[{[3]}] T. Friedrich. \emph{A geometric estimate for
+a periodic Schr\"odinger operator.} Colloq. Math. 83:209-216 (2000).
+
+\item[{[4]}] R. D. Benguria and M. Loss. \emph{Connection between
+the Lieb--Thirring conjecture for Schr\"o\-dinger operators and an
+isoperimetric problem for ovals on the plane.} Contemporary Math.
+362:53-61 (2004).
+
+\item[{[5]}] A. Burchard and L. E. Thomas. \emph{On an isoperimetric inequality
+for a Schr\"odinger operator depending on the curvature of a loop.}
+J. Geometric Analysis 15:543-563 (2005).
+
+\item[{[6]}] H. Linde. \emph{A lower bound for the ground state energy of a
+Schr\"odinger operator on a loop.},
+Proc. Amer. Math. Soc. 134 (2006), 3629--3635.
+
+
+\item[{[7]}]  B. Andrews. \emph{The affine curve-lengthening flow.}
+Crelle J. Reine Angew. Math. 506:43-83 (1999).
+
+\end{itemize}
+\end{problemblock}
+
+\begin{problemblock}
+
+
+\begin{problem}
+\by{Timo Weidl} For $n=2, \gamma=0$, can one
+prove a Cwikel--Lieb--Rozenblum Inequality that involves a
+logarithmic correction factor? Without some such correction factor,
+the inequality fails, since any nontrivial attractive potential has
+at least one bound state.
+\end{problem}
+
+\when{February 2009} This problem has been solved in H. Kovarik, S. Vugalter, T. Weidl, \emph{Spectral estimates for two-dimensional Schr\"odinger operators with application to quantum layers}. Comm. Math. Phys. 275 (2007), no. 3, 827--838.
+
+\end{problemblock}
+
+
+\begin{problem}
+\by{Timo Weidl} Can one obtain improved
+Lieb--Thirring constants when working on a domain $\Omega$ rather
+than on all of $\R^n$? For example, can one obtain a boundary
+correction term?
+\end{problem}
+
+\begin{problemblock}\emph{Magnetic Schr\"{o}dinger
+operators on a domain.} Consider the Dirichlet Laplacian in a domain
+in $\R^n$. The technique of iteration-in-dimension gives sharp
+Lieb--Thirring constants for arbitrary magnetic fields for $\gamma
+\geq 3/2$ and any $n \geq 2$. (See the final part of A. Laptev and
+T. Weidl, \emph{Sharp Lieb--Thirring inequalities in high
+dimensions}, Acta Mathematica 184 (2000), 87-111.) For $1/2 \leq
+\gamma < 3/2$ one also gets estimates uniform in the magnetic field,
+but the constant is (probably) not sharp. With the same approach,
+the results of D. Hundertmark, A. Laptev and T. Weidl (\emph{New
+bounds on the Lieb--Thirring constants}, Inventiones Math.\ 140
+(2000), 693-704) carry over to magnetic operators; see the remark at
+the end of that paper.
+
+The sharp Li--Yau bound (corresponding to $\gamma=1$) has been
+proved by L. Erd\"{o}s, M. Loss and V. Vougalter (\emph{Diamagnetic
+behavior of sums of Dirichlet eigenvalues}, Ann.\ Inst.\ Fourier
+(Grenoble) 50 (2000), 891--907) for constant magnetic fields.
+
+\begin{problem}
+ \label{it:blymag}
+ Does
+this bound hold true for \emph{arbitrary} magnetic fields for $1\leq\gamma<3/2$?
+\end{problem}
+\end{problemblock}
+
+\begin{problemblock}
+\begin{problem}
+For $\gamma=0$, does the P\'{o}lya conjecture hold true for tiling domains in the
+presence of magnetic fields?
+\end{problem}
+
+
+\begin{remark}
+\when{February 2009} The answer to the latter question is negative for
+constant magnetic fields. Indeed, the sharp constant in the corresponding
+lower bound for $0\leq\gamma<1$ was found in R. L. Frank, M. Loss,
+T. Weidl, \emph{P\'olya's conjecture in the presence of a constant
+magnetic field}. J. Eur. Math. Soc., to appear.
+\end{remark}
+
+\end{problemblock}
+
+
+\begin{problemblock}
+\by{Timo Weidl} \emph{Magnetic Schr\"{o}dinger
+operators on $\R^n$.} Consider Lieb--Thirring bounds for magnetic
+Schr\"{o}dinger operators on all of $\R^n$. In all cases where the
+sharp constant is known, either the magnetic field is not relevant
+(dimension $n=1$) or the value of the constant is independent of the
+magnetic field ($\gamma\geq 3/2$ and $n\geq 2$ as above, where the
+sharp constant equals the classical constant).
+
+\begin{problem}
+
+Can the magnetic field change the optimal value of the
+Lieb--Thirring constant in the remaining cases?
+\end{problem}
+
+\begin{remark}
+\when{February 2009} The magnetic field can change the optimal
+value at most by an explicit factor depending only on $\gamma$ and
+$d$; see R. L. Frank \emph{A simple proof of Hardy-Lieb-Thirring
+inequalities}. Comm. Math. Phys., to appear.
+\end{remark}
+
+\begin{remark}
+This question is rather speculative, because we do not know the
+sharp constants even in the non-magnetic case. But let us put
+forward the following more specific version:
+\end{remark}
+
+\begin{problem}
+Can one construct a counterexample to the Lieb--Thirring conjecture
+that the optimal constant is the classical one for $n=3, \gamma=1$,
+by using a suitable magnetic field?
+\end{problem}
+
+\end{problemblock}
+
+
+\begin{problemblock}
+
+\begin{problem}
+\by{Eric Carlen} Do there exist Lieb--Thirring inequalities on manifolds?
+As a basic first question, do the critical exponents
+($\gamma=\frac{1}{2}$ when $n=1$, and $\gamma=0$ when $n=2$) depend
+on the geometry?
+\end{problem}
+
+\begin{remark}
+Some references to get started here are A. A. Ilyin,
+\emph{Lieb--Thirring inequalities on the $N$-sphere and in the
+plane, and some applications}, Proc.\ London Math.\ Soc.\ (3) 67
+(1993), 159--182; and \emph{Lieb--Thirring integral inequalities and
+their applications to attractors of Navier-Stokes equations}, Sb.\
+Math.\ 196 (2005), 29--61. A classic reference for applications to
+turbulence is E. Lieb, \emph{On characteristic exponents in
+turbulence}, Comm.\ Math.\ Phys.\ 92 (1984), 473--480.
+\end{remark}
+
+\begin{remark}
+February 2009: Intuition from recent results on continuous trees
+suggest that the critical exponents depend on both the local and global
+dimension of the manifold (see T. Ekholm, R. L. Frank, H. Kovarik,
+\emph{Eigenvalue estimates for Schr\"odinger operators on metric trees},
+\texttt{arXiv:0710.5500v1}.)
+\end{remark}
+
+\begin{remark}
+Analogues of Lieb-Thirring inequalities on tori and spheres have been proved in E. Harrell and J. Stubbe, \emph{Trace identities for commutators, with applications to the distribution of eigenvalues},    \texttt{arXiv:0903.0563v1}.
+\end{remark}
+
+\end{problemblock}
+
+
+\begin{problemblock}
+\emph{Reverse Lieb–Thirring Inequality} 
+\begin{problem}\by{Mark Ashbaugh}
+Investigate Reverse Lieb--Thirring Inequalities
+\end{problem}
+
+For dimension $n=1$, Damanik and Remling have proved a
+Reverse Lieb--Thirring Inequality in the subcritical range $0 <
+\gamma \leq \frac{1}{2}$ (\emph{Schr\"odinger operators
+with many bound states}, Duke Math. J. 136 (2007), 51--80) Sharp constants
+seem not to be known. A Reverse
+Cwikel--Lieb--Rozenblum Inequality for the eigenvalue counting function for dimension $n=2$ in the critical case $\gamma=0$ has been proved by A. Grigor'yan, Yu. Netrusov, S.-T. Yau, \emph{Eigenvalues of elliptic operators and geometric applications}, Surveys in Differential Geometry IX (2004), 147-218.
+
+\end{problemblock}
+
+
+\begin{problemblock}
+
+\begin{problem}
+\by{Rupert Frank} Can one prove a critical Lieb--Thirring inequality for arbitrary powers of
+the Laplacian?
+\end{problem}
+
+That is, one wants
+\[
+\text{tr\,} \left( (-\Delta)^s - V \right)_-^\gamma \leq
+L_{\gamma,n} \int_\R^n V_+^{\gamma + n/2s} \, dx
+\]
+for $\gamma = 1 - n/2s > 0$. Such an inequality is known for $s$ a
+positive integer by work of Netrusov--Weidl.
+
+
+\begin{remark}
+\by{Timo Weidl} Regardless of whether these operators have
+physical significance, the higher order situation can help shed
+light on what makes the second-order case work.
+\end{remark}
+
+\end{problemblock}
+
+
+\begin{problemblock}
+
+\begin{problem}
+\by{Rupert Frank} Can one prove a Lieb--Thirring bound with a Hardy
+weight, on the half-line?
+\end{problem}
+
+ That is, one wants
+\[
+\text{tr\,} \left( -\frac{d^2\ }{dr^2} - \frac{1}{4r^2} - V
+\right)_{\! -}^{\theta/2}  \leq C_\theta \int_0^\infty V(r)
+r^{1-\theta}\, dr
+\]
+for $0 < \theta \leq 1$.
+\begin{remark}
+The inequality is known for $\theta=1$
+(Lieb--Thirring). For $\theta=0$ it fails (although note that if it
+were true, it would resemble Bargmann's inequality).
+\end{remark}
+
+\begin{remark}
+\when{February 2009} The inequality for all $0 < \theta \leq 1$ has been
+proved in T. Ekholm, R. L. Frank,  \emph{Lieb-Thirring inequalities on
+the half-line with critical exponent}. J. Eur. Math. Soc. 10 (2008),
+no. 3, 739 - 755. The sharp constant
+$C_\theta$ is not known, and there is not even a conjecture for it.
+\end{remark}
+
+\end{problemblock}
+
+
+\begin{problemblock}
+\by{Carlo Morpurgo} Let $Y$ be the Yamabe operator, or conformal Laplacian, on the
+euclidean ``round'' sphere $(S^n,g)$. That is, $Y = \Delta_{S^n} +
+\frac{n}{2} \left( \frac{n}{2}-1 \right)$, where $\Delta_{S^n}$
+denotes the Laplace--Beltrami operator on $S^n$.
+
+Consider a positive smooth function $W$ on $S^n$, normalized so that
+$\int_{S^n} W^{n/2}=$volume of the round sphere. Define
+$Y_W=W^{-1/2}YW^{-1/2}$, acting on $L^2(S^n,g)$.
+
+\begin{conjecture} \label{conj:carlo1}
+ For $n \geq 3$,
+%
+\begin{equation} \label{carlo1}
+\max_{t>0} \left\{ t^{n/2} \text{Tr}[e^{-tY_W}] \right\} \leq
+\max_{t>0} \left\{ t^{n/2} \text{Tr}[e^{-tY}]   \right\} .
+\end{equation}
+\end{conjecture}
+
+Note that the eigenvalues of $Y_W$ are the same as the eigenvalues
+of $W^{-(n+2)/4}Y W^{(n-2)/4}$ acting on $L^2(S^n, W g)$, which is
+the natural Yamabe operator in the metric $Wg$.
+
+In other words we are looking for the best constant $C(W)$ in the
+inequality
+%
+\begin{equation} \label{carlo2}
+\text{Tr}[e^{-tY_W}] \leq \frac{C(W)}{t^{n/2}},  \qquad t>0,
+\end{equation}
+%
+and the conjecture states that this constant is attained precisely
+by the right side of \eqref{carlo1}, which is the best constant in
+\eqref{carlo2} for $W \equiv 1$.
+
+
+\begin{remark}
+If Conjecture~\ref{conj:carlo1} is true then we can considerably improve the known
+CLR bounds, at least in low dimensions, noting that for a given
+positive potential $V$, the eigenvalues of the Birman--Schwinger
+operator $V^{-1/2}\Delta V^{-1/2}$ are the same as those of $Y_W$,
+with $W=(V\circ\pi) |J_\pi|^{2/n}$, $\pi$ being the stereographic
+projection and $J_\pi$ its Jacobian.
+\end{remark}
+\end{problemblock}
+
+\begin{problemblock}
+
+\begin{conjecture} \label{conj:carlo2}
+ If $n \geq 4$ then the
+function $f_W(t) = t^{n/2} \text{Tr}[e^{-tY_W}]$ is decreasing in
+$t$.
+\end{conjecture}
+
+
+\begin{remark}
+An asymptotic expansion $f_W(t) \sim a_0(W)+ t a_1(W)+\ldots$ holds
+as $t \to 0$, with $a_0(W)= (4\pi)^{-n/2} \int_{S^n} W^{n/2}$ and
+with $a_1(W)$ written explicitly in terms of the total curvature.
+Hence Conjecture~\ref{conj:carlo2} would imply (equality in) Conjecture~\ref{conj:carlo1} for $n
+\geq 4$, because Conjecture~\ref{conj:carlo1} normalizes the constant term $a_0(W)$
+in the expansion.
+\end{remark}
+
+\begin{remark}
+It is known that $a_1(W)$ is negative for $n \geq 5$, zero for
+$n=4$, and positive for $n=3$, so that Conjecture~\ref{conj:carlo2} fails for small
+$t$ when $n=3$.
+
+On the other hand, Conjecture~\ref{conj:carlo2} holds for large $t$ and any $n \geq
+3$, since the known sharp lower bound $\lambda_0(W) \geq
+\lambda_0(1)= \frac{n}{2} \left( \frac{n}{2}-1 \right)$ for the
+lowest eigenvalue of $Y_W$ implies that $f_W(t)$ is decreasing when
+$t > \left( \frac{n}{2}-1 \right)^{-1}$.
+\end{remark}
+
+\begin{remark}
+Conjecture~\ref{conj:carlo2} is true if $W \equiv 1, n \geq 4$.
+\end{remark}
+
+
+\end{problemblock}
+
+\section{ Gap Inequalities}
+
+ Consider eigenvalues of the
+Dirichlet Laplacian on a bounded convex domain $\Omega \subset \R^n$
+with \emph{convex} potential $V$:
+\[
+\begin{cases}
+(-\Delta + V) u_j = \lambda_j u_j  & \text{in $\Omega$,} \\
+u_j = 0 & \text{on $\partial \Omega$.}
+\end{cases}
+\]
+Assume $n \geq 1$. Notice the operator is written with $+V$, not
+$-V$ like in the previous section.
+
+Van den Berg's Gap Conjecture is that
+\[
+\lambda_2 - \lambda_1 \geq \frac{3\pi^2}{d^2} , \qquad d=\text{diam}(\Omega) ,
+\]
+with equality holding when $n=1, V \equiv 0$. (In dimensions $n \geq
+2$, the inequality should be strict, with equality holding only in
+the limit as the domain degenerates to an interval.) For an extended treatment of the problem and many references, see Mark Ashbaugh's introduction \emph{The Fundamental Gap} on the AIM website. Also see the overhead transparencies of Rodrigo Ba\~{n}uelos's talk.
+
+In dimension $n=1$ the conjecture has been completely proved by
+Richard Lavine (1994).
+
+In dimensions $n \geq 2$, the best partial result says that
+$\lambda_2 - \lambda_1 \geq \pi^2/d^2$, which is missing the desired
+factor of $3$ on the righthand side. The first proof of this result
+used $P$-function techniques based on the maximum principle. The
+second proof adapted the methods of Weinberger, who resolved the
+analogous Neumann gap problem long ago.
+
+
+
+\begin{problemblock}
+
+\begin{problem}
+\by{Richard Lavine} 
+Can one expand the class of
+potentials for which the gap inequality holds, in one dimension? 
+\end{problem}
+
+It
+is known for convex potentials, but also for single well potentials
+with a centered transition point. See the write-up by Mark Ashbaugh
+
+\end{problemblock}
+
+
+\begin{problem}
+\by{Richard Lavine}
+Normalize the eigenfunctions
+$u_j$ in $L^2$ and define $\langle V \rangle_j = \int_\Omega V u_j^2
+\, dx$. Are these means  $\langle V \rangle_j$ an increasing
+sequence as $j$ increases? The question is already interesting in
+one dimension.
+\end{problem}
+
+
+
+\begin{problem}
+\by{Richard Lavine}
+Can one strengthen the gap
+inequality by adding to its righthand side a term that involves $V$?
+The question is already interesting in one dimension.
+\end{problem}
+
+\begin{problem}
+\by{Rodrigo Ba\~nuelos} Can Lavine's approach be
+extended to higher dimensions?
+\end{problem}
+
+\begin{problemblock}
+
+\by{Mark Ashbaugh} In dimensions $n \geq 2$, one
+should try to understand whether genuine barriers exist to pushing
+the $P$-function techniques beyond the known $\pi^2/d^2$ bound. One
+seems to need to improve the log-concavity bound on the groundstate
+$u_1$ (due to Brascamp--Lieb). That is, instead of just discarding
+the Hessian of $\log u_1$ when it arises, on the grounds that it is
+$\leq 0$, one seems to want to bound the Hessian strictly away from
+$0$.
+
+\begin{problem}
+ Can this be achieved by the methods of Brascamp--Lieb, or of
+Korevaar?
+\end{problem}
+\end{problemblock}
+
+\begin{problem}
+\by{Antoine Henrot}  The Gap Conjecture is already
+very interesting in the case of vanishing potential $V \equiv 0$. A
+possible approach is as follows.
+%
+\begin{enumerate}
+\item Prove the gap infimum $\inf_{\Omega \in \mathcal{O}} (\lambda_2-\lambda_1)$
+is not attained, when $\mathcal{O}$ is the class of convex domains
+with diameter $1$.
+
+\item Prove that minimizing sequences shrink to a segment of
+length $1$.
+
+\item Prove that the gap for a sequence of shrinking domains
+behaves like the gap of a one-dimensional Schr\"{o}dinger
+operator with convex potential (semiclassical limit arguments).
+
+\item Complete the proof using the results in the one dimensional case (Lavine's Theorem).
+\end{enumerate}
+%
+It seems that the last three points OK. It remains to prove the first one!
+
+\end{problem}
+
+
+\begin{problemblock}
+\emph{Operator-valued potentials}
+
+\begin{problem}
+\by{Helmut Linde}  In order to prove the gap conjecture one could consider
+the Laplacian on a two-dimensional domain as being a one-dimensional
+operator with a matrix-valued potential. This makes it possible to
+approach the problem via a sequence of simplified ``toy models''.
+For example, one can try to prove the gap conjecture first for very
+special classes of matrix-valued potentials, like potentials that
+have constant eigenvectors and whose eigenvalues are convex
+functions. Then one could gradually generalize this theorem to
+approach the ``real'' gap conjecture.
+\end{problem}
+
+\end{problemblock}
+
+\begin{problemblock}
+\by{Timo Weidl and Richard Laugesen}
+For magnetic Schr\"{o}\-dinger operators,
+the Gap Conjecture cannot hold as stated because the eigenvalue gap
+can be reduced to zero by the introduction of a magnetic field.
+
+
+\begin{problem}
+Can one still obtain a valid gap inequality by subtracting from the
+righthand side a term depending on the magnetic potential $A$?
+\end{problem}
+
+\end{problemblock}
+
+\begin{problemblock}
+
+\begin{problem}
+\by{Rodrigo Ba\~nuelo}   Is the groundstate of $\sqrt{-\Delta}$ log-concave?
+\end{problem}
+
+See
+also the comments above on log-concavity of the groundstate of
+$-\Delta$.
+\end{problemblock}
+
+\begin{problemblock}
+
+\begin{conjecture}
+\by{Bernhard Kawohl}  The \emph{Hot Spots} conjecture of Bernhard Kawohl says that
+the first nontrivial eigenfunction of the Neumann Laplacian attains
+its maximum and mimimum values on the boundary of the convex domain
+$\Omega$.
+\end{conjecture}
+
+ This has been proved only for some special classes of
+domains. The analogous conjecture for the Dirichlet Laplacian would
+be that the ratio $u_2/u_1$ attains its maximum and mimimum values
+on the boundary of $\Omega$. Note $u_2/u_1$ satisfies Neumann
+boundary conditions (by explicit calculation, assuming the boundary
+is smooth) and satisfies a certain elliptic equation.
+
+\end{problemblock}
+
+\begin{problemblock}\by{Robert Smits} Turn now from the Dirichlet boundary condition to the Robin
+condition $\partial u / \partial \nu = -\alpha u$ (for some given
+constant $\alpha > 0$, with $\nu$ denoting the outward normal).
+
+\begin{problem}
+Is
+the gap $\lambda_2 - \lambda_1$ minimal when $V=0$ and $\Omega$
+degenerates to a segment having the same diameter as $\Omega$?
+
+In one dimension, is the gap minimal when $V=0$ and $\Omega$ is a
+segment? Can Lavine's methods be adapted to Robin boundary
+conditions, in one dimension?
+\end{problem}
+
+If one could prove the groundstate $u_1$ is log-concave, then
+existing methods could be adapted to imply $\lambda_2 - \lambda_1
+\geq \pi^2/d^2$, like is already known for the Neumann and Dirichlet
+situations. Incidentally, the Rayleigh quotient for the gap can be
+shown (like in the Dirichlet case) to equal
+\[
+\lambda_2 - \lambda_1 = \min_{\int_\Omega f u_1^2 \, dx = 0}
+\frac{\int_\Omega |\nabla f|^2 u_1^2 \, dx}{\int_\Omega f^2 u_1^2 \,
+dx} ,
+\]
+with the potential entering implicitly through the dependence of
+$u_1$ on $V$.
+
+\end{problemblock}
+
+\begin{problemblock}
+
+ZZZZ Lead-in to the second problem
+
+\begin{problem}
+ZZZZ Statement of second problem
+\end{problem}
+
+ZZZZ You can put words after the problem statement and before the first
+ZZZZ remark, but you don't have to and most of the time it is better
+ZZZZ to put the words in a remark.
+
+\begin{remark}
+ZZZZ First remark on the second problem.
+\end{remark}
+
+\begin{remark}
+ZZZZ Second remark on the second problem.
+\end{remark}
+
+\end{problemblock}
+
+
+
+
+
+\end{document}

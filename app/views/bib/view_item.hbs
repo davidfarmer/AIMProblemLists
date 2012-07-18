@@ -1,0 +1,8 @@
+{{^pending}}
+  <div class="edit-delete" style="float: right">
+    {{#perms/bib/delete}}<a class="delete" data-id="{{ _id }}" data-type="bib" href="#">Delete</a> | {{/perms/bib/delete}}
+    {{#perms/bib/edit}}<a data-id="{{_id}}" data-type="bib" class="edit" href="#">Edit item</a>{{/perms/bib/edit}}
+  </div>
+{{/pending}}
+<span class="bibnum" id="{{ pos }}">[{{ pos }}]</span>
+<div class="bibitem">{{{ content }}}</div>

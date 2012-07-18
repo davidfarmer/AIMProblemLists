@@ -1,0 +1,65 @@
+<p>Welcome to <em>AimPL: the American Institute of Mathematics Problem
+Lists</em>.  This website provides a mechanism for creating and maintaining
+up-to-date lists of unsolved problems in research mathematics.
+
+<p>Users can read precise statements of open problems, along with accompanying
+remarks, as well as pose new problems and add new remarks.  Problem lists are
+overseen by an editorial board who approves all modifications to the list.
+
+<p>We invite you to explore open problems in any area of interest.  You can
+browse and add remarks anonymously, or register and log in to have more
+options.  Please send questions or comments to <a
+href="mailto:problemlists@aimath.org">problemlists@aimath.org</a>.
+
+<div>
+  {{#perms/list/add}}<a class="reorder" href="#">Enable reordering</a>{{/perms/list/add}} 
+</div>
+
+<div class="editable" data-id="aimpl">
+  <div{{#perms/list/add}} class="children"{{/perms/list/add}}>
+    <div class="leftcol">
+    {{#categories0}}
+      <h2>{{name}}</h2>
+      <ul class="sortable category" data-category="{{ name }}">
+      {{#pls}}
+        <li data-id="{{_id}}">
+          <div class="render"><a href="{{name}}/">{{title}}</a></div>
+        </li>
+      {{/pls}}
+      </ul>
+    {{/categories0}}
+    </div>
+    <div class="rightcol">
+    {{#categories1}}
+      <h2>{{name}}</h2>
+      <ul class="sortable category" data-category="{{ name }}">
+      {{#pls}}
+        <li data-id="{{_id}}">
+          <div class="render"><a href="{{name}}/">{{title}}</a></div>
+        </li>
+      {{/pls}}
+      </ul>
+    {{/categories1}}
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="edit-delete">
+    {{#perms/list/add}}<p><a href="#" class="edit" data-id="aimpl" data-type="list">Add new problem list</a></p>{{/perms/list/add}}
+  </div>
+  <ul class="pending-additions"></ul>
+</div>
+<div id="new-form"></div>
+
+<hr style="clear: right">
+<div class="footnote"> 
+  <p>AimPL is funded by the NSF CDI grant "Bibliographic Knowledge Network"
+  (0835851).
+
+  <p>Acknowledgements:  Concept and project management by David W. Farmer.
+  Programming by <a href="http://www.jasondavies.com/">Jason Davies</a>.
+</div>
+<script>
+  var templates = typeof templates !== 'undefined' ? templates : {};
+  templates.list = {{{ templates/list }}};
+  var allData = {{{ data }}};
+</script>

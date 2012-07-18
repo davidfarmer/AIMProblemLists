@@ -1,0 +1,108 @@
+function(newDoc, oldDoc, userCtx) {
+  //!code vendor/couchapp/validate.js
+  //!code lib/permissions.js
+
+  var minRole = function() {
+    return true;
+  };
+  var validate = function(doc, patterns, fields) {
+    var builtinFields = ['_id', '_rev', '_revisions'];
+    for (var field in doc) {
+      var p = patterns[field];
+      if (p === undefined && fields.indexOf(field) === -1 && builtinFields.indexOf(field) === -1) {
+        throw {forbidden: 'Unknown field detected: ' + field};
+      }
+      if (p) {
+        var invalid = false;
+        if (!p.test(doc[field])) {
+          throw {forbidden: "Invalid field value detected for: " + field};
+        }
+      }
+    }
+  };
+
+  var hasPermission = function(p) {
+    if (!p) {
+      throw {forbidden: "You do not have sufficient privileges to perform this action."};
+    }
+  };
+
+  var hasChanged = function(field) {
+    return newDoc[field] !== oldDoc[field];
+  }
+
+  // Check that doc.type isn't being modified unless doc is being deleted
+  if (oldDoc && newDoc.type !== oldDoc.type && !newDoc._deleted) {
+    throw {forbidden: 'Document types cannot be changed.'};
+  }
+
+  var perms = getPermissions(userCtx, oldDoc || newDoc);
+
+  // Validate newDoc
+  switch (newDoc.type) {
+    case 'list':
+      hasPermission(perms.editProblemList);
+      validate(newDoc, {
+        list_pos: /^\d+$/
+      }, ['type', 'title', 'intro', 'name', 'author', 'version', 'section_ids', 'list_pos', 'is_private']);
+      // Only administrators can add new problem lists, and edit titles or root
+      // names
+      if (!oldDoc || hasChanged('title') || hasChanged('name')) {
+        hasPermission(perms.addProblemList);
+      }
+      break;
+    case 'section':
+      hasPermission(perms.editSection);
+      // TODO pl_title -> list_title
+      validate(newDoc, {
+        list_pos: /^\d+$/
+      }, [
+        'type',
+        'list_id',
+        'version',
+        'list_name',
+        'pl_title',
+        'list_pos',
+        'title',
+        'intro',
+        'author',
+        'pblock_ids',
+        'is_private'
+      ]);
+      // if the user is not privileged or higher, then they can't add to
+      // pblock_ids, but they can create new problem objects, to be approved by
+      // an editor
+      break;
+    case 'problem':
+      hasPermission(perms.editProblem);
+      var allowedFields = [];
+      // unprivileged users can *add* problems but not edit them
+      // editors have to explicitly approve changes though (separately)
+      //if (perms.problem.approved) {
+      //  allowedFields.push('is_approved');
+      //}
+      validate(newDoc, {
+        sec_pos: /^\d+$/
+      }, [
+        'type',
+        'list_id',
+        'version',
+        'list_name',
+        'pl_title',
+        'sec_pos',
+        'author',
+        'is_approved',
+        'is_private'
+      ]);
+      break;
+    case 'remark':
+      hasPermission(perms.editRemark);
+      break;
+    case 'comment':
+      hasPermission(perms.addComment);
+      break;
+    case 'bibitem':
+      hasPermission(perms.editBibliography);
+      break;
+  }
+}

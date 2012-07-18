@@ -1,0 +1,39 @@
+<div class="edit">
+  <form class="remark-edit">
+    <h3>{{#remark}}Edit remark{{/remark}}{{^remark}}Add remark{{/remark}}</h3>
+
+    <p><label>Attribute to:</label>
+
+    <ul class="by-options">
+      <li>
+        <label for="id_by_id_anon" class="nofloat">
+          <input type="radio" name="by_id" value="" id="id_by_id_anon"
+            onfocus="document.getElementById('id_by').value=''"
+            {{^by}}{{^../by_id}}checked="checked"{{/../by_id}}{{/by}}> nobody
+        </label>
+      {{#userId}}
+        <li>
+          <label for="id_by_id_me" class="nofloat">
+            <input type="radio" name="by_id" value="{{ this }}" id="id_by_id_me"
+              onfocus="document.getElementById('id_by').value=''"
+              {{^../by}}{{#../../by_id}}checked="checked"{{/../../by_id}}{{/../by}}> me
+          </label>
+      {{/userId}}
+      <li>
+        <label for="id_by_id_custom" class="nofloat">
+          <input type="radio" name="by_id" value="custom" id="id_by_id_custom"
+            {{#by}}checked="checked"{{/by}}>
+        </label>
+        <input type="text" id="id_by" name="by" value="{{ by }}" onfocus="document.getElementById('id_by_id_custom').checked=true">
+    </ul>
+
+    <p><textarea name="remark" rows="8" cols="50">{{ remark }}</textarea>
+
+    <p style="float: right"><em>Remarks appear in the public version after being reviewed by an editor.</em>
+
+    <p>
+      <input class="save" type="button" value="Save">
+      <input class="cancel-edit" type="button" value="Cancel">
+
+  </form>
+</div>

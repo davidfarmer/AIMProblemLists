@@ -1,0 +1,20 @@
+<div class="remark">
+  {{^pending}}
+    <span class="edit-delete">
+      {{#perms/remark/edit}}<a class="edit" data-id="{{ _id }}" data-type="remark" href="#">Edit remark</a> | {{/perms/remark/edit}}
+      {{#perms/remark/delete}}<a class="delete" data-id="{{ _id }}" data-type="remark" href="#">Delete</a>{{/perms/remark/delete}}
+    </span>
+  {{/pending}}
+  <span class="label">Remark.</span>
+  {{^by_id}}
+    {{#by}}
+      <span class="by">[{{{ this }}}]</span>
+    {{/by}}
+  {{/by_id}}
+  {{#by_id}}
+    <span class="by">[<span class="by-id">{{{ this }}}</span>]</span>
+  {{/by_id}}
+  {{#remark}}
+    <span class="body">{{{ this }}}</span>
+  {{/remark}}
+</div>

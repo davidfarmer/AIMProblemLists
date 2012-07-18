@@ -1,0 +1,15 @@
+{{#intro}}
+  <p class="intro"><div class="xmath">{{{ intro }}}</div></p>
+{{/intro}}
+
+<div>
+  {{#problem}}
+    {{#probtag}}
+    <span class="probhead xmath">{{{ this }}}.</span>
+    {{/probtag}}
+    {{#problem/by}}
+    <span class="probheadby xmath">[{{{ this }}}]</span>
+    {{/problem/by}}
+    <span class="probbody xmath">{{{ problem/body }}}</span>
+  {{/problem}}
+</div>

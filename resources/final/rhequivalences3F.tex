@@ -1,0 +1,677 @@
+
+% LaTeX class specification.  Any changes will not appear in the final version
+\documentclass[12pt,letterpaper, reqno]{amsart}
+
+% Only the following packages are available.
+% If these are not sufficient, then you must submit a special request
+% for a new package to be includade.  (We apologize for any inconvenience,
+% but we cannot maintain these documents indefinitely without such restrictions).
+\usepackage{amssymb,latexsym, amsmath, amsxtra, xy}
+\usepackage[dvips]{graphics}
+
+% The aimpl style file is necessary in order for the latex version
+% to faithfully mimic the appearance of the problem list after it is
+% uploaded. The file aimpl.sty should be in same directory as this file.
+
+\usepackage{aimpl_2eq}
+
+% The problem list should be arranged like a research paper, with
+% introductory material followed be one or more main sections.
+% Do not divide the sections into subsections.
+% Each section could have its own introductory material.
+% The main part of each section is a "problem block" which has the format
+% [[see elsewhere for more documentation]]
+
+% New macros.
+% If at all possible, please do not define any new macros.  Each
+% macro you introduce has the potential to cause problems with the
+% long-term maintenance of the problem list.
+
+\begin{document}
+\title{Equivalences to the Riemann Hypothesis}
+\author{Edited by J. Brian Conrey and David W Farmer}
+
+\urlstub{rhequivalences}
+
+\maketitle
+
+The Riemann Hypothesis(RH)
+is the assertion that all of the nontrivial zeros of the Riemann
+zeta function have real part equal to $\frac12$.
+
+The Riemann Hypothesis has been shown to be equivalent to an
+astounding variety of statements in several different areas
+of mathematics.  Some of those equivalences are nearly trivial.
+For example, RH is equivalent to the nonvanishing of $\zeta(s)$ in the
+half-plane $\sigma>\frac12$.  Other equivalences appear surprising
+and deep.  Examples of both kinds are collected below.
+
+\section{Equivalences involving primes}
+
+The main point of Riemann's original paper
+is that the two sequences, of prime numbers on the one hand, and of zeros
+of $\zeta$ on the other hand, are in duality. A precise mathematical
+formulation of this fact is given by the so-called explicit formulas of
+prime number theory (Riemann, von Mangoldt, Guinand, Weil). Therefore,
+any statement about one of these two sequences must have a translation
+in terms of the other.
+
+Some statements, such as the random matrix conjecture for the
+normalized neighbor spacing of the zeros,
+or the existence of infinitely many twin primes, do not seem
+to have a simple translation into a statement about the other
+sequence.
+But, as Riemann conjectured but did not prove, RH has a
+simple formulation in terms of the prime numbers.
+
+Let $Li$ be the ``Logarithmic integral'' function, defined by
+$$
+Li(x) := \int_0^x \frac{dt}{\log t},
+$$
+the integral being evaluated in principal value in the neighborhood of $x=1$.
+And let
+$$
+\pi(x) = \sum_{p \le x} 1.
+$$
+That is, $\pi(x)$ is the number of primes less than $x$.
+Here and throughout this document, $p$ always stands for a prime number.
+
+\begin{problemblock}
+\begin{rhequivalence}[1.1] 
+The Riemann hypothesis is equivalent to
+$$
+\pi(x) = Li(x) + O(x^{1/2 + \epsilon})
+$$
+for any $\epsilon > 0$.
+\end{rhequivalence}
+
+\begin{distinguishedremark}
+Roughly speaking, this means that the first half of the digits of the
+$n$-th prime are those of $Li^{-1}(n)$.
+\end{distinguishedremark}
+\end{problemblock}
+
+\begin{problemblock}
+von Koch, Acta Mathematica 24 (1901), 159-182, showed:
+\begin{rhequivalence}[1.15] 
+The Riemann hypothesis is equivalent to
+$$
+\pi(x) = Li(x) + O( \sqrt{x} \log x).
+$$
+\end{rhequivalence}
+
+\begin{remark}
+In 1976 L.Schoenfeld [56 15581b] gave a numerically explicit version of this equivalent form:
+$$
+|\pi (x) -li (x)| \leq \frac{\sqrt{x}\log x}{8\pi} \text{ for } \geq 2657.
+$$
+\end{remark}
+\end{problemblock}
+
+\section{Averages of arithmetic functions}
+These equivalent statements have the following shape:
+$$
+\sum_{n \leq x} f(n) = F(x) + O(x^{\alpha + \epsilon}), \quad x \rightarrow +\infty,
+$$
+where $f$ is an arithmetic function, $F(x)$ a smooth approximation to $\sum_{n \leq x} f(n)$, and $\alpha$ a real number.
+
+\begin{problemblock}\name{The von Mangoldt function}
+The von Mangoldt function $\Lambda (n)$ is defined
+as $\log p$ if $n$ is a power of a prime $p$, and $0$ in the other cases. Define:
+$$
+\psi(x) := \sum_{n \leq x} \Lambda (n).
+$$
+\begin{rhequivalence}[2.1]
+RH is equivalent to
+$$
+\psi (x) =x + O(x^{1/2 + \epsilon}),
+$$
+for every $\epsilon>0$.
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}
+\begin{rhequivalence}[2.13]
+RH is equivalent to
+$$
+\psi (x) =x + O(x^{1/2}\log^2 x )
+$$
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}
+L.Schoenfeld [56 15581b] refined
+Equivalence 2.13 to the numerically explicit form
+\begin{rhequivalence}[2.17]
+RH is equivalent to
+$$
+|\psi (x) -x| \leq \frac{x^{1/2}\log^2x}{8\pi} \text{ for } > 73.2.
+$$
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}\name{The Mobius function}
+The Mobius function $\mu (n)$ is defined as $(-1)^r$ if
+$n$ is a product of $r$ distinct primes, and as $0$ if the
+square of a prime divides $n$. Define:
+$$
+M(x) := \sum_{n \leq x} \mu (n).
+$$
+Littlewood proved the following two equivalences.
+\begin{rhequivalence}[2.2]
+RH is equivalent to
+$$
+M (x) \ll x^{1/2 + \epsilon},
+$$
+for every positive $\epsilon$
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}
+\begin{rhequivalence}[2.25]
+RH is equivalent to
+$$
+M (x) \ll x^{1/2} \exp (A \log x/\log\log x),
+$$
+for some $A>0$.
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}\name{Redheffer's matrix}
+The Redheffer matrix $A(n)$ is the $n\times n$  matrix of 0's and 1's
+defined by $A(i,j) = 1$ if $j = 1$ or if $i$ divides $j$, and
+$A(i,j) = 0$ otherwise.
+
+Redheffer proved that $A(n)$ has $ n-[n \log 2]-1$ eigenvalues equal to 1.
+Also,     A has a real eigenvalue  (the spectral radius) which is approximately $\sqrt{n}$,
+     a negative eigenvalue which is approximately $-\sqrt{n}$ and
+     the remaining eigenvalues are small.
+
+The connection with the Riemann Hypothesis is that
+$$
+\det A(n) = \sum_{1\le j\le n} \mu(j) .
+$$
+Therefore by Equivalence 2.2,
+\begin{rhequivalence}[2.3] The Riemann Hypothesis is equivalent to
+$\det(A) = O(n^{1/2+\epsilon})$ for every $\epsilon > 0$.
+\end{rhequivalence}
+
+\begin{remark}
+
+Barrett  Forcade, Rodney, and Pollington
+[MR 89j:15029]  give an easy proof of Redheffer's theorem.
+They also prove that the spectral radius of $A(n)$ is
+$=n^{1/2}+\tfrac 12\log n+O(1).$  See also the paper of
+Roesleren [ MR 87i:11111].
+\end{remark}
+
+
+\begin{remark}
+
+Vaughan [MR 94b:11086] and [MR 96m:11073]
+determines the dominant eigenvalues with an error term $O(n^{-2/3})$ and shows that the nontrivial eigenvalues are  $\ll(\log n)^{2/5}$ (unconditionally), and $\ll\log\log(2+n)$ on the Riemann Hypothesis.
+\end{remark}
+
+\begin{remark}\by{Brian Conrey}
+It is possible that all the nontrivial eigenvalues lie in the unit disc.
+\end{remark}
+\end{problemblock}
+
+
+\section{Large values of arithmetic functions}
+
+RH is equivalent to several inequalities of the following type:
+$$
+f(n) < F(n),
+$$
+where $f$ is an ``arithmetic'' or ``irregular'' function,
+and $F$ an ``analytic'' or ``regular'' function.
+
+\begin{problemblock}\name{The sum of divisors of $n$}
+Let
+$$
+\sigma(n) = \sum_{d|n} d
+$$
+denote the sum of the divisors of $n$.
+
+Also let
+$$
+ H_n = \sum_{j=1}^n \frac{1}{j}
+$$
+denote the $n$th harmonic number, and
+$$
+\gamma =\lim_{n\to\infty} H_n - \log n \approx  0.577215...
+$$
+denote Euler's constant
+
+G. Robin [86f:11069] showed that
+\begin{rhequivalence}[3.1]The Riemann Hypothesis is
+equivalent to
+$$
+\sigma(n) < e^\gamma n \log\log n
+$$
+for all $n\ge 5041$.
+\end{rhequivalence}
+\begin{distinguishedremark}
+That inequality does not leave much to spare, for Gronwall showed
+$$
+\limsup_{n\to\infty} \frac{\sigma(n)}{n \log\log n} = e^\gamma ,
+$$
+and Robin showed unconditionally that
+$$
+\sigma(n) < e^\gamma n \log\log n + 0.6482 \frac{n}{\log\log n},
+$$
+for $n\ge 3$.
+\end{distinguishedremark}
+\end{problemblock}
+
+\begin{problemblock}
+J. Lagarias [arXiv:math.NT/0008177] elaborated on Robin's
+work and showed that
+\begin{rhequivalence}[3.15]
+The Riemann Hypothesis is equivalent to
+$$
+\sigma(n) < H_n + \exp(H_n)\log(H_n)
+$$
+for all $n\ge 2$.
+\end{rhequivalence}
+
+\begin{remark}
+By the definition of $\gamma$,
+Lagarias' and Robin's inequalities are the same to leading order.
+\end{remark}
+
+\end{problemblock}
+
+\begin{problemblock}\name{The Euler totient function}
+The Euler function $\phi (n)$ is defined as the number of positive integers not exceeding $n$ and coprime with $n$.
+That is, it is the multiplicative function which has
+$\phi(p^n)=p^n-p^{n-1}$.
+
+Also, let $N_k$ be the product of the first $k$ prime numbers.
+\begin{rhequivalence}[3.2]The Riemann Hypothesis is
+equivalent to
+$$
+\frac{N_k}{\phi(N_k)} > e^{\gamma} \log \log N_k,
+$$
+for all $k$.
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}
+\begin{rhequivalence}[3.25]The Riemann Hypothesis is
+equivalent to
+$$
+\frac{N_k}{\phi(N_k)} > e^{\gamma} \log \log N_k,
+$$
+for all but finitely many $k$.
+\end{rhequivalence}
+\end{problemblock}
+
+
+\begin{problemblock}\name{The maximal order of an element in the symmetric group}
+Let $g(n)$ be the maximal order of a permutation of $n$ objects,
+$\omega(k)$ be the number of distinct prime divisors of the integer $k$
+and $Li$ be the integral logarithm.
+
+Massias, Nicolas and Robin [89i:11108] showed that
+\begin{rhequivalence}[3.3]The Riemann Hypothesis is
+equivalent to
+$$
+\log g(n) < \sqrt{Li^{-1}(n)} \quad \text{ for $n$ large enough}.
+$$
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}
+\begin{rhequivalence}[3.35]The Riemann Hypothesis is
+equivalent to
+$$
+\omega(g(n)) < Li (\sqrt{Li^{-1}(n)}) \quad \text{ for $n$ large enough}.
+$$
+\end{rhequivalence}
+\end{problemblock}
+
+
+\section{Farey series}
+ Let $r_v$ be the elements of the Farey sequence of order $N$, $v=1,2,\dots \Phi(N)$ where $\Phi(N)=\sum_{n=1}^N\phi(n)$.  Let $\delta_v=r_v-v/\Phi(N)$.
+
+
+\begin{problemblock}
+\begin{rhequivalence}[4.1]The Riemann Hypothesis is
+equivalent to
+$$\sum_{v=1}^{\Phi(N)} \delta_v^2\ll N^{-1+\epsilon}.$$
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}
+\begin{rhequivalence}[4.15]The Riemann Hypothesis is
+equivalent to
+$$\sum_{v=1}^{\Phi(N)} |\delta_v|\ll N^{1/2+\epsilon}.$$
+\end{rhequivalence}
+\end{problemblock}
+
+
+\begin{problemblock}\name{Amoroso's criterion}
+Amoroso [MR 98f:11113] has proven the following interesting equivalent
+to the Riemann Hypothesis.  Let $\Phi_n(z)$ be the $n$th cyclotomic
+polynomial and let $F_N(z) = \prod_{n \le N}\Phi_n(z)$. Let
+$$\tilde h(F_N) = (2\pi)^{-1}\int_{-\pi}^\pi \log^+|F(e^{i\theta})| d\theta.$$
+Then,
+\begin{rhequivalence}[4.2]
+$\tilde h(F_n) \ll N^{\lambda + \epsilon}$ is equivalent to the assertion that the Riemann zeta function does not vanish for ${\rm Re}{z} \ge \lambda + \epsilon$.
+\end{rhequivalence}
+\end{problemblock}
+
+
+\section{Weil's positivity criterion}
+Andre Weil [MR 14,727e] proved the following explicit formula (see also A. P. Guinand [MR 10,104g] which
+specifically illustrates the dependence between primes and zeros.
+ Let $h$ be an
+even function which is holomorphic in the strip $|\Im t|\le
+1/2+\delta$ and satisfying $h(t)=O((1+|t|)^{-2-\delta})$ for some
+$\delta>0$, and let
+$$g(u)=\frac{1}{2\pi}\int_{-\infty}^\infty h(r)e^{-i u r} dr.$$
+Then we have the following duality between primes and zeros:
+$$
+\sum_{\gamma}h(\gamma)=2h(\tfrac{i}2)  -g(0) \log \pi
++\frac{1}{2\pi} \int_{-\infty}^\infty
+h(r)\frac{\Gamma'}{\Gamma}(\tfrac14+\tfrac 12 i
+r) dr-2\sum_{n=1}^\infty \frac{\Lambda(n)}{\sqrt{n}}g(\log n).$$
+ In this formula, a zero is written as $\rho=1/2+i\gamma$ where
+$\gamma\in \mathbb C$; of course RH is the assertion that all of
+the $\gamma$ are real. Using this duality Weil gave a criterion for RH.
+
+\begin{problemblock}\name{Bombieri's refinement }
+Bombieri [1 841 692]has given the following version of Weil's criterion.
+
+Let
+$$
+\hat{g}(s)=\int_0^\infty g(x)x^{s-1} dx.
+$$
+\begin{rhequivalence}[5.1]The Riemann Hypothesis is
+equivalent to
+$$\sum_{\rho}\hat{g}(\rho) \hat{\overline{g}}(1-\rho)>0$$
+for every complex-valued $g(x)\in C_0^\infty(0,\infty)$
+which is not identically 0.
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}\name{Li's criterion}
+ Xian-Jin Li [98d:11101] proved the following assertion:
+\begin{rhequivalence}[5.2]The Riemann Hypothesis is
+equivalent to
+$\lambda_n\ge 0$ for all $n$, where
+$$
+\lambda_n =\sum_\rho (1-(1-1/\rho)^n),
+$$
+where the sum is over the zeros of the zeta function.
+\end{rhequivalence}
+
+\begin{distinguishedremark}
+Another expression for $\lambda_n$ is given by
+$$
+\lambda_n=\frac{1}{(n-1)!}\frac{d^n}{ds^n}(s^{n-1}\log \xi(s))\vert_{s=1}
+$$
+where
+$$
+\xi(s)=\frac12s(s-1)\Gamma(s/2)\zeta(s)
+$$
+\end{distinguishedremark}
+\end{problemblock}
+
+\begin{problemblock}
+\begin{rhequivalence}[5.3]
+The Riemann Hypothesis is equivalent to the equality
+$$ \sum_{\rho} \frac{1}{|\rho|^2} = 2+\gamma-\log 4\pi
+$$
+where the sum is over all complex zeros $\rho=\beta+i\gamma$ of $\zeta(s)$ in the critical strip $0<\beta<1$.
+\end{rhequivalence}
+\end{problemblock}
+
+
+\section{Function-theoretic properties of $\zeta$ }
+
+\begin{problemblock}\name{Speiser's criterion }
+A. Speiser (Math Annahlen 110 (1934) 514-521) prove
+\begin{rhequivalence}[6.1]
+The Riemann Hypothesis is
+equivalent to
+the nonvanishing of the derivative $\zeta'(s)$ in the
+left-half of the critical strip $0<\sigma< 1/2$.
+\end{rhequivalence}
+
+\begin{remark} Levinson and Montgomery [MR 54 5135]
+gave an alternative, quantitative version of this result.
+This led to Levinson's
+[MR 58 27837] discovery of his method for counting zeros on the critical
+line,  which he used to prove that at least 1/3 of the zeros of
+$\zeta(s)$ are on the critical line.
+\end{remark}
+
+\end{problemblock}
+
+\begin{problemblock}
+\begin{rhequivalence}[6.2]
+The Riemann Hypothesis is
+equivalent to
+$$\Re \frac{\xi'(s)}{\xi(s)}>0$$
+for $\Re s>1/2$.
+\end{rhequivalence}
+
+\end{problemblock}
+
+\begin{problemblock}
+V. V. Volchkov [MR 96g:11111] proved
+\begin{rhequivalence}[6.3]
+The Riemann Hypothesis is
+equivalent to
+$$
+\int_0^\infty \int_{1/2}^\infty
+ \frac{1-12y^2}{(1+4 y^2)^3}\log(|\zeta(x+iy)|)\, dx \, dy
+=\pi\frac{3-\gamma}{32}
+$$
+\end{rhequivalence}
+\end{problemblock}
+
+
+\section{Function spaces }
+
+Beginning with Wiener's paper, ``Tauberian Theorems'' in the Annals of
+Math (1932) a number of functional analytic equivalences of RH have been
+proven. These involve the completeness of various spaces.  M. Balazard has
+written a survey on these developments (See Surveys
+in Number Theory, Papers from the Millennial Conference on Number Theory,
+A. K. Peters, 2003.)
+
+\begin{problemblock}\name{The Beurling-Nyman Criterion}
+Let $\mathcal N_{(0,1)} $ be the space of functions
+$$
+f(t)=\sum_{k=1}^n c_k \rho(\theta_k/t)
+$$
+for which $\theta_k\in (0,1)$ and such that $\sum_{k=1}^n c_k=0$.
+
+\begin{rhequivalence}[7.1]
+The Riemann Hypothesis is
+equivalent to the assertion that $\mathcal N_{(0,1)} $
+is dense in  $L^2(0,1)$.
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}
+ Beurling [MR 17,15a] proved that the following
+equivalences of a quasi-Riemann Hypothesis.
+\begin{rhequivalence}[7.2] 
+Suppose $1<p<\infty$.  The following
+are equivalent:
+
+(1)   $\zeta(s)$ has no zeros in $\sigma>1/p$,
+
+(2)   $\mathcal N_{(0,1)} $ is dense in  $L^p(0,1)$,
+
+(3)  The characteristic function $\chi_{(0,1)}$ is in the closure of $\mathcal N_{(0,1)} $   in  $L^p(0,1)$.
+
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}\name{Mollifiers}
+Baez-Duarte [arXiv:math.NT/0202141]
+proved
+\begin{rhequivalence}[7.3] 
+The Riemann Hypothesis is equivalent to
+$$
+\inf_{A_N(s)}\int_{-\infty}^\infty |1-A_N(1/2+it)\zeta(1/2+it|^2) \frac {dt}{\frac 14 +t^2}
+\to 0
+$$
+as $N\to \infty$,  where
+the infimum is over all
+Dirichlet polynomials of length $N$:
+$$
+A_N(s)=\sum_{n=1}^N \frac {a_n}{n^s}.
+$$
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}\name{Salem's criterion}
+Let
+$$
+k_\sigma(x) =\frac{x^{\sigma-1}}{e^x+1}.
+$$
+R. Salem [MR 14,727a] proved an equivalence for the nonvanishing
+of the zeta function on a vertical line:
+\begin{rhequivalence}[7.4] 
+The non-vanishing of $\zeta(s)$ on the
+$\sigma$ --line is equivalent to the completeness in
+$L^1(0,\infty)$ of $\{k_\sigma(\lambda x),\ \lambda>0\}$.
+\end{rhequivalence}
+\end{problemblock}
+
+\section{The zeta function at the positive integers}
+
+These equivalences involve $\zeta(n)$ at integers $n\ge 2$,
+or the Bernoulli numbers via the identity
+$$
+\zeta\left(2k\right)=\frac{\left(-1\right)^{k+1}\left(2\pi\right)^{2k}}{2 \left(2k\right)!}B_{2k}
+$$
+
+
+
+\begin{problemblock}\name{Riesz series}
+M. Riesz (Sur l'hypothese de Riemann, Acta Math. 40 (1916), 185-190)
+proved
+\begin{rhequivalence}[8.1] 
+The Riemann Hypothesis is equivalent to
+$$
+\sum_{k=1}^\infty \frac{(-1)^{k+1}x^k}{(k-1)!\zeta(2k)}\ll x^{1/2+\epsilon}
+$$
+for any $\epsilon>0$.
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}\name{Hardy-Littlewood series}
+Hardy and Littlewood (Acta Mathematica 41 (1918), 119 - 196) showed
+
+\begin{rhequivalence}[8.2]
+ The Riemann Hypothesis is equivalent to
+ $$\sum_{k=1}^\infty \frac{(-x)^k}{k!\zeta(2k+1)}\ll x^{-1/4}$$
+as $x\to \infty$.
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}\name{Carey's series}
+
+\begin{rhequivalence}[8.3]  
+The Riemann Hypothesis is equivalent to the convergence of the series
+$$
+\sum_{n=0}^\infty\left(n+\frac{1}{2}\right)\left|\sum_{k=0}^n\frac{c_{2n+1,
+2k+1}}{2k+2}\log\left(\frac{2k+1}{2k+2}\frac{\left(-1\right)^kB_{2k+2}\left(2
+\pi\right)^{2k+2}}{2\left(2k+2\right)!}\right)\right|^2<\infty
+$$
+where $c_{m,r}$ denotes the coefficient of $x^r$ in the Legendre
+polynomial of degree $m$.
+Specifically,
+$$
+c_{2n+1,2k+1}=\frac{\left(-1\right)^{n-k}\left(2n+2k+2\right)!}
+{2^{2n+1} \left(n-k\right)!\left(n+k+1\right)!\left(2k+1\right)!}.
+$$
+\end{rhequivalence}
+
+\end{problemblock}
+
+\section{Analytic estimates}
+
+\begin{problemblock}\name{Polya's integral criterion}
+Polya (see Collected Works, Volume 2, Paper 102, section 7) gave a number of
+integral criteria for Fourier transforms to have only real zeros.
+
+Let
+$$\Phi(u)=2\sum_{n=1}^\infty (2 n^4\pi^2e^{\frac 9 2 u}-3 n^2 \pi e^{\frac 5 2 u})e^{-n^2 \pi e^{2 u}}$$
+so that
+$$\xi(\tfrac12+i z)=\int_{-\infty}^\infty \Phi(t)e^{iz} \,dt.
+$$
+One of Polya's criteria gives
+
+\begin{rhequivalence}[9.1] 
+The Riemann Hypothesis is equivalent to
+$$
+\int_{-\infty}^\infty\int_{-\infty}^\infty
+\Phi(\alpha)\Phi(\beta) e^{i(\alpha+\beta)x }
+e^{(\alpha-\beta)y}(\alpha-\beta)^2 d\alpha  d\beta \ge 0.
+$$
+\end{rhequivalence}
+\end{problemblock}
+
+\begin{problemblock}\name{Newman's criterion}
+Charles Newman [MR 55 \#7944],
+building on work of deBruijn [MR 12,250]
+defined
+$$
+\Xi_\lambda(z)=\int_{-\infty}^\infty \Phi(t)e^{-\lambda t^2}e^{iz}  dt.
+$$
+Note that $\Xi_0(z)=\Xi(z):=\xi(\frac12 + i z)$.
+
+Newman proved that there exists a constant $\Lambda$ (with $-1/8 \le
+\Lambda < \infty$) such that $\Xi_\lambda(z)$ has only real zeros if
+and only if $\lambda\ge \Lambda$.
+
+\begin{rhequivalence}[9.2] 
+The Riemann Hypothesis is equivalent to
+$\Lambda\le 0$.
+\end{rhequivalence}
+
+\begin{distinguishedremark}
+The constant $\Lambda$ (which Newman conjectured is equal to 0) is now called the deBruijn-Newman constant.
+\end{distinguishedremark}
+
+\begin{remark}
+A. Odlyzko [MR 2002a:30046] has proven that
+$-2.7·10^{-9}<\Lambda$.
+\end{remark}
+
+\begin{remark}
+Conjectures for the distribution of gaps between zeros,
+based on random matrix theory, imply that $\Lambda \ge 0$.
+\end{remark}
+
+\end{problemblock}
+
+\begin{problemblock}\name{Grommer inequalities}
+Let
+$$-\frac{\Xi'}{\Xi}(t)=s_1+s_2t+s_3t^2+\dots.$$
+Let $M_n$ be the matrix whose $i,j$ entry is $s_{i+j}$.
+J. Grommer (J. Reine Angew. Math.  144 (1914), 114--165) proved
+
+
+\begin{rhequivalence}[9.3] 
+The Riemann Hypothesis is equivalent to
+$\det M_n>0 $ for all $n\ge 1$.
+\end{rhequivalence}
+
+
+\begin{remark}
+See also the paper of R. Alter [MR 36 1399].
+\end{remark}
+\end{problemblock}
+
+
+\end{document}

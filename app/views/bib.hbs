@@ -1,0 +1,40 @@
+<h2>Bibliography</h2>
+
+{{#perms/bib/add}}
+<div class="help">
+<p>If the paper or book you wish to cite is in Math Reviews or on the ArXiv, then just make a citation in the
+   text using the following format, and everything else is done automatically:
+
+<ul>
+  <li>\cite{MRddddddd} <em>(here "d" is a digit 0-9)</em>
+  <li>\cite{arXiv:0903.1029} <em>(for example)</em>
+  <li>\cite{arXiv:math.GR/0701618} <em>(the first form is prefered, but older papers on the arXiv may need to use a different form)</em>
+</ul>
+
+Do not add an item to the bibliography unless it is not in Math Reviews or the ArXiv.
+</div>
+{{/perms/bib/add}}
+
+<div class="editable" data-id="{{ pl/_id }}" data-type="list">
+  <ul class="bibliography children">
+    {{#items}}
+      <li id="cite-{{ pos }}" class="editable" data-id="{{ _id }}" data-type="bib">
+        <div class="render">
+          {{{ render }}}
+        </div>
+        <ul class="pending-changes"></ul>
+      </li>
+    {{/items}}
+  </ul>
+  {{#perms/bib/add}}
+    <div class="edit-delete"><a href="#" class="edit" data-id="{{ pl/_id }}" data-type="bib">Add new item</a></div>
+  {{/perms/bib/add}}
+  <ul class="pending-additions"></ul>
+</div>
+<div id="new-form"></div>
+<p>Cite this as: <em>{{{ citeAs }}}</em></p>
+<script>
+  var templates = templates || {};
+  templates.bib = {{{ templates/bib }}};
+  var allData = {{{ data }}};
+</script>

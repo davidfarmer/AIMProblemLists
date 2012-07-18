@@ -1,0 +1,284 @@
+
+% LaTeX class specification.  Any changes will not appear in the final version
+\documentclass[12pt,letterpaper, reqno]{amsart}
+
+% Only the following packages are available.
+% If these are not sufficient, then you must submit a special request
+% for a new package to be includade.  (We apologize for any inconvenience,
+% but we cannot maintain these documents indefinitely without such restrictions).
+\usepackage{amssymb,latexsym, amsmath, amsxtra, xy}
+\usepackage[dvips]{graphics}
+
+% The aimpl style file is necessary in order for the latex version
+% to faithfully mimic the appearance of the problem list after it is
+% uploaded. The file aimpl.sty should be in same directory as this file.
+
+\usepackage{aimpl_2eq}
+
+% The problem list should be arranged like a research paper, with
+% introductory material followed be one or more main sections.
+% Do not divide the sections into subsections.
+% Each section could have its own introductory material.
+% The main part of each section is a "problem block" which has the format
+% [[see elsewhere for more documentation]]
+
+% New macros.
+% If at all possible, please do not define any new macros.  Each
+% macro you introduce has the potential to cause problems with the
+% long-term maintenance of the problem list.
+
+\begin{document}
+\title{The Riemann Hypothesis and related problems}
+\author{Edited by J. Brian Conrey and David W Farmer}
+
+\plversion{1.0}
+
+\urlstub{rhrelated}
+
+\maketitle
+
+This document collects problems related to the Riemann Hypothesis (RH).
+The focus is on
+analogues of RH for other global L-functions, weaker statements
+about the zeros of zeta- and L-functions, and problems motivated
+by equivalences to RH.
+
+The Riemann Hypothesis concerns the nontrivial zeros
+of an L-function $L(s)$.
+By a nontrivial zero we mean a zero of the completed L-function
+$\Lambda_L(s)$, equivalently, a zero of $L(s)$ which is not at the
+location of a pole of one of the $\Gamma$-factors that appears in
+the functional equation for $L(s)$.
+
+\section{The zeta function and other global L-functions}
+
+
+The Riemann Hypothesis for an L-function $L(s)$ is the assertion that the
+nontrivial zeros of $L(s)$ lie on the
+critical line.  
+
+For historical reasons there are
+names given to the Riemann hypothesis for various sets
+of $L$-functions.  For example, 
+the Generalized Riemann Hypothesis (GRH) is
+the Riemann Hypothesis for all Dirichlet $L$-functions.
+More examples collected below.
+
+In certain applications there is a fundamental distinction
+between nontrivial zeros on the real axis and 
+nontrivial zeros with a positive imaginary part.
+Here we use the adjective  ``modified'' to indicate
+a Riemann Hypothesis except for the possibility
+of nontrivial zeros on the real axis.  Thus, the
+Modified Generalized Riemann Hypothesis (MGRH) is
+the assertion that all nontrivial zeros of 
+Dirichlet $L$-functions lie either on the 
+critical line or on the real axis.
+A real zero which is very close to the point $s=1$ is
+called a Landau-Siegel zero.  
+
+Precise statements of various Riemann Hypotheses are given below.
+
+\begin{problemblock}\name{The Riemann Hypothesis}
+\begin{problem}[1.1] The nontrivial zeros of the Riemann Zeta function,
+$\zeta(s)$ lie on the critical line $\sigma=\frac12$.
+\end{problem}
+
+\begin{distinguishedremark}
+The Riemann Hypothesis is sometimes phrased in terms of the
+zeros in the critical strip, or the
+complex (meaning, non-real) zeros.  For the Riemann zeta function
+these are equivalent statements, but there exist L-functions
+whose nontrivial zeros do not all lie on the real line. 
+\end{distinguishedremark}
+
+\end{problemblock}
+
+\begin{problemblock}\name{The Generalized Riemann Hypothesis(GRH)}
+\begin{problem}[1.2]
+Riemann Hypothesis is true, and in addition the
+nontrivial zeros of
+all Dirichlet $L$-functions
+lie on the critical line $\sigma=\frac12$.
+\end{problem}
+
+\begin{remark}GRH is occasionally called ``Piltz conjecture,'' but the
+conjecture of a Riemann Hypothesis for Dirichlet L-functions is
+usually viewed as obvious generalization which should not
+be attributed to a particular person.
+\end{remark}
+
+\begin{remark}GRH is the conjecture of a Riemann Hypothesis for
+all degree 1 L-functions.
+\end{remark}
+\end{problemblock}
+
+\begin{problemblock}\name{The Modified Generalized Riemann Hypothesis}
+\begin{problem}[1.3]
+Riemann Hypothesis is true, and in addition the
+nontrivial zeros of
+all Dirichlet $L$-functions
+lie either on the real line or on the critical line $\sigma=\frac12$.
+\end{problem}
+\end{problemblock}
+
+
+\begin{problemblock}\name{The Extended Riemann Hypothesis}
+\begin{problem}[1.4]
+The nontrivial zeros of the Dedekind zeta function
+of any algebraic number field lie on the critical line.
+\end{problem}
+
+
+\begin{distinguishedremark}
+Note that ERH includes RH because the Riemann zeta function is
+the Dedekind zeta function of the rationals.
+\end{distinguishedremark}
+
+\end{problemblock}
+
+\begin{problemblock}\name{The Grand Riemann Hypothesis}
+\begin{problem}[1.5]
+Nontrivial zeros of all $L$-functions
+lie on the critical line.
+\end{problem}
+
+\begin{distinguishedremark}
+The Grand Riemann Hypothesis is often phrased in terms of
+all automorphic L-functions.  
+\end{distinguishedremark}
+\end{problemblock}
+
+\begin{problemblock}\name{The Modified Grand Riemann Hypothesis}
+\begin{problem}[1.6]
+The nontrivial zeros of all $L$-functions
+lie either on the real line or on the critical line.
+\end{problem}
+
+\end{problemblock}
+
+
+
+\section{Weaker statements about zeros of L-functions}
+The Riemann Hypothesis is the strongest possible statement
+about the horizontal distribution of the nontrivial zeros
+of an $L$-function.  In this section we collect various
+weaker assertions. 
+
+Throughout this section let $L(s)$ be an L-function
+for which one might expect a Riemann Hypothesis to hold.
+
+\begin{problemblock}\name{Quasi Riemann Hypothesis} 
+
+\begin{problem}[2.1]
+ $L(s)$
+has no zeros in a half-plane
+$\sigma > \sigma_0$, for some $\sigma_0 <1 $.
+\end{problem}
+
+\end{problemblock}
+
+
+\begin{problemblock}\name{The Density Hypothesis}
+Recall the standard notation:
+$$
+N(\sigma,T) = \#\{\rho=\beta+i\gamma\ :\ \beta \ge \sigma,\ 0<\gamma<T\}.
+$$
+The Riemann Hypothesis is equivalent to $N(\sigma,T)=0$ for $\sigma>\frac12$.
+
+The Density Hypothesis is the assertion:
+\begin{problem}[2.2] For all $\epsilon>0$,
+$$
+N(\sigma,T) = O(T^{2(1-\sigma)+\varepsilon}) .
+$$
+
+\end{problem}
+
+\begin{distinguishedremark}
+This is nontrivial 
+only when $\sigma > \frac12$.
+\end{distinguishedremark}
+
+\begin{remark}
+The importance of the Density Hypothesis is that, in terms of 
+bounding the gaps between consecutive primes, the density hypothesis
+appears to be as strong as the Riemann Hypothesis.
+\end{remark}
+
+\begin{remark}
+Results on $N(\sigma,T)$ are generally obtained from mean
+values of the zeta-function.  Further progress in this
+direction, particularly for $\sigma$ close to $\frac12$, appears
+to be hampered  by the great difficulty in estimating the
+moments of the zeta-function on the critical line.
+
+See Titchmarsh [88c:11049], Chapter 9, for an extensive discussion.
+
+\end{remark}
+
+\begin{remark}
+The Density Hypothesis follows from the Lindel\"of Hypothesis.
+\end{remark}
+\end{problemblock}
+
+
+\begin{problemblock}\name{The 100\% Hypothesis}
+Let $N(T)$ denote the counting function of the nontrivial
+zeros of $L(s)$, so $N(T)\sim \frac{d}{2\pi}T\log T$
+where $d$ is the degree of $L(s)$.  And let
+$N_0(T)$ denote the counting function of the
+zeros of $L(s)$ on the critical line.
+\begin{problem}[2.8]
+The 100\% Hypothesis for $L(s)$
+asserts that $N_0(T)\sim N(T)$ as $T\to \infty$.
+\end{problem}
+
+\begin{distinguishedremark}
+An equivalent assertion is
+$$
+N(T)- N_0(T) = o(T\log T) ,
+$$
+which makes it clear that the 100\% Hypothesis still
+allows quite a few zeros off the critical line.
+\end{distinguishedremark}
+
+\begin{remark}
+The term ``100\% Hypothesis'' is not standard.
+\end{remark}
+
+\begin{remark}
+In contrast to most of the other conjectures in
+this section, the 100\% Hypothesis is not motivated
+by applications to the prime numbers.   
+Indeed, at
+present there are no known consequences of
+this hypothesis.
+\end{remark}
+
+\end{problemblock}
+
+\section{Problems motivated by equivalences to the Riemann Hypothesis}
+
+The following problems could offer insight into a possible approach
+to the solving the Riemann Hypothesis.  Most of these problems
+are motivated by items on the 
+list of equivalences to the Riemann Hypothesis:  www.aimpl.org/pl/rhequivalences
+
+\begin{problemblock}
+\begin{problem}[3.1]
+What is the constant in 
+\htmladdnormallink{Baez-Duarte's equivalent}{http://aimpl.org/pl/rhequivalences/7.3} of RH?
+\end{problem}
+\end{problemblock}
+
+\begin{problemblock}\name{Redheffer's matrix}
+\begin{problem}[3.2]\by{Brian Conrey}
+Does the Riemann Hypothesis imply that the ``nontrivial'' eigenvalues
+of \htmladdnormallink{Redheffer's matrix}{http://aimpl.org/pl/rhequivalences/2.3}
+are inside the unit circle?
+\end{problem}
+\end{problemblock}
+
+
+
+\end{document}

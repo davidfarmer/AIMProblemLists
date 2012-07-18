@@ -1,0 +1,23 @@
+<div class="edit">
+  <h2>Edit problem list</h2>
+  <form class="form-fields">
+    <p class="name-row"><label>Abbreviation:</label><input type="text" value="{{ name }}" name="name">
+    <p class="title-row"><label>Title:</label><input type="text" value="{{ title }}" name="title">
+    <p><label>Private?</label><input type="checkbox" name="is_private" value="1"{{#is_private}} checked="checked"{{/is_private}}>
+    <p><label>Introduction:</label>
+    <p><textarea name="intro">{{ intro }}</textarea>
+    <p>
+      <input type="button" value="Save" class="save" />
+      <input type="button" value="Cancel" class="cancel-edit" />
+  </form>
+<!--
+  <h3>Upload TeX file</h3>
+  <form id="upload-form">
+    File: <input type="file" name="file" />
+    <input type="button" class="upload" value="Upload and process" />
+  </form>
+  <div id="loading" style="display: none" class="jqmWindow">
+    Loading, please wait...
+  </div>
+-->
+</div>

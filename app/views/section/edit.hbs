@@ -1,0 +1,22 @@
+<div class="edit">
+  <h2>{{#intro}}Edit section{{/intro}}{{^intro}}Add new section{{/intro}}</h2>
+  <h3>Edit individual fields</h3>
+  <form class="form-fields">
+    <p><label>Title:</label> <input name="title" type="text" value="{{ title }}" /></p>
+    <p><label>Intro:</label></p>
+    <p><textarea name="intro">{{#intro}}{{ this }}{{/intro}}</textarea></p>
+    <p>
+      <input type="button" class="save" value="Save">
+      <input type="button" class="cancel-edit" value="Cancel">
+  </form>
+<!--
+  <h3>{{#intro}}Replace section with a TeX file{{/intro}}{{^intro}}Upload TeX file{{/intro}}</h3>
+  <form id="upload-form" class="section" action="" method="post">
+    File: <input type="file" name="file" />
+    <input type="submit" value="Upload and process" />
+  </form>
+  <div id="loading" style="display: none" class="jqmWindow">
+    Loading, please wait...
+  </div>
+-->
+</div>

@@ -1,0 +1,66 @@
+% LaTeX class specification.  Any changes will not appear in the final version
+\documentclass[12pt,letterpaper, reqno]{aimpl}
+
+% The problem list should be arranged like a research paper, with
+% introductory material followed be one or more main sections.
+% Do not divide the sections into subsections.
+% Each section could have its own introductory material.
+% The main part of each section is a "problem block" which has the format
+% [[see elsewhere for more documentation]]
+
+% New macros.
+% If at all possible, please do not define any new macros.  Each
+% macro you introduce has the potential to cause problems with the
+% long-term maintenance of the problem list.
+<%= MACROS.join('\n') %>
+
+\begin{document}
+\title{<%= list.title %>}
+\author{Edited by <%= list.author %>}
+
+\urlstub{<%= list.name %>}
+
+\maketitle
+
+<%= list.intro %>
+
+<% list.sections.map(function(section) { %>
+\section{<%= section.title %>}
+
+<%= section.intro %>
+
+<% section.problems.map(function(problem) { %>
+
+\begin{problemblock}<%
+  if (problem.name) {
+%>
+\name{<%= problem.name %>}
+<%
+  }
+%><%= problem.intro || '' %>
+
+\begin{<%= problem.tag || "problem" %>}[<%= problem.number %>] <%= problem.body %> \end{<%= problem.tag || "problem" %>}
+
+<% if (problem.distremark) { %>
+\begin{distinguishedremark} <%= problem.distremark %> \end{distinguishedremark}
+<% } %>
+
+<% problem.remarks.map(function(remark) { %>
+\begin{remark}<% if (remark.by) { %>
+\by{<%= remark.by %>}<% } %><%= remark.remark %>\end{remark}
+<% }); %>
+\end{problemblock}
+
+<% }); %>
+<% }); %>
+
+<% if (list.bibitems) { %>
+\begin{thebibliography}{99}
+<% list.bibitems.map(function(bibitem) { %>
+\bibitem{<%= bibitem.ref %>}
+<%= bibitem.content %>
+<% }); %>
+\end{thebibliography}
+<% } %>
+
+\end{document}

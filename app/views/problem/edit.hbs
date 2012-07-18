@@ -1,0 +1,42 @@
+<div class="edit">
+  <h2>{{#intro}}Edit problem {{../sec_num}}{{../number}}{{/intro}}{{^intro}}Add new problem{{/intro}}</h2>
+  <form class="edit_pb">
+    <p><label for="name">Heading:</label><input type="text" id="name" name="name" value="{{ name }}" placeholder="Optional heading, which functions similar to a subsection heading">
+    <p><label for="intro">Introduction:</label>
+      <textarea name="intro" id="intro" placeholder="Optional text giving extra information needed to understand or provide context for the statement of the problem.">{{#intro}}{{ this }}{{/intro}}</textarea>
+    <p style="float: left; margin: 0"><label for="by"><select name="tag" id="tag">
+        <option value="problem">Problem</option>
+        <option value="conjecture"{{#tag_select/conjecture}} selected="selected"{{/tag_select/conjecture}}>Conjecture</option>
+      </select></label> By: 
+    <ul class="by-options">
+      <li>
+        <label for="id_by_id_anon" class="nofloat">
+          <input type="radio" name="by_id" value="" id="id_by_id_anon"
+            onchange="document.getElementById('id_by').value=''"
+            {{^by}}{{^../by_id}}checked="checked"{{/../by_id}}{{/by}}> nobody
+        </label>
+      {{#userId}}
+        <li>
+          <label for="id_by_id_me" class="nofloat">
+            <input type="radio" name="by_id" value="{{ this }}" id="id_by_id_me"
+              onchange="document.getElementById('id_by').value=''"
+              {{^../by}}{{#../../by_id}}checked="checked"{{/../../by_id}}{{/../by}}> me
+          </label>
+      {{/userId}}
+      <li>
+        <label for="id_by_id_custom" class="nofloat">
+          <input type="radio" name="by_id" value="custom" id="id_by_id_custom"
+            {{#by}}checked="checked"{{/by}}>
+        </label>
+        <input type="text" id="id_by" name="by" value="{{ by }}" placeholder="Person who posed the problem (optional)." onfocus="document.getElementById('id_by_id_custom').checked=true">
+    </ul>
+    <p style="width: 99%;"><label for="body">Statement:</label><textarea id="body" name="body" placeholder="Enter the statement of the problem here. If the problem is actually a conjecture, change Problem to Conjecture using the drop-down menu on the line above.">{{#body}}{{ this }}{{/body}}</textarea>
+    <p><label for="status">Status:</label><textarea id="status" name="status" placeholder="Optional statement describing the status or an approach to the problem.
+
+Remarks are added separately, after the problem is in the system.">{{#status}}{{ this }}{{/status}}</textarea>
+
+    <p>
+      <input type="button" value="Save problem" class="save">
+      <input type="reset" value="Cancel edit" class="cancel-edit">
+  </form>
+</div>

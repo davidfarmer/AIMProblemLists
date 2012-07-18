@@ -1,0 +1,587 @@
+% LaTeX class specification.  Any changes will not appear in the final version
+\documentclass[12pt,letterpaper, reqno]{amsart}
+
+% Only the following packages are available.
+% If these are not sufficient, then you must submit a special request
+% for a new package to be includade.  (We apologize for any inconvenience,
+% but we cannot maintain these documents indefinitely without such restrictions).
+\usepackage{amssymb,latexsym, amsmath, amsxtra, xy}
+\usepackage[dvips]{graphics}
+
+% The aimpl style file is necessary in order for the latex version
+% to faithfully mimic the appearance of the problem list after it is
+% uploaded. The file aimpl.sty should be in same directory as this file.
+
+\usepackage{aimpl_2}
+
+
+% The problem list should be constructed like a research paper, with
+% introductory material followed be one or more main sections.
+% Do not divide the sections into subsections.
+% Each section could have its own introductory material.
+% The main part of each section is a "problem block" which has the format
+% [[see elsewhere for more documentation]]
+
+% New macros.
+% If at all possible, please do not define any new macros.  Each
+% macro you introduce has the potential to cause problems with the
+% long-term maintenance of the problem list.
+\newcommand{\Cat}{{\rm Cat}}
+\newcommand{\A}{\mathcal A}
+\newcommand{\freestar}{ \framebox[7pt]{$\star$} }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Document begins below.
+%
+% Lines beginning with ZZZZ indicate standard material
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\title{Free Analysis}
+%\author{ZZZZ Author goes here}
+
+\maketitle
+
+These problems arose during the AIM workshop ``Free Analysis'',
+ June 19 - 23, 2006, organized by Dimitri Shlyakhtenko and Dan Voiculescu.
+
+\section{ $X$-constants and free Poincare inequality }\by{Voiculescu}
+
+\begin{problemblock}
+
+ In a von Neumann algebra $M$
+with a faithful normal trace-state $\tau$ let $X=X^{*}\in M$ and
+let $1\in B\subset M$ be an infinite-dimensional von Neumann subalgebra
+so that $B$ and $X$ are free in the algebraic sense and $M=W^{*}(X,B)$. 
+
+Assume that $\partial_{X:B}$ is closable in $L^{2}(M,\tau)$ (this
+is the case for instantce if $X$ is a free semicircular perturbation
+$X=X_{0}+\varepsilon S$, with $S$ a semicircular free from $X_{0}$
+and $B$). 
+
+\begin{problem}
+Under what conditions are the $L^{2}$ solutions of \[
+\overline{\partial_{X:B}}u=0\]
+in $L^{2}(B,\tau)?$ 
+\end{problem}
+\end{problemblock}
+
+\begin{problemblock}
+
+A related question about a stronger condition:
+
+\begin{problem}
+When does the free
+Poincare inequality\[
+C\Vert\partial_{X:B}\xi\Vert_{2}\geq\Vert\xi-E_{B}\xi\Vert_{2}\]
+hold for $\xi\in B\langle X\rangle$?
+\end{problem}
+
+\end{problemblock}
+
+
+
+
+
+
+
+\section{Large Deviations}
+\by{Guionnet, Hiai, and Cabanal-Duvillar}
+
+\begin{problem}
+Given a tracial state $\tau$ corresponding
+to a free stochastic process, does there exist a sequence of tracial
+states $\tau_{n}\rightarrow\tau$ with $\chi_{p}^{*}(\tau_{n})\rightarrow\chi_{p}^{*}(\tau)$
+where $\tau_{n}$ corresponds to the process $dA_{i}(t)=dS_{i}(t)+k_{t}(A_{1}(s),\ldots,A_{m}(s))_{s\leq t}dt$
+with $k_{t}$ stepwise constant in $s$, and $\chi_{p}^{*}$ denotes
+the quantity $\chi^{*}$ defined for processes in the paper of Guionnet
+and Cabanal-Duvillard.
+\end{problem}
+
+\begin{problem}
+In the one variable case, if $A(t)$ follows
+a process $dA(t)=dS(t)+k_{t}(A(s))_{s\leq t}$ then replacing $A(t)$
+with $A(t)+C_{\epsilon}$ (with $C$ having Cauchy distribution and
+free from $A(t)$) then $k_{t}$ is replaced by $k_{t}^{\epsilon}=\tau\left(k_{t}\vert A(t)+C_{\epsilon}\right)$.
+Thus, $k_{t}^{\epsilon}$ is smooth. Is there an analog of this smoothing
+in the several-variable case?
+\end{problem}
+
+\begin{problem}
+We know that if $f:\mathbb{R}\rightarrow\mathbb{R}$
+and $A$ is an $n\times n$ Hermitian random matrix, then there exists
+   a random matrix $C_{\epsilon}$ with Cauchy
+distribution such that $\mathbb{E}f(A+C_{\epsilon})=P_{\epsilon}f(A)$
+with $P_{\epsilon}f(x)=\int\frac{f(y)}{(y-x)^{2}+i\epsilon^{2}}dy$
+the usual Cauchy (Poisson) kernel.    Can this be
+done for several variables?
+\end{problem}
+
+\begin{problem}
+ Given $x_{1},\ldots,x_{m}\in(\mathcal{A},\tau)$
+a tracial unital vN algebra, do the conjugate variables belong to
+the $L^{2}$ closure of cyclic gradient space? i.e. do there exist
+$H_{k}\in\mathbb{C}\left\langle \alpha_{1},\ldots,\alpha_{m}\right\rangle $
+such that $\mathcal{J}(x_{i})=\lim_{k}D_{i}H_{k}$ where $\partial_{x_{i}}:L^{2}(\mathcal{A},\tau)\rightarrow L^{2}(\mathcal{A},\tau)\otimes L^{2}(\mathcal{A},\tau)$
+by $x_{j}\mapsto\delta_{ij}1\otimes1$ as a densely defined operator,
+$\mathcal{J}(x_{i})=\partial_{x_{i}}^{*}(1\otimes1)$, and $D_{i}=m\circ\partial_{x_{i}}$
+($m$ is the flip-multiplication $x\otimes y\mapsto yx$).
+\end{problem}
+
+\begin{problem}
+ Does the change of variables
+formula for $\chi$ also hold for $\chi^{*}$?
+\end{problem}
+
+\begin{problem}
+ Is there a change of variables formula for
+processes? i.e. suppose that we start with random variables $x_{1},\ldots,x_{m}\in(\mathcal{A},\tau)$
+which can be reached by a process $dA_{i}(t)=dS_{i}(t)+k_{t}(A_{1}(s),\ldots,A_{m}(s))_{s\leq t}$,
+$\mu_{A_{1}(1),\ldots,A_{m}(1)}=\mu_{x_{1},\ldots,x_{m}}$. We define
+new random variables via functional calculus $y_{1}=f_{1}(x_{1},\ldots,x_{m}),\ldots,y_{m}=f_{m}(x_{1},\ldots,x_{m})$.
+Can we apply a function $P$ to $k_{t}$ to get $dB_{i}(t)=dS_{i}(t)+P(k_{t}(B_{1}(s),\ldots,B_{m}(s))_{s\leq t})$
+such that $\mu_{B_{1}(1),\ldots,B_{m}(1)}=\mu_{y_{1},\ldots,y_{m}}$.
+\end{problem}
+
+
+\begin{problem} Open problem:  Can we replace $\limsup$ with $\liminf$
+in the microstates definition of the free entropy $\chi$?
+\end{problem}
+
+\begin{problem}
+Hiai introduced the free pressure $\pi_R(h)$ for a self-adjoint element
+(regarded as a free hamiltonian) $h$ of the universal free product
+$C^*$-algebra $\mathcal{A}^{(n)}=\bigstar_{i=1}^nC([-R,R])$, and defined
+a free entropy-like quantity $\eta_R(\tau)$ of a tracial state
+$\tau\in TS(\mathcal{A}^{(n)})$. The inequality $\eta_R(\tau)\ge\chi(\tau)$
+holds. $\tau$ is called an equillibrium tracial state with respect to $h$
+if the variational equality $\eta_R(\tau)=\tau(h)+\pi_R(h)$ holds. Such a
+$\tau$ always exists for each $h$. For which $h$ there is a unique equilibrium
+tracial state? A way to prove this is the free transportation inequality.
+\end{problem}
+
+\begin{problemblock}
+
+It was recently shown by Guionnet and Maurel-Segala
+that for the vN algebra $(\mathcal{A},\tau)$ generated by $m$ free
+semicirculars, \[
+\sup_{\tau\in\mathcal{TS}(\mathcal{A})}\left\{ \chi(\tau)-\tau(\sum t_{i}q_{i})\right\} =\sum_{p_{1},\ldots,p_{m}}\prod_{k_{1},\ldots,k_{m}}\frac{(t_{i})^{p_{i}}}{k_{i}!}C(q,k_{1},\ldots,k_{m})\]
+ where $C(q,k_{1},\ldots,k_{m})$ enumerated planar maps with colored
+edges and vertices of types $q,k_{1},\ldots,k_{m}$.
+
+\begin{problem}
+Is there a similar
+interpretation for the non-microstates analog \[
+\sup_{\tau\in\mathcal{TS}(\mathcal{A})}\left\{ \chi^{*}(\tau)-\tau(\sum t_{i}q_{i})\right\} \textrm{?}\]\end{problem}
+
+\end{problemblock}
+
+
+
+\section{Free von Neumann Algebra}
+\by{Dykema, Ricard}
+
+\begin{problem}
+Given $A,B$ free group factors with a
+common diffuse subalgebra $D\subset A,B$, what conditions on $A,B,D$
+guarantee that $A\mathop{\star}_{D}B$ is a free group factor?\end{problem}
+
+\begin{problem}
+For a regular weakly-rigid (in the sense of
+Popa) subalgebra of a von Neumann algebra, is the free entropy dimension
+$\leq1$?
+\end{problem}
+
+\begin{problemblock}
+\begin{problem}
+\textbf{\underbar{Open Problem}}: For generators $\gamma_{1},\ldots,\gamma_{n}\in\Gamma$
+with the first $L^{2}$ -Betti number $\beta_{1}(\Gamma)$ large,
+is the microstates free entropy dimension of this family of generators
+large?
+\end{problem}
+
+\begin{comment}This is known for the non-microstates free entropy dimension
+[work of Mineyev-Shlyakhtenko]
+\end{comment}
+\end{problemblock}
+
+\begin{problem}
+ Consider $\Delta=\sum_{i=1}^{m}\partial_{x_{i}}^{*}\partial_{x_{i}}$
+and the corresponding completely positive map $\varphi_{t}=\exp(-t\Delta)$,
+where $(x_{1},\ldots,x_{m})$ have finite Free Fisher Information.
+Can $\varphi_{t}$ converge uniformly to the identity map on the unit
+ball of $W^{*}(x_{1},\ldots,x_{m})$? If no, it follows that the von
+Neumann algebra generated by $(x_{1},\ldots,x_{m})$ is not weakly
+rigid if it is non-hyperfinite.
+\end{problem}
+
+% the next 3 problem blocks form a unit, but I was
+% not sure how to indicate this.
+
+\begin{problemblock}
+ Let $\Gamma_{q,n}=W^*(s_q(g)=l(g)+l(g)^* |g\in \mathcal H_\mathbb R)$ with 
+$n=\rm{ dim} \mathcal H_\mathbb R$, $-1<q<1$ 
+be the von Neumann algebra generated by 
+fields operators acting on a $q$-deformed Fock space
+\begin{problem}
+Does $\Gamma_{q,n}$
+depend on $q$?
+\end{problem}
+
+A way to approach this question could come from
+ the following observation. In the free case, $q=0$, 
+the natural orthormal basis of 
+the Fock space  consists of vectors 
+$e_{\underline i}=e^{\otimes\alpha_1}_{i_1}\otimes ...
+\otimes e^{\otimes\alpha_k}_{i_k}$ with $i_1\neq ...\neq i_k$ and 
+$\alpha_1>0$. This basis can be recoved from the algebra as 
+$e_{\underline i}=T_{\alpha_1}(s_0(e_1))...T_{\alpha_k}(s_0(e_q))\Omega$, 
+where $T_k$ are Chebytchev polynomials. It 
+would be interesting to find an analogue for these formulas in the general 
+case and to unterstand the underlying combinatorics.
+
+ \end{problemblock}
+
+\begin{problemblock}
+
+The $q$-deformation leads to the commutation relations $l(e)^*l(f)=ql(f)l(e)^*+\langle f,e \rangle Id$. Instead consider themore general relations
+$l(e_i)^*l(e_j)=\sum_{s,t} t^{s,t}_{i,j} l(e_s)l(e_t)^*+\delta_{i,j} Id$.
+
+\begin{problem}
+When does the $C^*$-algebra generated by these operators is an extension of a 
+Cuntz algebra by compacts ? When does the fields operators associated to them 
+produce a type $II_1$ factor ?
+\end{problem}
+\end{problemblock}
+
+
+\begin{problemblock}
+
+Consider the projection $P_k$ from $\Gamma_{q,n}$ to its subspace
+consisting of $x$ such that $x.\Omega$ has length at most $k$ in the Fock 
+space.
+\begin{problem}
+ Is $\|P_k\|_{cb}$ polynomially bounded in $k$ ?
+\end{problem}
+This would prove the 
+CBAP for the associated $L_p$ spaces $(1<p<\infty)$ and the exactness of the 
+$C^*$-algebra generated by $q$-gaussians.
+ \end{problemblock}\begin{problem}
+To prove the existence of an embedding $\Gamma_{q,n}\to \mathcal R^\omega$, 
+one 
+uses Speicher's central limit theorem. In this procedure, 
+is it possible to find explictely uniformly bounded matrix whose mixed moments
+approach those of $q$-gaussians ? More precisely, let $c_{i,j}$ be unitary
+generators of the CAR-algebra (or $-1$-gaussians), are the matrices $\frac 1
+{\sqrt n}[c_{i,j}]_{i,j\le n}$ uniformly bounded ? \end{problem}
+\begin{problemblock}
+\begin{problem}
+ For the random matrix model $\exp(-nTr(p(A_{1},A_{1}^{*},\ldots,A_{m},A_{m}^{*}))$
+we know that the conjugate variables satisfy $\mathcal{J}_{i}=\mathcal{D}_{i}P$.
+Is the operator $\exp(-t\sum\partial_{j}^{*}\partial_{j})$ compact
+in the limit $n\rightarrow\infty$ (where $\partial_{j}$ is Voiculescu's
+partial difference quotient on the limit algebra with respect to the
+limit of $A_{j}$)?
+\end{problem}\begin{comment}As a starting point, consider $P=\sum A_{i}^{2}+\sum t_{i}q_{i}(A_{1},\ldots,A_{m})$
+where Guionnet and Maurel-Segala have shown convergence of the model.
+\end{comment}
+ \end{problemblock}
+
+\section{Focus Group on Free Entropy}
+The problems in this section arose during a discussion group
+on Free Entropy during the 3rd day of the AIM workshop.
+
+\begin{problemblock}
+Let
+ \[
+\delta^{*}=n-\limsup_{t\downarrow0}\frac{\chi^{*}(x_{1}+\sqrt{t}s_{1},\ldots,x_{n}+\sqrt{t}s_{m})}{\log t^{1/2}}\]
+ and\[
+\delta^{\star}=n-\limsup_{t\rightarrow0}\sum_{i=1}^{n}t\Phi^{*}(x_{1}+\sqrt{t}s_{1},\ldots x_{m}+\sqrt{t}s_{m})\textrm{.}\]
+
+%The following construction put everything later into italics?
+%\problem{Does $\delta^{*}=\delta^{\star}$?}
+\begin{problem}{Does $\delta^{*}=\delta^{\star}$?}
+\end{problem}
+
+\end{problemblock}
+
+% the surrounding {} seem to be necessary here, or the the later fonts go wrong
+\begin{problem} What is the non-microstates analogue
+of free entropy in the presence,
+$\chi(x_{1},\ldots,x_{n}:y_{1},\ldots,y_{n})$?          
+\end{problem}
+
+\section{Focus Group on Operator Theory}
+The problems in this section arose during a discussion group
+on Operator Theory during the 3rd day of the AIM workshop.
+
+\begin{problem}What is the boundary behavior of the subordination
+functions which appear in free convolution of operator-valued random
+variables?
+\end{problem}
+
+\begin{problemblock}
+\begin{problem}What are examples/conditions for freely strongly
+unimodal variables, i.e. unimodal random variables that when freely
+convolved with a unimodal variables remain unimodal?
+\end{problem}
+\begin{comment}Unimodal means
+that the law of the random variable has a smooth density with a unique
+maximum; example: Gaussian law or the semicircle law.
+\end{comment}
+\end{problemblock}
+
+{
+\begin{problem} More specifically, if $\mu,\nu$ are symmetric
+unimodal distribution, is $\mu\boxplus\nu$ unimodal?
+\end{problem}
+}
+
+\section{Invariant Subspaces for an Operator}
+\by{Haagerup}
+
+\begin{problem}
+ Let $x,y$ be two free circular elements, and
+let $S,T$ be two operators in a II$_{1}$ factor, which is free from
+$x,y$. In the Haagerup-Schultz estimate      
+   $$(\star\star)\qquad\left\Vert (S+xy^{-1})^{-1}-(T+xy^{-1})^{-1}\right\Vert _{p}\leq c(p)\left\Vert S-T\right\Vert _{p}<\infty$$
+with $0<p<\frac{2}{3}$,        
+       can one use $x$ instead of $xy^{-1}$?\end{problem}
+
+\begin{problemblock}
+(Brown measure of unbounded operators): As
+defined by (Haagerup and Schultz), $\Delta(T)$   makes sense
+for $T\in M^{\Delta}$ where $M^{\Delta}=\left\{ T\in\tilde{M}\vert\int_{0}^{\infty}\log t\, d\mu_{T}(t)<\infty\right\} $.
+Then $\Delta(T)=\exp(\int_{0}^{\infty}\log t\, d\mu_{T}(t))\in[0,\infty]$.
+\begin{problem}
+Can one make sense of $\mu_{T}$ for such unbounded $T$?
+\end{problem}
+\end{problemblock}
+
+\section{Free Group Factor}\by{Ozawa}
+
+% conjecture within a problem.  
+\begin{problemblock}
+\begin{conjecture}If $\mathcal{H}$ an $M\textrm{-}M$ bimodule
+$M=L\mathbb{F}_{n}$, and $_{M}\mathcal{H}_{M}\preceq L^{2}M\otimes L^{2}M$,
+(weak containment) then \[
+\textrm{Hom}(_{M}\mathcal{H}\mathop{\otimes}_{M}\mathcal{H}\mathop{\otimes}_{M}\mathcal{H}_{M},L^{2}M\otimes L^{2}M)\neq0\textrm{.}\]
+\end{conjecture}
+
+
+Note that the assumption of weak containment is equivalent that the
+map\[
+x\otimes y\mapsto(\lambda(x)\rho(y):\mathcal{H}_{M}\ni h\mapsto xhy)\in B(_{M}\mathcal{H}_{M})\]
+is continuous for the min-tensor product on $M\otimes M$. Examples
+of bimodules with this property come from the basic construction\[
+_{M}\mathcal{H}_{M}=M\otimes_{A}M\]
+over a hyperfinite subalgebra $A\subset M$.
+
+\end{problemblock}
+
+\section{Combinatorics of Random Matrix Models}
+
+The material in this section arose during a discussion group on
+the 4th day of the AIM workshop.
+
+% note use of \by in theorem environment
+
+Given random matrices $A_{n}$ and $B_{n}$ with corresponding measures
+$\mu_{A_{n}}$ and $\mu_{B_{n}}$ on $M_{n}(\mathbb{C})$, we define
+their Itzykson-Zuber integral as\[
+IZ(A_{n},B_{n})=\int\exp(-nTr(AU^{*}BU))d\mu_{A_{n}}(A)d\mu_{B_{n}}(B)\textrm{.}\]
+ \begin{theorem} \by{Guionnet and Zeitouni} If $\left\Vert A_{n}\right\Vert <c$,
+$\left\Vert B_{n}\right\Vert <c$ then $IZ(A_{n},B_{n})\sim\exp(-n\psi)$.
+\end{theorem}
+
+\begin{problem}
+ There is another result that states that \[
+\frac{\partial^{n}}{\partial t^{n}}\log IZ(tA_{n},B_{n})\vert_{t=0}\textrm{ converges.}\]
+ Does this expression match $\psi$ above? Can we extend Guionnet
+and Zeitouni's result to complex parameters?\end{problem}
+
+\begin{problem}
+Extend the model $\exp(-nTr(P(A_{1},\ldots,A_{m})+\frac{1}{2}\sum_{i=1}^{m}A_{i}^{2}))dA_{1}\ldots dA_{m}$
+of Guionnet and Maurel-Segala to non-selfadjoint $P$ (i.e.polynomials
+with complex coefficients).
+\end{problem}
+
+\begin{problem}
+ Is there a combinatorial interpretation of
+free cumulants in terms of enumeration of maps and operations on maps?
+\end{problem}
+
+\begin{problemblock}
+Consider the spherical integrals
+$$I_n(z,E_n):=\int\exp\{n{\rm tr}(UD_nU^*E_n)\}d_{m_n}(U),$$
+where $D_n={\rm diag(z,0,0,\dots,0)}$, $z\in\mathbb C$, and
+$E_n$ is a sequence of $n\times n$ selfadjoint (diagonal) matrices,
+with spectrum uniformly bounded in $n$, and  converging in distribution to
+$\mu_E$
+
+The sequence of functions of $z$
+$$f_n(z)=\partial_z\frac1n\log I_n(z,E_n),$$
+has been shown by Guionnet and Maida to converge to $R_{\mu_E}(z)$ for
+$|z|$ small enough.
+\begin{problem}
+ What is the largest domain in the complex plane on which
+this convergence takes place? If $\mu_E$ is $\boxplus$-infinitely
+divisible, is the convergence happening on all the upper half-plane? Is there any possible generalization to measures with noncompact support?
+\end{problem}
+\begin{comment}One could probably approach this problem by trying to study the normality
+of the family/sequence $f_n$.
+\end{comment}
+\end{problemblock}
+
+\section{Invariant Subspaces}
+The questions in this section arose during the focus group on
+Invariant Subspaces during the 4th day of the workshop.
+
+
+If $M$ is a $\textrm{II}_{1}$ factor, $T_{1},\ldots,T_{n}\in M$,
+$[T_{i},T_{j}]=0$, then we have the {}``Brown Measure'' defined
+as the unique measure on $\mathbb{C}^{n}$ such that \[
+(\star)\qquad\log\Delta(1-\sum\alpha_{i}T_{i})=\int\log(1-\sum\alpha_{i}\zeta_{i})d\mu_{T_{!},\ldots,T_{n}}(\zeta_{1},\ldots,\zeta_{n})\textrm{.}\]
+
+\begin{problem}
+ Is $\textrm{supp}\mu_{T_{1},\ldots,T_{n}}\subset\sigma(T_{1},\ldots,T_{n})$,
+the Taylor spectrum of $T_{1},\ldots,T_{n}$?
+\end{problem}
+
+\begin{problem}
+ Which functions on $\mathbb{C}^{n}$ have an
+integral representation as in $(\star)$o
+\end{problem}
+
+\begin{problemblock}
+$M$ a $\textrm{II}_{1}$ factor and $T\in M$.
+Define\[
+K(T,r)=\left\{ \xi\in\mathcal{H}\vert\exists\xi_{n}\in\mathcal{H}\textrm{ s.t. }\left\Vert \xi_{n}-\xi\right\Vert _{2}\rightarrow0\textrm{ and }\limsup\left\Vert T^{n}\xi_{n}\right\Vert ^{1/n}\rightarrow0\right\} \textrm{,}\]
+ \[
+\textrm{and }E(T,r)=\left\{ \xi\in\mathcal{H}\vert\limsup\left\Vert T^{n}\xi_{n}\right\Vert ^{1/n}\rightarrow0\right\} \textrm{.}\]
+\begin{problem}
+Does $K(T,r)=E(T,r)$?
+\end{problem}
+\begin{comment}The $DT$ quasinilpotent operator may be a
+counterexample.
+\end{comment}
+\end{problemblock}
+
+\begin{problem}
+ Let $c$ be a circular element ($\sigma(c)=\bar{\mathbb{D}}$),
+and let $f\in C^{\infty}(\mathbb{C})$. Can we make sense of $f(c)$
+as an (unbounded) operator affiliated with $\left\{ c\right\} ^{\prime\prime}$?
+\end{problem}
+
+\begin{problem}
+ Let $(\Gamma,\tau)$ be a $\textrm{II}_{1}$
+factor, $T\in\Gamma$, $\mu_{T}=\delta_{0}$. Does $T$ have a non-trivial
+invariant subspace affiliated with $\Gamma$?
+\end{problem}
+
+% the following should be converted to a problemblock
+\begin{problem}
+ Let $B_{c}$be a band limited operator obtained
+from $c$ a circular element, and let $D$ be the band limited operator
+obtained from the identity. Then $D$ is uniformly distributed on
+$[0,1]$ and $\star$-free from $\left\{ B_{c},B_{c}^{*}\right\} $.
+
+Is $D\in W^{*}(B_{c})$? Or is $W^{*}(B_{c})=L\mathbb{F}_{t}$ with
+$t=1+2c(1-\frac{c}{2})$?
+\end{problem}
+
+\section{Infinite Divisibility}\by {Nica}
+
+\begin{problemblock}
+ Given $x_{1},\ldots,x_{k}$ and $y_{1},\ldots,y_{k}$
+in a vNa such that $\left\{ x_{1},\ldots,x_{k}\right\} $ is tensor-independent
+of $\left\{ y_{1},\ldots,y_{k}\right\} $ and such that $\mu_{x_{1},\ldots,x_{k}},\nu_{y_{1},\ldots,y_{k}}$
+are freely infinitely divisible, we can apply the Fourier transform
+to get the power-series of the classical convolution of $\mu_{x_{1},\ldots,x_{k}}$
+and $\nu_{y_{1},\ldots,y_{k}}$.
+\begin{problem}
+How do such power-series relate to
+the noncommutative power series obtained from free convolution?
+\end{problem}
+In
+other words how does the set of classically obtainable power-series
+relate to the set of freely obtainable power-series?
+\end{problemblock}
+
+\begin{problemblock}
+\begin{problem}
+ Can we make sense of the R-transform for $x_{1},x_{2}$
+unbounded (power-series are insufficient to encode all the information)?\end{problem}
+Easier question is for infinitely divisible unbounded operators.
+\end{problemblock}
+
+\begin{problem} If $c$ is unbounded R-diagonal, what is the
+R-transform of $c,c^{*}$?
+\end{problem}
+
+\section{ Dirichlet Forms, from Classical to Quantum}
+This section comes from a focus group on the 5th day of the AIM workshop.
+
+\begin{problemblock}
+\begin{problem}
+ For the $q$-deformed semicircular, the analogue
+of $\partial^{*}\partial$ exists (it is the number operator). 
+     Describe explicitly the associated $\partial$.
+\end{problem}
+It exists by the work of Sauvageot.
+\end{problemblock}
+
+\begin{problem}
+ More generally, given a negative definite
+function on a group $\Gamma$ (i.e. a Dirichlet form), we know it
+gives a representation by affine actions on $L^{2}\Gamma$. When
+is it a multiple of the left regular representation? What conditions
+on the negative definite function guarantee this?\end{problem}
+\begin{problem}
+ What conditions on a Dirichlet form $\delta^{*}\delta$
+guarantee that the bimodule associated to $\delta$ embeds into $\bigoplus L^{2}N\otimes L^{2}N$? \end{problem}
+\begin{problem}
+What is the analogue of the Bakry-Emery criterion
+in the noncommutative case? i.e. what is $\Gamma_{2}$ for noncommutative
+Dirichlet forms?\end{problem}
+
+\begin{problem}
+
+ Let $\partial:M\to L^{2}(M)\bar{\otimes}L^{2}(M^{o})$
+be a closable derivation, and let $\Delta=\partial^{*}\partial$,
+$S_{t}=\exp(-t\Delta)$. If the semigroup $S_{t}$   
+  converges uniformly to the identity in $\left\Vert \cdot\right\Vert _{2}$
+on the unit ball, is the derivation inner when considered with values
+in the algebra of unbounded operators affiliated to $M\bar{\otimes}M^{o}$?
+\end{problem}
+
+\end{document}
+
+\begin{problemblock}
+
+ZZZZ Lead-in to the second problem
+
+\begin{problem}
+ZZZZ Statement of second problem
+\end{problem}
+
+ZZZZ You can put words after the problem statement and before the first
+ZZZZ comment, but you don't have to and most of the time it is better
+ZZZZ to put the words in a comment.
+
+\begin{comment}
+ZZZZ First comment on the second problem.
+\end{comment}
+
+\begin{comment}
+ZZZZ Second comment on the second problem.
+\end{comment}
+
+\end{problemblock}
+
+ZZZZ just keep repeating the problemblock structure
+
+
+\end{document}

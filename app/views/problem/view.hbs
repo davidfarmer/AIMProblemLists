@@ -1,0 +1,34 @@
+{{#name}}<h3 style="font-weight: bold; font-style: normal">{{{ this }}}</h3>{{/name}}
+{{#intro}}
+  <div class="intro">&nbsp;&nbsp;&nbsp;&nbsp;{{{ this }}}</div>
+{{/intro}}
+{{^pending}}
+  <div class="edit-delete">
+    {{#perms/problem/edit}}<a data-id="{{_id}}" data-type="problem" class="edit" href="#">Edit problem</a> | {{/perms/problem/edit}}
+    {{#perms/problem/delete}}<a class="delete" data-id="{{ _id }}" data-type="problem" href="#">Delete</a>{{/perms/problem/delete}}<br>
+    {{#perms/problem/add}}<a class="move" data-id="{{_id}}" data-type="problem" href="#move" title="Move this problem">Move</a><br>{{/perms/problem/add}}
+    {{#perms/remark/add}}<a class="edit" data-id="{{_id}}" data-type="remark" href="#">Add remark</a>{{/perms/remark/add}}
+  </div>
+{{/pending}}
+<div>
+  <h4>{{#tag}}{{ this }}{{/tag}}{{^tag}}Problem{{/tag}} <span class="number">{{ sec_num }}{{ number }}</span>.</h4>
+  {{#by_name}}
+    <span class="probheadby">[<a href="http://www.jasondavies.com/aimpeople/{{../by}}">{{{ this }}}</a>]</span>
+  {{/by_name}}
+  {{^by_name}}
+    {{^by_id}}
+      {{#by}}
+        <span class="probheadby">[{{{ this }}}]</span>
+      {{/by}}
+    {{/by_id}}
+    {{#by_id}}
+      <span class="by">[<span class="by-id">{{{ this }}}</span>]</span>
+    {{/by_id}}
+  {{/by_name}}
+  {{#body}}
+    <span class="probbody">{{{ this }}}</span>
+  {{/body}}
+</div>
+{{#status}}
+  <span class="status">&nbsp;&nbsp;&nbsp;&nbsp;{{{ this }}}</span>
+{{/status}}

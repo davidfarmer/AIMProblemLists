@@ -1,0 +1,20 @@
+\begin{problemblock}<%
+  if (typeof name !== 'undefined' && name) {
+%>
+\name{<%= name %>}
+<%
+  }
+%><%= typeof intro !== 'undefined' ? intro : '' %>
+
+\begin{problem}[<%= probtag %>] <%= problem.body %> \end{problem}
+
+<% if (typeof distremark !== 'undefined' && distremark) { %>
+\begin{distinguishedremark} <%= distremark %> \end{distinguishedremark}
+<% } %>
+
+<% for (var i=0; i<remarks.length; i++) { var remark = remarks[i]; %>
+\begin{remark}<% if (remark.by) { %>
+\by{<%= remark.by %>}<% } %><%= remark.remark %>\end{remark}
+<% } %>
+
+\end{problemblock}

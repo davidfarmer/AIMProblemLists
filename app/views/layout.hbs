@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/media/style/main.css">
+    <link rel="stylesheet" href="/media/style/boxy.css">
+    <script>
+      var pl_id = "{{ pl/name }}";
+      var pl_version = "{{ pl/version }}" || null;
+      var isBib = true;
+      var perms = {{{ perms_json }}};
+      var userId = "{{ userCtx/id }}" || null;
+    </script>
+    <script src="/media/d3.min.js"></script>
+    <script src="/media/json2.js"></script>
+    <script src="/media/jquery.js"></script>
+    <script src="/media/underscore.js"></script>
+    <script src="/media/backbone.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script src="/MathJax/MathJax.js?config=TeX-AMS_HTML-full"></script>
+  </head>
+  <body{{#bodyclass}} class="{{ this }}"{{/bodyclass}}>
+    <div id="wrapper">
+    <div id="session">
+      {{#userCtx/name}}{{this}} | <a href="#logout" class="logout">Log out</a>{{/userCtx/name}}
+      {{^userCtx/name}}
+        <a href="#login" class="login" title="Log in">Log in</a> |
+        <a href="/register" class="register" title="Register">Register</a>
+      {{/userCtx/name}}
+    </div>
+    <div id="header">
+      <a href="http://aimath.org/" style="padding: 5px; float: left;">
+        <img src="/media/img/aim.png" style="width: 210px; height: 128px; border: 0">
+      </a>
+      <div style="margin: 0 200px; text-align: center">
+        <h1>{{{ title }}}</h1>
+        {{#subtitle}}<h2>{{{ this }}}</h2>{{/subtitle}}
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div id="breadcrumbs">
+      {{#breadcrumbs}}
+        {{#url}}
+          <a href="{{ this }}">{{{ ../title }}}</a> &raquo;
+        {{/url}}
+        {{^url}}
+          {{{ title }}}
+        {{/url}}
+      {{/breadcrumbs}}
+    </div>
+    {{#pl}}
+    <div id="nav">
+      <div class="nav-inner">
+        <ul>
+          <li><a href="/{{ name }}{{#version}}/archives/{{ this }}{{/version}}/">{{ title }}</a>
+            <ol class="sectionlist">
+              {{{ menu }}}
+            </ol>
+          <li><h3>Archived versions</h3>
+            <ul>
+              {{#versions}}
+                <li>
+                  {{#active}}
+                    {{#version}}{{ this }}{{/version}}
+                    {{^version}}Current{{/version}}
+                  {{/active}}
+                  {{^active}}
+                    {{#version}}<a href="/{{ ../name }}/archives/{{ this }}/">{{ this }}</a>{{/version}}
+                    {{^version}}<a href="/{{ ../name }}/">Current</a>{{/version}}
+                  {{/active}}
+              {{/versions}}
+            </ul>
+        </ul>
+        <hr>
+        <p>This problem list:</p>
+        <ul class="downloads">
+          <li><a href="/{{ name }}{{#version}}/archives/{{ this }}{{/version}}/pdf" class="pdflink">PDF</a></li>
+          <li><a href="/{{ name }}{{#version}}/archives/{{ this }}{{/version}}/tex" class="texlink">LaTeX</a></li>
+        </ul>
+        <div class="clear"></div>
+        <p>Feedback is welcome:
+          <a href="mailto:problemlists@aimath.org">problemlists@aimath.org</a>
+      </div>
+    </div>
+    {{/pl}}
+    <div id="content">
+      {{{ body }}}
+    </div>
+    <script>
+      var templates = typeof templates !== 'undefined' ? templates : {};
+      //templates.comments = {{{ jsonTemplates }}};
+    </script>
+    <script src="/media/utils.js"></script>
+    <script src="/media/jquery.hint.js"></script>
+    <script src="/media/jquery.couch.js"></script>
+    <script src="/media/jquery.form.js"></script>
+    <script src="/media/jquery-ui-1.8.custom.min.js"></script>
+    <script src="/media/jquery.boxy.js"></script>
+    <script src="/media/parser.js"></script>
+    <script src="/media/jquery.couchapp.js"></script>
+    <script src="/media/reorder.js"></script>
+    <script src="/media/jqModal.js"></script>
+    <script src="/media/upload.js"></script>
+    <script src="/media/handlebars.js"></script>
+    <script src="/media/app.js"></script>
+    <script src="/media/underscore.js"></script>
+    <script src="/media/sha1.js"></script>
+    <script src="/media/async.min.js"></script>
+    <script>
+      $(function() {
+        $('#loading').jqm();
+        $('a.login').boxy({
+          hideShrink: false,
+          afterShow: function() {
+            $('#login-username').focus();
+          }
+        });
+        $('a.logout').click(function() {
+          $.post('/logout', function() {
+            location.reload();
+          });
+          return false;
+        });
+        $('#login form').submit(function() {
+          $.post('/login', {
+            name: $('#login-username').val(),
+            password: $('#login-password').val()
+          }, function(data) {
+            if (data === "error") alert("Invalid username or password");
+            else location.reload();
+          });
+          return false;
+        });
+      });
+    </script>
+    <div id="login" style="display: none">
+      <form>
+        <div><label for="login-username">Username:</label>
+          <input type="text" name="username" id="login-username"></div>
+        <div><label for="login-password">Password:</label>
+          <input type="password" name="password" id="login-password"></div>
+        <div style="margin-top: 10px"><input type="submit" value="Log in"></div>
+      </form>
+    </div>
+    </div>
+    <div id="footer">
+      All information is released under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike license</a>.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "env": {
+    "default": {
+      "db": "http://jason:Urnolia@127.0.0.1:5986/aimpldb"
+    },
+    "jd": {
+      "db": "http://jason:Urnolia@127.0.0.1:5989/aimpldb"
+    },
+    "aimath": {
+      "db": "http://jason:aimpl31415926@127.0.0.1:5984/aimpl"
+    }
+  }
+}

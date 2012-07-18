@@ -1,0 +1,63 @@
+<div>
+  <div style="display: none">
+    {{{ MACROS }}}
+  </div>
+  <div id="admin">
+    {{#perms/section/add}}<p{{^sections}} class="highlight"{{/sections}}><a class="edit" data-type="section" data-id="{{ pl/_id }}" href="#">Add new section</a></p>{{/perms/section/add}}
+    {{#perms/list}}
+      {{#edit}}<p><a class="roles" href="roles/">Manage roles</a></p>{{/edit}}
+      {{#edit}}<p><a class="edit" data-type="list" data-id="{{ ../../pl/_id }}" href="#">Edit introduction</a></p>{{/edit}}
+      {{#archive}}<p><a class="archiveproblemlist" href="#">Archive problem list</a></p>{{/archive}}
+      {{#addComment}}<p class="comments"><a class="addcomment" href="#">Add comment</a></p>{{/addComment}}
+    {{/perms/list}}
+    {{#perms/section/add}}<p><a class="reorder" href="javascript:void()">Enable reordering</a>{{/perms/section/add}} 
+  </div>
+  <div class="content-main editable" data-id="{{ pl/_id }}" data-type="list">
+    <div class="render">
+      {{{ pl_render }}}
+    </div>
+    <ul class="pending-changes"></ul>
+    <div id="edit-form"></div>
+    <h3>Sections</h3>
+
+    {{^sections}}
+    {{#perms/list/edit}}
+      <div class="help">
+        <p>To add an introduction to the problem list, click on
+        "Edit introduction" and then put the introductory text into
+        the box labeled "Introduction".
+
+        <p>To add problems to the list, first click on "Add new section"
+        to create a section, and then go into that section to add
+        problems.
+
+        <p>Use different sections to gather together related problems.
+      </div>
+    {{/perms/list/edit}}
+    {{/sections}}
+
+    <ol class="{{#perms/list/edit}}sortable {{/perms/list/edit}}nonumbers children">
+      {{#sections}}
+        <li data-id="{{ _id }}" class="section"><div class="render">
+          <span class="pos">{{ list_pos }}</span>.
+          <a href="{{ list_pos }}/">{{{ title }}}</a></div>
+        </li>
+      {{/sections}}
+    </ol>
+    <ol class="nonumbers">
+      <li><a href="bib/">Bibliography</a></li>
+    </ol>
+    <ul class="pending-additions"></ul>
+    <div id="section-form"></div>
+  </div>
+  <p>Cite this as: <em>{{{ citeAs }}}</em>
+</div>
+<script>
+  var pl_id = "{{ pl/name }}";
+  var pl_name = "{{ pl/name }}";
+  var pl_title = "{{ pl/title }}";
+  var templates = typeof templates !== 'undefined' ? templates : {};
+  templates.list = {{{ templates/list }}};
+  templates.section = {{{ templates/section }}};
+  var allData = {{{ data }}};
+</script>

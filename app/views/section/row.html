@@ -1,0 +1,18 @@
+<li data-id="{{_id}}" class="problem">
+  {{#perms/problem/edit}}<a id="edit_{{_id}}" class="editp" href="#">Edit this problem</a>{{/perms/problem/edit}}
+  <div class="comments">
+    {{#perms/problem/addComment}}<a class="addcomment" href="#">Add comment</a>{{/perms/problem/addComment}}
+  </div>
+  <div class="probc content-main editable" id="{{_id}}" data-id="{{_id}}">
+    {{{ problemTemplate }}}
+    <div style="clear: right"></div>
+  </div>
+
+  {{#perms/remark/add}}<a class="makeremark" href="#">Add remark</a>{{/perms/remark/add}}
+  <div class="content-main">
+    {{#rmarks}}
+      {{{ this }}}
+    {{/rmarks}}
+    <div style="clear: right"></div>
+  </div>
+</li>

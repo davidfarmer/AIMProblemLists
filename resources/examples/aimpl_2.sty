@@ -1,0 +1,188 @@
+%% 1. Standard page layout, not essential
+
+\textheight=9.0  true in
+\textwidth=6.5 true in
+\hoffset=-0.9true in
+
+%% 2. No other packages allowed, defines AIM LaTeX subset
+
+\usepackage{amssymb,latexsym, amsmath, amsxtra, xy}
+\usepackage[dvips]{graphics}
+
+%% 3 Convenience functions for users, not intrinsic to problem list definition, defines AIM LaTeX subset
+
+% Standard environments.  These should look like commands you already
+% use. Please use these instead of definining your own similar commands.
+% For example, do not use \begin{thm} instead of \begin{theorem}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+% Standard commands.  Please use these instead of defining your
+% own similar macros
+\newcommand{\C}{\mathbb C}
+\newcommand{\F}{\mathbb F}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+
+
+%% 4. Problem list structure specific
+
+% 4.1. Introduction
+%
+% latex: \Introduction
+% standard: no
+% default behavior: Any text in after \document and before first section is implied to be in introduction
+
+\newcommand{\Introduction}[1]{{}}
+
+% 4.2. Introduction/title
+% latex: \title
+% standard: yes ?
+% default behavior: none, required
+
+% 4.3. Introduction/id
+% latex: \id
+% standard: no
+% default behavior: will be auto generated on ingest, filled with XXXX on previews
+
+\newcommand{\id}[1]{{}}
+
+% 4.4. Introduction/Creation date
+% latex: \CreationDate
+% standard: no
+% default behavior: will be auto generated on ingest, filled with current date on previews
+
+\newcommand{\CreationDate}[1]{{}}
+
+
+% 4.5. Introduction/Creator
+% latex: \author
+% standard: yes?
+% default behavior: required, no defaults, repeatable
+
+% 4.6. Introduction/Version
+% latex: version , three arguments -- subject, predicate, object
+% standard: no
+% default behavior: required, defaulted on ingest, previewed as XXX
+
+\newcommand{\version}[3]{{}}
+
+% 4.7. Introduction/Description
+% latex: \description , three arguments -- subject, predicate, object
+% standard: no
+% default behavior: any text immediately after introduction not otherwise tagged assigned to introduction
+
+\newcommand{\Description}[3]{{}}
+
+% 4.8. Introduction/Provenance
+% latex: \HowCreated
+% standard: no
+% default behavior: optional, no defaults
+
+\newcommand{\HowCreated}[1]{{#1}}
+
+
+% 4.7. Introduction/NoteBlock
+% latex: implied by \Notes
+% standard: no
+% default behavior: optional, no defaults
+
+% 4.8. Introduction/Note
+% latex: \Note , three arguments -- subject, predicate, object
+% standard: no
+% default behavior: optional, repeatable
+
+\newcommand{\Note}[3]{{}}
+
+% 4.9. Introduction/Bibliography Block
+% latex: implied by \bibitems
+% standard: no
+% default behavior: optional, no defaults
+
+% 4.11. Subsection
+% latex: use \section 
+% standard: yes
+% default behavior: optional, no default
+
+% Nesting prohibited:
+% Problem lists should be divided into sections, but not subsections
+% If you need subsections, then maybe it would be better to organize
+% it as a separate problem list
+\def\subsection{\relax}
+\def\subsubsection{\relax}
+
+% 4.12. Subsection/*
+% Subsection/Title is taken from \subsection value
+% All other fields as above for Introduction/*
+
+
+% 4.13. Problem Block
+% latex: \problemblock, also implied if single \problem
+% standard: no
+% default behavior: not required if only one problem
+
+\newenvironment{problemblock}{\smallskip \par\marginpar{start of problem block}\par}{\smallskip \marginpar{\emph{end of problem block}} \smallskip}
+\theoremstyle{plain}
+
+% 4.14 Problem Block/problem
+% latex: \problem
+% standard: \no
+
+
+
+\newtheorem{problem}[theorem]{Problem}
+
+% 4.15. Problem Block/Problem/*
+% latex: use corresponding fields as defined in Intro/*, unless excepted below
+
+% 4.16. Problem Block/Problem/title
+% latex:problemname
+
+\newcommand{\problemname}[1]{{}}
+
+% I commented this out because it is a repeat
+% % 4.17. Problem Block/Problem/title
+% % latex:problemname
+% 
+% \newcommand{\problemname}[1]{{}}
+
+% 4.18. Problem Block/Problem/problemStatement
+% latex:Problem Statement
+
+\newcommand{\problemStatement}[1]{{}}
+
+% 4.19. Problem Block/Problem/remark
+% latex:\remark
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newtheorem*{comment}{Remark}
+\newcommand{\by}[1]{[\emph{#1}]}
+\newcommand{\when}[1]{\emph{#1}}  % fixed typo --David 
+
+% 4.20. Problem Block/Problem/remark:distinguished
+% latex:distinguishedremark
+
+\newcommand{\distinguishedremark}[1]{{}}
+
+% 4.21. Problem Block/Problem/Provenance:posed by
+% latex:posedby
+
+\newcommand{\posedby}[1]{{}}
+
+% 4.22. Problem Block/Problem/Provenance:posed by
+% latex: posedin
+
+\newcommand{\posedin}[1]{{}}
+
+
+

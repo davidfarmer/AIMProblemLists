@@ -1,0 +1,898 @@
+% LaTeX class specification.  Any changes will not appear in the final version
+\documentclass[12pt,letterpaper, reqno]{amsart}
+
+% Only the following packages are available.
+% If these are not sufficient, then you must submit a special request
+% for a new package to be includade.  (We apologize for any inconvenience,
+% but we cannot maintain these documents indefinitely without such restrictions).
+\usepackage{amssymb,latexsym, amsmath, amsxtra, xy}
+\usepackage[dvips]{graphics}
+
+% The aimpl style file is necessary in order for the latex version
+% to faithfully mimic the appearance of the problem list after it is
+% uploaded. The file aimpl.sty should be in same directory as this file.
+
+\usepackage{aimpl_2eq}
+
+% The problem list should be arranged like a research paper, with
+% introductory material followed be one or more main sections.
+% Do not divide the sections into subsections.
+% Each section could have its own introductory material.
+% The main part of each section is a "problem block" which has the format
+% [[see elsewhere for more documentation]]
+
+% New macros.
+% If at all possible, please do not define any new macros.  Each
+% macro you introduce has the potential to cause problems with the
+% long-term maintenance of the problem list.
+
+\begin{document}
+\title{Braid Groups, Clusters, and Free Probability}
+\author{Edited by Drew Armstrong}
+
+\urlstub{catalancombinatorics}
+
+\maketitle
+
+This document grew out of the workshop Braid Groups, Clusters,
+and Free Probability, which was held at the American Institute of
+Mathematics in Palo Alto, on January 10--14, 2005. The organizers of
+the workshop were Jon McCammond, Alexandru Nica, and Vic Reiner.
+
+What follows is a joint statment of the participants regarding important
+open problems and promising directions for future progress in the
+subject. For further information, including a list of participants and
+participant abstracts, see the AIM webpage www.aimath.org. Jon
+McCammond also maintains a webpage with resources related to these
+topics [mccammond:webpage].
+
+The goal of this workshop was to bring together mathematicians from
+different backgrounds to discuss a central theme which has recently
+emerged in many different contexts.  Given a finite Coxeter group $W$,
+define the corresponding Catalan number
+$$
+Cat(W)=\prod_{i=1}^n \frac{h+e_i+1}{e_i+1},
+$$
+where $h$ is the Coxeter number, and $e_1,e_2,\ldots,e_n$ are the
+exponents of the group $W$ (for notation related to Coxeter groups
+and reflection groups, we refer to [humphries]). When $W$ is
+the symmetric group $A_{n-1}$, this is just the usual Catalan number
+$Cat(A_{n-1})=\frac{1}{n+1}\binom{2n}{n}$. As with the classical Catalan
+numbers, these type $W$ Catalan numbers have a wealth of combinatorics
+associated with them, and they have recently appeared independently in
+several different fields, including Garside structures for braid groups,
+cluster algebras, and free probability.
+
+This Catalan combinatorics describes extensive and surprising
+enumerative correspondences between these subjects, which in most cases
+are still unexplained (the term ``numerology'' is often used). A common
+goal of the workshop participants is to understand these concurrences,
+and search for underlying theories which can explain the combinatorics.
+
+This is an exciting, emerging subject with many fundamental questions
+yet to be solved. We present here a collection of important and
+interesting questions offered by the participants. Many problems have
+attributions. These are to the person who brought the problem to my
+attention, and are used for the purpose of facilitating communication. No
+attempt has been made to track down the original source. A more detailed
+history can likely be found by contacting the contributor of the problem.
+
+\section{Central Questions}
+
+There are three main families of combinatorial structures counted by
+the Catalan combinatorics, which arise independently in three different
+subjects.
+
+
+(1) Let $W$ be a finite Coxeter group, and let $T$ be the generating
+set of all reflections ($T$ is defined as the set of conjugates of
+a standard Coxeter generating set $S$). Let $\ell$ denote the word length
+on $W$ with respect to $T$. This function induces a partial order on $W$
+by setting $a\leq b$ whenever $\ell(b)=\ell(a)+\ell(a^{-1}b)$. The Hasse
+diagram of this poset is just the Cayley graph of $(W,T)$, directed away
+from the identity element $1$.
+
+Let $c$ be a Coxeter element of $W$. The interval $[1,c]$ in
+this poset is called the poset of noncrossing partitions
+$NC_W$. (This is well-defined, since Coxeter elements form a conjugacy
+class.) $NC_W$ in its full generality was defined independently
+by David Bessis [bessis:dual] and Tom Brady and Colum Watt
+[brady,brady-watt:kpi1] in order to study the geometric group theory
+of braid groups. However, important special cases of the generalization
+had been considered earlier by Vic Reiner [reiner] and Philippe Biane
+[biane]. In the type $A$ case, Roland Speicher showed that this poset
+lies at the heart of the subject of free probability in operator algebras
+[speicher:survey]. The study of the type $A$ case is classical and
+goes back to Kreweras [kreweras]. The survey paper [simion]
+by Rodica Simion gives a comprehensive view of the classical noncrossing
+partitions, and the survey [mccammond:noncrossing] by Jon McCammond
+gives a more modern overview of the subject.
+
+(2) For every finite Coxeter group $W$, Sergey Fomin and Andrei
+Zelevinsky have defined a simplicial complex $\Delta_W$ called the
+simplicial associahedron of type $W$. Let $\Phi$ be the root
+system corresponding to $W$, and let $\Phi^+$ and $\Pi$ be a choice
+of positive roots and simple roots, respectively. Then $\Delta_W$ is
+defined as a flag complex on the set of  almost positive roots
+$\Phi_{\geq -1}= \Phi^+ \cup (-\Pi)$. Their original construction
+[fomin-zelevinsky:ysystems] applied only to crystallographic
+root systems, but the definition may be uniformly generalized to all
+root systems (see the notes [fomin-reading:survey]). The complex
+$\Delta_W$ generalizes the well-known associahedron (or Stasheff polytope)
+in type $A$, and the well-known cyclohedron (or Bott-Taubes polytope)
+in type $B$. For more information, see Section 6.
+
+Related to this are the Cambrian lattices of Nathan Reading
+[reading:cambrian]. To each orientation of the Coxeter diagram of
+$W$, he associates a lattice which is a quotient of the weak order on
+$W$. Conjecturally, each of these Cambrian lattices is an orientation
+of the $1$-skeleton of the simple associahedron, the dual complex
+to $\Delta_W$. Cambrian lattices may be regarded as a generalization of
+the classical Tamari lattices, and this idea has also been considered
+by Hugh Thomas in type $B$ [thomas].
+
+
+(3) In the case that $W$ is a Weyl group (that is, a crystallographic
+Coxeter group), Postnikov has suggested how to define a poset of
+nonnesting partitions $NN_W$ (see remarks in [reiner]). Given
+a crystallographic root system $\Phi$ with positive roots $\Phi^+$,
+the root order $(\Phi^+,\leq)$ is a partial order on $\Phi^+$,
+where $\alpha\leq\beta$ if and only if $\beta-\alpha$ is in the positive
+integer span of $\Pi$.
+
+To each antichain $A$ (set of pairwise-incomparable elements) in
+the root order, associate the vector subspace $\cap_{\alpha\in A}
+\alpha^{\perp}$, which is the intersection of the orthogonal hyperplanes
+to the corresponding roots. Then $NN_W$ is defined as the poset of
+antichains under reverse inclusion of subspaces.
+
+The antichains may also be interpreted as order ideals (or order
+filters) in the root order, and Cellini and Papi have shown that these
+are in bijection with nilpotent ideals of a Borel subalgebra of the
+corresponding semisimple Lie algebra [cellini-papi]. One may define
+a different partial order on the antichains via inclusion of ideals,
+and this poset describes the structure of the chambers within the dominant
+cone of the Shi hyperplane arrangement [shi].
+
+
+\begin{problemblock}
+
+\begin{problem}[1.1]
+Explain the numerology. The cardinality of $NC_W$, the cardinality of
+$NN_W$ and the number of facets of $\Delta_W$ are all equal to the Catalan
+number $Cat(W)$. The rank numbers of $NC_W$, the height numbers of $NN_W$
+(in general, $NN_W$ is not graded), and the $h$-vector of $\Delta_W$ are
+all the same, given by the Narayana numbers (for which there is no
+known closed formula, in general).
+\end{problem}
+
+\begin{distinguishedremark}
+ The enumerative coincidences are quite
+extensive, and quite mysterious, as there is  still no theoreretical
+connection between these objects.  In fact, only for $NN_W$ and its
+relatives is there any proof whatsoever of the enumerative formulas
+that is not case-by-case, using the finite type classification.
+\end{distinguishedremark}
+\end{problemblock}
+
+\begin{problemblock}
+\begin{problem}[1.2]
+Find bijections between these objects which preserve the numerology. Is
+there some theoretical algebraic framework behind the scenes, as
+yet undiscovered? David Bessis has suggested a notion of ``dual''
+Coxeter systems [bessis:dual]. Is there a way to formalize this
+notion? The exponents of $W$ are one below the corresponding degrees of
+the fundamental polynomial invariants of $W$ (see [humphries]). Does
+the number $Cat(W)$ have any significance in an invariant theory context?
+\end{problem}
+
+\begin{remark}
+ There are two remarkable enumerative refinements of the Catalan combinatorics, each in a different direction.
+
+(1) Frederic Chapoton has defined a two variable generating function
+on each of the three main families (the $M$-triangle on noncrossing
+partitions, the $F$-triangle on the associahedron, and the $H$-triangle
+on nonnesting partitions), and conjectured precise algebraic relationships
+between these functions [chapoton:one,chapoton:two]. This gives very
+refined enumerative correspondences between these objects, and is strong
+evidence for the existence of hidden structural relationships. Explain
+Chapoton's formulas.
+
+(2) Christos Athanasiadis and Vic Reiner have described an enumerative
+correspondence between $NC_W$ and $NN_W$ that refines the Narayana numbers
+[athanasiadis-reiner]. Both of these posets may be injected into the
+lattice of hyperplane intersections $\Pi_W$ of the corresponding Coxeter
+arrangement. For $\pi$ in $NC_W$ let $f(\pi)$ be the fixed subspace
+of $\pi$, and for $ A$ in $NN_W$, let $g( A)$ be the intersection of
+hyperplanes $\cap_{\alpha\in A} \alpha^{\perp}$, as before. The result
+states that the filters of $f$ and $g$ over any $W$-orbit in $\Pi_W$
+are equinumerous.
+
+The proof is case-by-case, using computer in the exceptional types. Find
+a theoretical proof. Is there a natural statistic on $\Delta_W$ that
+agrees with this refinement of the Narayana numbers? Is there a way to
+express this statistic within the context of Chapoton's $M$-triangle,
+$F$-triangle and $H$-triangle generating functions?
+\end{remark}
+
+\begin{remark}The recent work of Nathan Reading on Coxeter-sortable elements
+[reading] gives an explicit bijection between $NC_W$ and the
+facets of $\Delta_W$, however the proof of this bijection is currently
+case-by-case (see Problem 3.2). Also, Tom Brady and Colum
+Watt have given a new definition of $\Delta_W$ in terms of noncrossing
+partitions [brady-watt]. This may provide some connection between
+the structure of $NC_W$ and $\Delta_W$.
+\end{remark}
+
+\end{problemblock}
+
+
+\begin{problemblock}
+
+\begin{problem}[1.3]
+What are the largest natural domains of definition for the families $NC_W$, $NN_W$ and $\Delta_W$, and for their corresponding applications?
+\end{problem}
+
+\begin{remark}
+In a sense, the broadest setting possible for the numerology is  finite
+groups generated by pseudoreflections. (A pseudoreflection is a unitary
+operator on an $n$-dimensional complex vector space whose eigenvalues
+are $0$ with multiplicity $n-1$, and $-1$ with multiplicity $1$.) It is
+a classical result of Shephard and Todd that the ring of invariants of
+a group $W$ is a polynomial ring precisely when the group is of this
+type. And in this case the sequence of degrees $d_1,d_2,\ldots,d_n$
+of fundamental invariants is unique [shephard-todd].
+
+In the general (complex) case, David Bessis suggests that the Catalan number should be
+$$
+Cat(W)= \prod_{i=1}^n  \frac{h+d_i}{d_i},
+$$
+where we set $h$ equal to the highest degree $d_n$. This agrees with our earlier definition in the real types. However, this may apply only when $W$ is a duality group (or a well-generated group), since otherwise $Cat(W)$ may fail to be an integer. See the paper [bessis:complex] by David Bessis for more information.
+\end{remark}
+
+\begin{remark}
+The noncrossing partitions are currently the most general of the Catalan families. The poset $NC_W$ is defined for all finite Coxeter groups, and the definition makes sense in principle for any finitely generated Coxeter group (although the definition may not be unique when $W$ is infinite [mccammond-etal]). David Bessis and Ruth Corran gave a combinatorial realization of $NC_W$ for an infinite class of complex reflection groups in [bessis-corran], and Bessis has suggested a uniform definition for $NC_W$ whenever $W$ is a well-generated complex reflection group [bessis:complex].
+\end{remark}
+
+\begin{remark}
+Can one generalize free probability beyond types $A$ and $B$? The combinatorics of free probability is naturally expressed in terms of the type $A$ noncrossing partitions [speicher:survey], and some work has been done on a type $B$ free probability [biane-goodman-nica]. Does it make sense to generalize further? One would presumably need to express Roland Speicher's work on multiplicative functions [speicher] in the completely general case. See Problem 5.1.
+\end{remark}
+
+\begin{remark}
+Explain the theory of cluster algebras in infinite types. See Problem 6.5.
+\end{remark}
+
+\begin{remark}
+ The most glaring case of this problem is the seeming dependence of $NN_W$ and its relatives on the crystallographic structure of $W$. When $W$ is a Weyl group, there are amazing enumerative correspondences with the other Catalan objects (see the remarks following Problem 1.1). But there is currently no idea how to generalize these objects to the noncrystallographic types.
+
+To what extent can the nonnesting partitions and root order be generalized to noncrystallographic types? Presumably, there are objects which can not be generalized in their current form, such as Lie algebras and affine hyperplane arrangements. Generalize where possible, and explain where there are essential barriers to this generalization. Cathy Kriloff and Arun Ram have dealt with some of these issues in studying the representation theory of noncrystallographic types [kriloff-ram].
+
+Frederic Chapoton's conjecture gives a way to define the $H$-triangle for all finite Coxeter groups [chapoton:two]. What object is it counting in the noncrystallographic types?
+\end{remark}
+
+\end{problemblock}
+
+\begin{problemblock}
+
+\begin{problem}[1.4]
+What are the most natural generalizations of the families $NC_W$, $NN_W$, and $\Delta_W$? Classical combinatorics is full of enumerative generalizations of the Catalan numbers. Which of these is relevant in the reflection group setting?
+\end{problem}
+
+\begin{distinguishedremark}
+Define the Fuss-Catalan numbers
+$$
+Cat^{(k)}(W)= \prod_{i=1}^n \frac{kh+e_i+1}{e_i+1},
+$$
+where $k$ is a positive integer. In type $A$, these generalize the classical Fuss numbers and the Catalan numbers [fomin-reading,hilton-pederson]. As seen from the formula, $Cat^{(k)}(W)$ is a very natural generalization of the Catalan numbers in the reflection group context. Recently these numbers  have shown up in all three of the Catalan families.
+\end{distinguishedremark}
+
+\begin{remark}
+Drew Armstrong has defined a generalization of the noncrossing partitions $NC_W^{(k)}$, called the $k$-divisible noncrossing partitions [armstrong]. This is a graded join-semilattice which is counted by $Cat^{(k)}(W)$. Call the rank numbers the Fuss-Narayana numbers. In types $A$ and $B$, $NC_W^{(k)}$ is isomorphic to the poset of $k$-divisible noncrossing set partitions (partitions in which each block has size divisible by $k$).
+\end{remark}
+
+\begin{remark}
+Sergey Fomin and Nathan Reading have defined a simplicial complex $\Delta^{(k)}_W$ which is a generalization of the simplicial associahedron [fomin-reading]. The facets of $\Delta^{(k)}_W$ are counted by the Fuss-Catalan numbers, and the entries of the $h$-vector are given by the Fuss-Narayana numbers. In types $A$ and $B$, this complex is defined in terms of $(k+2)$-angulations of a regular polygon, and has been studied independently by Eleni Tzanaki [tzanaki].
+\end{remark}
+
+\begin{remark}
+The Fuss-Catalan numbers appear in many places in the $NN_W$ family of objects. Let $W$ be a finite Weyl group. Christos Athanasiadis suggested the definition of the Fuss-Narayana numbers in this context, and proved that these numbers count several objects, including positive regions in a certain affine deformation of the Coxeter hyperplane arrangement, as well as co-filtered multichains of ideals in the root order [athanasiadis:cat,athanasiadis:nar]. Mark Haiman has shown that the Fuss-Catalan numbers count orbits in the quotient $\check{Q}/(kh+1)\check{Q}$ of the coroot lattice $\check{Q}$ [haiman:conjectures], and Eric Sommers has encountered these numbers in the study of Lie algebras [sommers].
+\end{remark}
+\end{problemblock}
+
+\begin{problemblock}
+\begin{problem}[1.5]
+Repeat Problems 1.1 and 1.3 in this more general setting. Any theoretical relationships found between $NC_W$, $NN_W$, and $\Delta_W$, must generalize to explain the Fuss-Catalan combinatorics. Given that $Cat^{(k)}(W)$ is naturally defined in terms of the exponents of $W$, is there an underlying algebraic framework that explains these numbers?
+\end{problem}
+
+\begin{remark}
+Extend Frederic Chapoton's $M$-triangle, $F$-triangle, and $H$-triangle to the Fuss-Catalan case. (Eleni Tzanaki has worked on this for the $H$-triangle.)
+\end{remark}
+
+\begin{remark}
+What is the significance of these Fuss-Catalan objects in applications, for instance in Garside Structures, cluster algebras, or free probability? For example, the $k$-divisible noncrossing partitions may have some application to Problem 5.3, in free probability.
+\end{remark}
+
+\begin{remark}
+Is there a natural generalization of the poset of nonnesting partitions $NN^{(k)}_W$? In type $A$, one may take $k$-divisible nonnesting set partitions under refinement (mimicking $NC_{A_{n-1}}^{(k)}$). In the general case, perhaps this is isomorphic to a partial order on co-filtered multichains of ideals in the root order.
+\end{remark}
+
+\begin{remark}
+Christos Athanasiadis and Stavros Garoufallidis have suggested a $q$-version of the Catalan combinatorics. See Problem 2.1 below.
+\end{remark}
+
+\end{problemblock}
+
+\section{Enumerative Combinatorics}
+
+Define the $q$-Fuss-Catalan numbers
+$$
+q-Cat^{(k)}(W)= \prod_{i=1}^n \frac{[kh+e_i+1]_q}{[e_i+1]_q},
+$$
+where $[n]_q=q+q^2+\cdots + q^n$ is the usual $q$-analogue of the positive integer $n$.
+
+
+
+\begin{problemblock}
+\begin{problem}[2.1] Show that $q-Cat^{(k)}(W)$ is a polynomial in $q$ with nonnegative integer coefficients.
+\end{problem}
+
+\begin{distinguishedremark}
+This is known in the classical $A$, $B$, and $D$ cases. In type $A$ with $k=1$, this coincides (up to a power of $q$) with the $q,t$-Catalan number of Adriano Garsia and Mark Haiman [garsia-haiman], with the specialization $t=1/q$.
+\end{distinguishedremark}
+
+\begin{remark}
+\by{D. Bessis} Does the same statement hold when $W$ is a complex finite reflection group, with the fundamental degrees $d_i$ subsituted for the $e_i+1$, and the highest degree substituted for $h$?
+\end{remark}
+
+\begin{remark}
+\by{V. Reiner} Conjecture: Let $c$ be a Coxeter element of $W$, and let $\zeta$ be a primitive $d$th root of unity, where $d$ divides the Coxeter number $h$. Then $\zeta-Cat^{(1)}(W)$ is the number of elements of $NC_W=[1,c]$ that are invariant under conjugation by $c^{h/d}$.
+\end{remark}
+
+\begin{remark}
+\by{S. Fomin, V. Reiner} Are there corresponding $q$-analogues of other Catalan statistics? For instance, is the expression
+$$
+q-Cat^{(k)}_+(W)=\prod_{i=1}^n \frac{[kh+e_i-1]_q}{[e_i+1]_q}
+$$
+also a polynomial in $q$ with nonnegative integer coefficients? Is there a refinement of
+$q-Cat^{(k)}(W)$ as a sum of polynomials in $q$ with nonnegative integer coefficients, generalizing the $q=1$ refinement by Fuss-Narayana numbers?
+\end{remark}
+
+\begin{remark}
+Can one extend Frederic Chapoton's $M$-triangle, $F$-triangle, and $H$-triangle to the $q$-Fuss-Catalan case?
+\end{remark}
+
+\end{problemblock}
+
+\begin{problemblock}
+
+\begin{problem}[2.2]
+\by{C. Kriloff, V. Reiner} This is a possible systematic approach to Problem 2.1. As mentioned, in type $A$ with $k=1$, the $q$-Fuss-Catalan numbers correspond (up to a power of $q$, and specialized at $t=1/q$) with the $q,t$-Catalan numbers of Garsia and Haiman, which are given by the $q,t$-bigraded Hilbert series for the sign-isotypic component of the ring of diagonal harmonics $\C[V\oplus V]/(\C[V\oplus V]_+^W)$ [haiman]. Can this situation be generalized to other $W$?
+\end{problem}
+
+\begin{distinguishedremark}
+When $W$ is a symmetric group $A_{n-1}$, it is known that the action
+of $W$ on the (ungraded) diagonal harmonics has the same irreducible
+decomposition as the action of $W$ on the ``finite torus'' $Q/(h+1)Q$,
+where $Q$ is the root lattice. Mark Haiman noted that this does not hold
+in type $B$ [haiman]. However, Iain Gordon has shown that the problem
+may be feasible for general $W$, since it is possible to take a further
+quotient which does give the right combinatorics [gordon].
+\end{distinguishedremark}
+
+\end{problemblock}
+
+\begin{problemblock}
+ The following are two elementary combinatorial facts, for which it would be nice to have elementary explanations. Both problems are unique to type $B$, and concern centrally symmetric structures on polygons (structures that are invariant under the antipodal map).
+
+\begin{problem}[2.3] \by{S. Fomin}
+Among the centrally symmetric partial $(k+2)$-angulations
+of a regular $(2kn+2)$-gon containing $i$ orbits (under the antipodal
+map) of $k$-admissible chords [fomin-reading,tzanaki], the proportion
+that contain a diameter is $i/n$. (A $k$-admissible chord is one that
+may be present in a full $(k+2)$-angulation.) Give an elementary proof.
+\end{problem}
+\end{problemblock}
+
+\begin{problemblock}
+\begin{problem}[2.4] \by{D. Armstrong}
+Among the centrally symmetric $k$-divisible noncrossing partitions of
+a $2kn$-gon with $i$ orbits (under the antipodal map) of nonzero blocks
+[armstrong, reiner], the proportion that contain a zero block is $i/n$.
+(A zero block is a block that contains a diameter.) Give an elementary proof.
+\end{problem}
+
+\begin{remark}
+Problems 2.3 and 2.4  are strikingly similar. The first is a statement about the
+$f$-numbers of the complex $\Delta_{B_n}^{(k)}$ [fomin-reading], and
+the second is a statment about the $h$-numbers of this complex. The
+similarity between these problems, and the fact that they both have
+been resistant to elementary proofs, suggests that there may be some
+connection. However, no connection between $\Delta_{B_n}^{(k)}$ and
+$NC_{B_n}^{(k)}$ is currently known. (See Problem 1.4.)
+\end{remark}
+
+\end{problemblock}
+
+\begin{problemblock}
+Suppose that a stream has $2n$ bridges across it. A classical
+meander is (the homotopy class of) a closed path which crosses
+each bridge once without intersecting itself. On each side of the
+stream, the  meander is given by a noncrossing pairing of the set
+$[2n]=\{1,2,\ldots,2n\}$. Noncrossing pairings are naturally in bijection
+with type $A$ noncrossing partitions of the set $[n]$.
+
+
+Every ordered pair of noncrossing partitions defines a path (with possibly
+multiple components) which crosses each bridge exactly once. There is a
+bijection which says that the meanders (the paths with only one connected
+component) correspond exactly to pairs of noncrossing partitions that
+are maximally separated in the Hasse diagram of $NC_{A_{n-1}}$ (they
+are diameters in the graph theoretical sense).
+
+
+\begin{problem}[2.5] \by{H.T. Hall}
+ Does this bijection suggest a new way to count meanders?
+\end{problem}
+\end{problemblock}
+
+
+\begin{problemblock}
+\begin{problem}[2.6]
+One may also use this bijection to define meanders of type $W$ (they are the ordered diameters of the Hasse diagram of $NC_W$). Is there some combinatorial object that this corresponds to? Is there a type $B$ meander?
+\end{problem}
+
+\begin{remark}
+\by{A. Nica, J. Scott} In type $A$, one may build a ``meander determinant'' which is known to factor as a product of Chebyshev polynomials [difrancesco]. Similarly, one may define a type $W$ meander determinant. What factorization properties does it have?
+
+Meanders are related to chromatic polynomials of graphs, and the Temperley-Lieb algebra [cautis-jackson]. What is the significance of type $W$ meanders in this context?
+\end{remark}
+
+\end{problemblock}
+
+\section{Reflection Groups}
+
+\begin{problemblock}
+Let $W$ be a finite Coxeter group, and let $T$ be the generating set of all reflections, as in Section 1. Again, let $\ell$ denote the word length on $W$ with respect to $T$. This is often called the 
+absolute length on $W$. In general, for all $u,v$ in $W$, we have the triangle inequality $\ell(uv)\leq \ell(u)+\ell(v)$.
+
+Define the absolute length poset, as before, by setting $a\leq b$ whenever $\ell(b)=\ell(a)+\ell(a^{-1}b)$. This is a partial order on $W$ whose Hasse diagram is the Cayley graph of $W$ with respect to $T$. The poset is graded with rank function given by $\ell$.
+
+
+\begin{problem}[3.1] \by{V. Reiner}
+What is the topology of this poset? In types $A$ and $B$ is there an $EL$-labelling which exhibits a shelling of the order complex?
+\end{problem}
+
+\begin{distinguishedremark}
+ It is known that the absolute length poset is not shellable in type $D$. Perhaps this can be fixed in a uniform way by considering only the subposet which is the order ideal of parabolic Coxeter elements (elements of $W$ which are a Coxeter element in some parabolic subgroup)
+\end{distinguishedremark}
+
+\begin{remark}
+The noncrossing partitions $NC_W$ are defined as an interval in the absolute length poset. Recent work of Brady and Watt [brady-watt] seems to give an $EL$-labelling for $NC_W$. Do their methods generalize to the problem above?
+\end{remark}
+
+\end{problemblock}
+
+\begin{problemblock}
+Let $W$ be a finite Coxeter group. In [reading], Nathan Reading defines the notion of Coxeter-sortability for elements of $W$, relative to some Coxeter element $c$.
+
+There are natural maps $nc$ and $cl$ from the Coxeter-sortable elements of $W$ to the noncrossing partitions $NC_W$, and to the set of clusters of type $W$, respectively. In [reading], these maps are concretely defined, but the proof that they are bijections is case-by-case, using the fact that both objects are known to be counted by the Catalan number $Cat(W)$.
+
+
+\begin{problem}[3.2]\by{N. Reading}
+
+(1) Give a uniform proof that the Coxeter-sorted elements are counted by $Cat(W)$.
+
+(2) Give a uniform proof that the map $nc$ is well-defined.
+
+(3) Give a uniform proof that the maps $nc$ and $cl$ are bijections.
+
+(4) The notion of Coxeter-sortable elements, and the maps $nc$ and $cl$ can be defined for infinite type Coxeter groups. What happens in this case?
+
+\end{problem}
+
+\end{problemblock}
+
+\begin{problemblock}
+
+The Lyashko-Looijenga mapping associates to any complex-valued function on a manifold the polynomial in one variable whose roots are the critical values of the function. The main theorem in [looijenga] states that this mapping is a ramified covering for some families of functions. There is a known relationship between the Lyashko-Looijenga covering of the complex sphere, and the combinatorial cacti of Ian Goulden and David Jackson [goulden-jackson].
+
+Interpret the combinatorics of the type $A$ noncrossing partitions in terms of the Lyashko-Looijenga covering of the sphere. The degree of the covering is $n^{n-2}$, which is also the number of maximal chains in $NC_{A_{n-1}}$. This number is known to count many things, including labelled trees, and cacti.
+
+
+\begin{problem}[3.3]
+\by{D. Bessis, F. Chapoton}
+Do these combinatorics generalize to other types?
+\end{problem}
+
+\end{problemblock}
+
+\begin{problemblock}
+
+\begin{problem}[3.4] \by{D. Bessis}
+Is there a structure theory of Lie groups and algebraic groups that is analogous to the dual braid monoid [bessis:dual]? Is there some dual notion of $BN$-pairs?
+\end{problem}
+\end{problemblock}
+
+
+\section{Garside Structures}
+As mentioned, the lattice of noncrossing partitions $NC_W$ in its full generality was defined by David Bessis [bessis:dual] and Tom Brady [brady] in order to study the Artin group $ A(W)$ corresponding to the Coxeter group $W$. It turns out that the properties of the poset $NC_W$ have many consequences for the group theory, including a nice algorithmic solution to the word and conjugacy problems.
+
+In general, every poset $P$ together with a labelling of the edges in its Hasse diagram generates a monoid $M(P)$ and a group $G(P)$. When this labelling has certain properties, $P$ is called a combinatorial Garside structure. Having such a Garside structure gives a powerful tool for studying the monoid $M(P)$ and the group $G(P)$. This is an emerging subject with interest to combinatorics and group theory. The survey article [mccammond:garside] by Jon McCammond gives a good introduction to these topics.
+
+\begin{problemblock}
+\begin{problem}[4.1] \by{R. Charney} Questions about classification.
+
+(1) Given an arbitrary poset $P$, when can it be given a Garside labelling? When such a labelling exists, say that $P$ is a Garside poset.
+
+(2) Given a Garside poset $P$, what are the relationships between its inequivalent Garside labellings? When does $P$ have a unique Garside labelling?
+
+(3) Given a poset with an edge labelling, when can this be embedded in a Garside structure? When do the corresponding monoids/groups embed? What are the minimal obstructions to doing this?
+
+\end{problem}
+\end{problemblock}
+
+\begin{problemblock}
+\begin{problem}[4.2] \by{P. Dehornoy}
+
+(1) Given a cancellative, finitely-generated monoid $M$ in which lcm's exist, is $M$ necessarily a Garside monoid? That is, does there exist a Garside element $\Delta$ in $M$?
+
+(2) In the case of Artin groups, the nicest Garside structures come from the Cayley graph of the corresponding Coxeter group. Is there a way to systematize this? Is there some notion of a ``Coxeter group'' corresponding to each Garside group?
+
+(3) Let $M$ be a Garside monoid with Garside element $\Delta$, and let $\ell$ be a length on $M$ ($M$ is atomic). Is it always true that $\ell(\Delta^k)\leq Ck\left|\Delta\right| $ for some constant $C$?
+
+\end{problem}
+\end{problemblock}
+
+\begin{problemblock}
+In general, the most difficult property of a Garside structure to establish is the lattice property. Call an edge-labelled poset a quasi-Garside structure if it satisfies all properties except the lattice property.
+
+There is a large natural source of quasi-Garside structures. Let $G$
+be a group, generated by a finite, conjugate-closed generating set
+$T$. Then any interval in the Cayley graph of $G$ with respect to $T$
+is a quasi-Garside structure. Many of these have the lattice property,
+and many do not. 
+
+
+\begin{problem}[4.3]
+\by{J. McCammond}
+Are there natural conditions on $G$ and $T$ that imply
+the lattice property? Find a natural class of these posets in which the
+presence or absence of the lattice property can be explained.
+\end{problem}
+
+\begin{remark}
+Tom Brady and Colum Watt [brady-watt] have recently given a uniform proof that the noncrossing partitions $NC_W$ are lattices. Their proof depends on the realization of $W$ as a real reflection group. Is there a class of quasi-Garside structures in which the lattice property can be seen only to depend on the group structure?
+\end{remark}
+\end{problemblock}
+
+\begin{problemblock}
+As above, let $G$ be a group generated by $T$, where $T$ is finite and closed under conjugation. Then every interval in the Cayley graph of $(G,T)$ is a locally self-dual poset (every interval in the poset is self-dual).
+
+In particular, to each element $g$ of $G$, associate the poset $P_g$ which is the interval $[1,g]$ in the Cayley graph of $(G,T)$. Note that $P_g$ and $P_h$ are isomorphic whenever $g$ and $h$ are conjugate. Now, associate to each $P_g$ its Ehrenborg quasisymmetric function
+$$
+F(P_g)= \sum_k
+\sum_{1\leq g_0\leq g_1\leq\cdots\leq g_k\leq g}
+x_1^{\ell(g_0^{-1}g_1)} x_2^{\ell(g_1^{-1}g_2)}\cdots x_k^{\ell(g_{k-1}^{-1}g_k)}.
+$$
+It is known that the Ehrenborg function of a self-dual poset must, in fact, be a symmetric function (see [stanley]). So $F$ is a map from conjugacy classes of $G$ to the ring of symmetric functions
+
+
+\begin{problem}[4.4]
+\by{D. Armstrong}
+What is the structure of this map? Does it preserve some Hopf algebra structure?
+\end{problem}
+
+\end{problemblock}
+
+\section{Free Probability}
+Free probability, initiated by Dan Voiculescu, is a subject in functional analysis which has been used successfully to study von Neumann algebras. It is a noncommutative analogue of probability in which the role of random variables is played by operators in some $*$-algebra (typically a $C^*$-algebra). The theory naturally describes the asymptotics of large random matrices, as well as the asymptotics of representations of large symmetric groups.
+
+Roland Speicher showed that the combinatorics of free probability is governed by the lattice of type $A$ noncrossing partitions, in a role which is analogous to the role played by the lattice of unrestricted set partitions in classical probability. Many of the natural transforms on free algebras of random variables can be understood in terms of Mobius inversion in the incidence algebra of $NC_{A_{n-1}}$. See the survey [speicher:survey] for more information.
+
+\begin{problemblock} 
+Philippe Biane, Fred Goodman, and Alexandru Nica have defined a type $B$
+analogue of free probability [biane-goodman-nica]. The definition
+has been motivated by the combinatorics, and there is currently no model
+of this theory (as the large random matrices are a model for type $A$
+free probability).
+
+
+\begin{problem}[5.1] \by{F. Goodman, P. Sniady}
+Find a natural model for type $B$ free probability, which motivates the combinatorics. Is there a corresponding notion of free probability in other types?
+\end{problem}
+
+\begin{remark} Many of the formulas of free probability depend on the fact that there is an infinite sequence of type $A$ noncrossing partition lattices $NC_{A_{n-1}}$, including, in particular, the formulas involving multiplicative functions [speicher]. Type $B$ multiplicative functions were described by Vic Reiner [reiner]. Is it possible to say something about free probability for an exceptional type $W$, where there is no infinite sequence?
+\end{remark}
+
+\end{problemblock}
+
+\begin{problemblock}
+Let $( A,\varphi)$ be a $*$-probability space. That is, $ A$ is some $*$-algebra, and $\varphi$ is a linear functional on $ A$ which plays the role of ``expectation''. Let $\C_0\langle\langle z_1,\ldots,z_s\rangle\rangle$ denote the set of power series in $s$ noncommuting variables which have zero constant term. For each $s$-tuple of elements $a_1,,\ldots,a_s$ in $ A$, there is a function $R_{a_1,\ldots,a_s}$ called the  $R$-transform, which is an element of $\C_0\langle\langle z_1,\ldots,z_s\rangle\rangle$. See [nica-speicher:ntuples] for details.
+
+There is a unique binary operation $\star_s$ defined on $\C_0\langle\langle z_1,\ldots,z_s\rangle\rangle$ with the property that for any two families $\{a_1,\ldots,a_s\}$ and $\{b_1,\ldots,b_s\}$ of freely independent random variables, we have
+$$
+R_{a_1,\ldots,a_s} \star_s R_{b_1,\ldots,b_s} = R_{a_1 b_1,\ldots,a_s b_s}.
+$$
+The operation $\star_s$ is associative, and has a unit $\Delta_s(z_1,\ldots,z_s)= z_1+\cdots +z_s$. In [nica-speicher:ntuples], Alexandru Nica and Roland Speicher show that, in general, the coefficients of $f\,\star_s \,g$ can be described combinatorially, using a summation over noncrossing partitions of type $A$.
+
+
+\begin{problem}[5.2]
+\by{A. Nica} 
+Describe the structure of the group of
+invertible elements in the
+semigroup
+$( \C_0\langle\langle z_1,\ldots,z_s\rangle\rangle,\star_s )$.
+\end{problem}
+
+\begin{remark}
+The answer is known in the case $s=1$. This is the only value of $s$
+for which $\star_s$ is commutative. Here, $\C_0\langle\langle
+z_1,\ldots,z_s\rangle\rangle$ is just $\C_0[[z]]$, the set of power
+series with zero constant term. In [nica-speicher:fourier], Nica and
+Speicher define an isomorphism $\F$ (the free Fourier transform)
+between the group of invertible elements in $(\C_0[[z]], \star_1)$
+and the group of invertible elements in $(\C_0[[z]], \cdot)$, under the
+usual multiplication of power series.
+\end{remark}
+
+\begin{remark}
+In the case $s=1$, the map $\F$ provides a connection between the $R$-transform and the $S$-transform of Voiculescu. More precisely, we have $\F(R_a)=S_a$ for any element $a\in A$ such that $\varphi(a)\neq 0$.
+
+As mentioned, there is a version of the $R$-transform when $s>1$, but it is not known how to define an $S$-transform in this case. Find a multi-variable version of the $S$-transform. One way to approach this problem would be to find an analogue of the map $\F$ in this case.
+\end{remark}
+
+\end{problemblock}
+
+\begin{problemblock}
+\begin{problem}[5.3] \by{A. Nica}
+Let $u$ be a unitary element of a $*$-probability space $( A,\varphi)$. Suppose $u$ has order $k$ and that $\varphi(u^i)=0$ for $1\leq i< k$. Let $\kappa_n$ denote the multilinear cumulant functionals of $( A,\varphi)$.
+
+Give a combinatorial way to compute the cumulants in $u$ and $u^*$. Equivalently, give a formula for the $R$-transform of $(u,u^*)$.
+\end{problem}
+
+\begin{remark} The answer is known for $k=2$ and $k=\infty$. When $k=2$, the only nonvanishing cumulants are given by the Catalan numbers $\kappa_{2n}(u,u,\ldots,u)=(-1)^{n-1} Cat(A_{n-1})$. When $k=\infty$, the only nonvanishing cumulants are of the form
+$$
+\kappa_{2n}(u,u^*,\ldots,u,u^*)\quad\text{ or }\quad \kappa_{2n}(u^*,u,\ldots,u^*,u),
+$$
+ and these are both equal to $(-1)^{n-1}Cat(A_{n-1})$.
+\end{remark}
+\begin{remark} The cumulants may be expressed as a sum over noncrossing set partitions
+$$
+\kappa_n = \sum_{\pi\in NC_n, \pi=\{A_1,A_2,\ldots,A_t\}} \alpha(\pi) \varphi_{A_1}\varphi_{A_2}\cdots \varphi_{A_t}.
+$$
+For finite $k$, and with $u$ as above, the only nonvanishing terms in this sum come from the $k$-divisible noncrossing partitions.
+\end{remark}
+
+\end{problemblock}
+
+\section{Cluster Algebras and Associahedra}
+Cluster algebras were defined by Sergey Fomin and Andrei Zelevinsky to study the phenomena of total positivity and dual canonical bases in semisimple Lie groups. In [fomin-zelevinsky:finitetype] they show that the finite type cluster algebras are described by the Cartan-Killing classification.
+
+Each cluster algebra has an associated simplicial complex, called the cluster complex $\Delta_W$. As before, let $\Phi$ be a (crsytallographic) root system with Weyl group $W$, and let $\Phi^+$ and $\Pi$ be a corresponding choice of positive roots and simple roots, respectively. In [fomin-zelevinsky:ysystems], Fomin and Zelevinsky define a binary relation on the set of almost positive roots $\Phi_{\geq -1}= \Phi^+ \cup (-\Pi)$, called compatibility. Then $\Delta_W$ is defined as the flag complex of pairwise compatible subsets of $\Phi_{\geq -1}$. In types $A$ and $B$, they show that these complexes generalize (the duals of) the classical associahedron and cyclohedron. The number of facets of $\Delta_W$ for finite type $W$ is the Catalan number $Cat(W)$, and the $h$-vector of the complex is given by the Narayana numbers.
+
+When $W$ is a noncrystallographic finite Coxeter group, there is no associated cluster algebra, but the complex $\Delta_W$ can still be defined as a flag complex on the almost positive roots of the corresponding (noncrystallographic) root system, and this complex obeys the same Catalan numerology. However, the only known polytopal realization of the type $W$ associahedron (given by Chapoton, Fomin and Zelevinsky in [chapoton-fomin-zelevinsky]) does not generalize to this case.
+
+For more on the combinatorics of cluster algebras and associahedra, see the notes [fomin-reading:survey].
+
+\begin{problemblock}
+\begin{problem}[6.1] \by{H. Thomas, A. Zelevinsky} When $W$ is a noncrystallographic finite Coxeter group, give a geometric construction that realizes $\Delta_W$ as a convex polytope. 
+\end{problem}
+
+\begin{distinguishedremark}
+There is a realization of $\Delta_W$ in all types as a complete simplicial fan, but it is not clear whether this fan is polytopal in the noncrystallographic types.
+\end{distinguishedremark}
+
+\end{problemblock}
+
+\begin{problemblock}
+\begin{problem}[6.2] \by{A. Zelevinsky}
+In the classical types ($A$, $B$, $C$, and $D$), the associahedron $\Delta_W$ has a visually transparent realization in terms of regular plane polygons and their triangulations. Find a similar interpratation in the exceptional types.
+\end{problem}
+\end{problemblock}
+
+
+
+\begin{problemblock} 
+\begin{conjecture}[6.3] \by{S. Fomin}  The Fomin-Reading generalization of the associahedron $\Delta_W^{(k)}$ (see Problem 1.4) is Cohen-Macaulay, and is homotopy equivalent to a wedge of 
+$$
+Cat^{(k-1)}(W)=\prod_{i=1}^n \frac{(k-1)h +e_i +1}{e_i+1}
+$$
+spheres. This has been proved by Eleni Tzanaki in types $A$ and $B$  using shelling methods [tzanaki].
+
+Moreover, $\Delta_W^{(k)}$ seems to be the skeleton of a polytopal manifold. Can this be realized geometrically?
+\end{conjecture}
+
+\begin{remark}
+This generalizes Problem 6.1 above.
+\end{remark}
+
+\begin{remark}\by{V. Reiner}
+Is the Fomin-Reading complex $k$-Cohen-Macaulay in the sense of Baclawski [baclawski]?
+\end{remark}
+\end{problemblock}
+
+\begin{problemblock}
+
+\begin{problem}[6.4] \by{D. Bessis, C. Kriloff} 
+There is no construction of a cluster algebra in the noncrystallographic finite types.
+What happens when one applies matrix mutations to the Cartan matrix of a noncrystallographic finite Coxeter group? Are there recurrences?
+\end{problem}
+
+\begin{remark}\by{N. Reading, D. Speyer}
+Early calculations suggest that
+there are ``approximate'' recurrences, that is, one returns close to,
+but bounded away from, the original matrix.
+\end{remark}
+
+\end{problemblock}
+
+\begin{problemblock}
+\begin{problem}[6.5]\by{A. Zelevinsky} Describe a classification of infinite type cluster algebras as tame or wild. This should generalize the notions of tame/wild Artin groups, tame/wild quivers, etc.
+\end{problem}
+
+\begin{remark}
+Affine types are certainly tame.
+\end{remark}
+
+\end{problemblock}
+
+
+
+REFERENCES
+
+[armstrong]
+D. Armstrong, $k$-Divisible noncrossing partitions for Coxeter groups, in preparation.
+
+[athanasiadis:cat]
+C. Athanasiadis, Generalized Catalan numbers, Weyl groups and arrangements of hyperplanes, Bull. London Math. Soc. {36} (2004), 294--302.
+
+[athanasiadis:nar]
+C. Athanasiadis, On a refinement of the generalized Catalan numbers for Weyl groups, Trans. Amer. Math. Soc. {357} (2005), 179--196.
+
+[athanasiadis-reiner]
+C. Athanasiadis and V. Reiner, Noncrossing partitions for the group $D_n$, SIAM J. Discrete Math. {18} (2004), 397--417.
+
+[baclawski]
+K. Baclawski, Cohen-Macaulay connectivity and geometric lattices, Europ. J. Combin. {3} (1982), 293--305.f
+
+[bessis:dual]
+D. Bessis, The dual braid monoid, Ann. Sci. Ecole Norm. Sup. {36} (2003), 647--683.
+
+[bessis:complex]
+D. Bessis, Topology of complex reflection groups, (math.GT/0411645), 2004.
+
+[bessis-corran]
+D. Bessis and R. Corran, Non-crossing partitions of type $(e,e,r)$, (math.GR/0403400), 2004.
+
+[biane]
+P. Biane, Some properties of crossings and partitions, Discrete Math. {175} (1997), 41--53.
+
+[biane-goodman-nica]
+P. Biane, F. Goodman and A. Nica, Non-crossing cumulants of type $B$, Trans. Amer. Math Soc. {355} (2003), 2263--2303.
+
+[mccammond-etal]
+N. Brady, J. Crisp, A. Kaul, and J. McCammond, Factoring isometries, poset completions and Artin groups of affine type, in preparation.
+
+[brady]
+T. Brady, A partial order on the symmetric group and new $K(\pi,1)$'s for the braid groups, Advances in Math. {161} (2002), 20--40.
+
+[brady-watt:kpi1]
+T. Brady and C. Watt, $K(\pi,1)$'s for Artin groups of finite type, in Proceedings of the Conference on Geometric and Combinatorial group theory, part I (Haifa 2000), Geom. Dedicata {94} (2002), 225--250.
+
+[brady-watt]
+T. Brady and C. Watt, Lattices in finite real reflection groups, (math.CO/0501502), 2005.
+
+[cautis-jackson]
+S. Cautis, and D.M. Jackson, The matrix of chromatic joins and the Temperley-Lieb algebra, J. Combin. Theory Ser. B {89} (2003), 109--155.
+
+[cellini-papi]
+P. Cellini and P. Papi, ad-nilpotent ideals of a Borel subalgebra II, J. Algebra {258} (2002), 112--121.
+
+[chapoton:one]
+F. Chapoton, Enumerative properties of generalized associahedra, Seminaire Lotharingien de Combinatoire {51} (2004), Article B51b.
+
+[chapoton:two]
+F. Chapoton, Sur le nombre de reflexions pleines dans les groupes de Coxeter finis, (math.RT/0405371), 2004.
+
+[chapoton-fomin-zelevinsky]
+F. Chapoton, S. Fomin, and A. Zelevinsky, Polytopal realizations of generalized associahedra, Canad. Math. Bull. {45} (2002), 537--566.
+
+[difrancesco]
+P.  DiFrancesco, Folding and coloring problems in mathematics and physics, Bull.  Amer. Math. Soc. {37} (2000), 251--307.
+
+[fomin-reading]
+S. Fomin and N. Reading, Generalized cluster complexes and Coxeter combinatorics, in preparation.
+
+[fomin-reading:survey]
+S. Fomin and N. Reading, Root systems and generalized associahedra, lecture notes for the IAS/Park City Graduate Summer School in Combinatorics, 2004.
+
+[fomin-zelevinsky:finitetype]
+S. Fomin and A. Zelevinsky, Cluster algebras II: finite type classification, Invent. Math. {154} (2003), 63-121.
+
+[fomin-zelevinsky:ysystems]
+S. Fomin and A. Zelevinsky, $Y$-systems and generalized associahedra, Math. Ann. {158} (2003), 977-1018.
+
+[garsia-haiman]
+A.M. Garsia and M. Haiman, A remarkable $q,t$-Catalan sequence and $q$-Lagrange inversion, J. Algebraic Combin. {5} (1996), 191-244.
+
+[gordon]
+I. Gordon, On the quotient ring by diagonal harmonics, (math.RT/0208126), 2002.
+
+[goulden-jackson]
+I.P. Goulden and D.M. Jackson, The combinatorial relation between trees, cacti, and certain connection coefficients for the symmetric group, Europ. J. Comin. {13} (1992), 357--365.
+
+[haiman:conjectures]
+M. Haiman, Conjectures on  on the quotient ring by diagonal invariants, J. Algebraic Combin. {3} (1994), 17--76.
+
+[haiman]
+M. Haiman, Vanishing theorems and character formulas for the Hilbert scheme of points in the plane, Inv. Math. {149} (2002), 371--407.
+
+[hilton-pederson]
+P. Hilton and J. Pederson, Catalan numbers, their generalization and their uses, Math. Int. {13} (1991), 64--75.
+
+[humphries]
+J. E. Humphreys, Reflection Groups and Coxeter Groups, Cambridge Studies in Advanced Mathematics, vol. 29 (Cambridge Univ. Press, Cambridge, 1990).
+
+[kreweras]
+G. Kreweras, Sur les partitions non croisees d'un cycle, Discrete Math. {1} (1972), 333--350.
+
+[kriloff-ram]
+C. Kriloff and A. Ram, Noncrystallographic Springer correspondences, in preparation.
+
+[looijenga]
+E. Looijenga, The complement of the bifurcation variety of a simple singularity, Inv. Math. {23} (1974), 105--116.
+
+[mccammond:garside]
+J. McCammond, An introduction to Garside structures, survey, see [mccammond:webpage].
+
+[mccammond:noncrossing]
+J. McCammond, Noncrossing partitions in surprising locations, survey, see [mccammond:webpage].
+
+[mccammond:webpage]
+J. McCammond, Associahedra and noncrossing partitions, webpage, www.math.ucsb.edu/$\sim$jon.mccammond/associahedra/.
+
+[nica-speicher:fourier]
+A. Nica and R. Speicher, A `Fourier transform' for multiplicative functions on non-crossing partitions, J. Algebraic Combin. {6} (1997), 141--160.
+
+[nica-speicher:ntuples]
+A. Nica and R. Speicher, On the multiplication of free $n$-tuples of non-commutative random variables, with an appendix: Alternative proofs for the type II free Poisson variables and for the free compression results by D. Voiculescu, Amer. J. Math. {118} (1996) 799--837.
+
+[reading:cambrian]
+N. Reading, Cambrian lattices, math.CO/0402086, 2004.
+
+[reading]
+N. Reading, Clusters, Coxeter-sortable elements and noncrossing partitions, in preparation.
+
+[reiner]
+V. Reiner, Non-crossing partitions for classical reflection groups, Discrete Math. {177} (1997), 195--222.
+
+[shephard-todd]
+G. C. Shephard and J. A. Todd, Finite unitary reflection groups, Canad. J. Math. {6} (1954), 274--304.
+
+[shi]
+J.-Y. Shi, The number of $\oplus$-sign types, Quart. J. Math. Oxford {48} (1997), 375--390.
+
+[simion]
+R. Simion, Noncrossing partitions, Discrete Math. {217} (2000), 397--409.
+
+[sommers]
+E. Sommers, $B$-stable ideals in the nilradical of a Borel subalgebra, math.RT/0303182, 2003.
+
+[speicher:survey]
+R. Speicher, Free probability theory and non-crossing partitions, Seminaire Lotharingien de Combinatoire, {39} (1997), Article B39c.
+
+[speicher]
+R. Speicher, Multiplicative functions on the lattice of non-crossing partitions and free convolution, Math. Ann. {298} (1994), 611--628.
+
+[stanley]
+R. Stanley, Flag-symmetric and locally rank-symmetric partially ordered sets, Elec. J. Combin. {3} (1996), R6.
+
+[thomas]
+H. Thomas, Tamari lattices and noncrossing partitions in type $B$ and beyond, math.CO/0311334, 2003.
+
+[tzanaki]
+E. Tzanaki, Polygon dissections and some generalizations of cluster complexes for the classical reflection groups, math.CO/0501100, 2005.
+
+
+
+\end{document}
