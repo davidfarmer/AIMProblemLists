@@ -5,7 +5,7 @@ mathematics.
 
 ## Dependencies
 
- * Node.js 0.6.x
+ * Node.js 0.8.x
  * Node.js packages defined in `app/package.json`. Install using `npm install`
    in the `app/` directory.
  * CouchDB 1.2.x
