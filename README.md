@@ -22,9 +22,12 @@ The following configuration needs to be added to CouchDB:
     [query_server_config]
     reduce_limit = false
 
+Before running the application, a random secret should be added to
+`app/secrets.js`. Use `app/secrets.js.template` as a template.
+
 ## Installation
 
-1. Install the above dependencies, with the above CouchDB configuration.
+1. Install the above dependencies, with the above configuration.
 2. Install MathJax: `git submodule init; git submodule update`.
 3. Install the CouchApp, which is located in the `couchapp/aimpl` directory. 
 
@@ -32,7 +35,7 @@ The following configuration needs to be added to CouchDB:
 
 4. Start the Node.js application.
 
-        node app/app.js
+        cd app; node app.js
 
 ## Hosted Setup
 
