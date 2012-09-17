@@ -215,6 +215,7 @@ app.get("/", function(req, res) {
       view_item: templates.list.view_item
     };
     var perms = permissions.getPermissions(req.userCtx);
+
     res.render("index", {
       layout: "views/layout.hbs",
         title: "AIM Problem Lists",
