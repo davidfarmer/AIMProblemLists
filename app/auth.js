@@ -73,14 +73,25 @@ exports.setup = function(app, db, secret) {
     });
 
     app.get("/register", function(req, res) {
-      var locals = {
+      /*var locals = {
+        //layout: "views/register.hbs",
         userCtx: req.userCtx,
         title: "AIM Problem Lists",
         breadcrumbs: [
           {url: "./", title: "AIM Problem Lists"},
           {title: "Register"}]
       };
-      res.render("register", {locals: locals});
+      res.render("register", {locals: locals});*/
+      res.render("register", {
+        layout: "views/register.hbs",
+        title: "AIM Problem Lists",
+        userCtx: req.userCtx,
+        breadcrumbs: [
+          {url: "./", title: "AIM Problem Lists"},
+          {title: "Register"}],
+      });
+
+
     });
 
     app.post("/register", function(req, res) {
@@ -94,7 +105,23 @@ exports.setup = function(app, db, secret) {
       else if (form.password !== form.password2) error = "The second password does not match the first.";
       if (error != null) {
         form.error = error;
-        res.render("register", {locals: form});
+        console.log("Registration Error: " + error);
+        //res.render("register", {locals: form});    // Was not working with locals
+        res.render("register", {                     // Changed to work with template
+          layout: "views/register.hbs",
+          title: "AIM Problem Lists",
+          error: error,
+          name: form.name,
+          email: form.email,
+          password: form.password,
+          password2: form.password2,
+          terms: form.terms,
+          //userCtx: req.userCtx
+          //breadcrumbs: [
+          //  {url: "./", title: "AIM PRoblem Lists"},
+          //  {title: "Register"}],
+        });
+
         return;
       }
       bcrypt.genSalt(10, function(err, salt) {
@@ -110,11 +137,26 @@ exports.setup = function(app, db, secret) {
           db.saveDoc(user, function(err, results) {
             if (results.error) {
               form.error = "This email address is already registered.";
-              res.render("register", {locals: form});
-            } else res.render("register_success");
+              res.render("register", {
+                layout: "views/register.hbs",
+                title: "AIM Problem Lists",
+                error: form.error,
+                name: form.name,
+                email: form.email,
+                password: form.password,
+                password2: form.password2,
+                terms: form.terms,
+              });
+
+            } else res.render("register_success", { 
+		     layout: "views/register_success.hbs",
+	             title: "AIM Problem Lists",
+		   });
           });
         });
       });
+
+    console.log("register post");
     });
   }
 };
