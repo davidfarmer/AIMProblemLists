@@ -3,6 +3,7 @@
   <form class="form-fields">
     <p class="name-row"><label>Abbreviation:</label><input type="text" value="{{ name }}" name="name">
     <p class="title-row"><label>Title:</label><input type="text" value="{{ title }}" name="title">
+    <p class="category-row"><label>Category:</label><input type="text" value="{{ category }}" name="category">
     <p><label>Private?</label><input type="checkbox" name="is_private" value="1"{{#is_private}} checked="checked"{{/is_private}}>
     <p><label>Introduction:</label>
     <p><textarea name="intro">{{ intro }}</textarea>
