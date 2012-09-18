@@ -73,15 +73,6 @@ exports.setup = function(app, db, secret) {
     });
 
     app.get("/register", function(req, res) {
-      /*var locals = {
-        //layout: "views/register.hbs",
-        userCtx: req.userCtx,
-        title: "AIM Problem Lists",
-        breadcrumbs: [
-          {url: "./", title: "AIM Problem Lists"},
-          {title: "Register"}]
-      };
-      res.render("register", {locals: locals});*/
       res.render("register", {
         layout: "views/register.hbs",
         title: "AIM Problem Lists",
@@ -95,16 +86,30 @@ exports.setup = function(app, db, secret) {
     });
 
     app.post("/register", function(req, res) {
-      // TODO validation
+      // validation for name, pass, email
+      var NAME_RE = /^[a-zA-Z0-9_\- ]{3,25}$/;
+      function valid_name(name) {
+        return name && NAME_RE.exec(name);
+      }
+
+      var PASS_RE = /^.{3,}$/;
+      function valid_pass(pass) {
+        return pass && PASS_RE.exec(pass);
+      }
+
+      var EMAIL_RE = /^[\S]+@[\S]+\.[\S]+$/;
+      function valid_email(email) {
+        return email && EMAIL_RE.exec(email);
+      }
+
       var form = req.body,
           error = null;
-      if (!form.name) error = "Please enter a name.";
-      else if (!form.email) error = "Please enter an email address.";
-      else if (!form.password) error = "Please enter a password.";
-      else if (!form.terms) error = "Please agree to the terms and conditions.";
+      if (!valid_name(form.name)) error = "Please enter a name.";
+      else if (!valid_email(form.email)) error = "Please enter an email address.";
+      else if (!valid_pass(form.password)) error = "Please enter a password.";
       else if (form.password !== form.password2) error = "The second password does not match the first.";
+      else if (!form.terms) error = "Please agree to the terms and conditions.";
       if (error != null) {
-        form.error = error;
         console.log("Registration Error: " + error);
         //res.render("register", {locals: form});    // Was not working with locals
         res.render("register", {                     // Changed to work with template
@@ -116,9 +121,8 @@ exports.setup = function(app, db, secret) {
           password: form.password,
           password2: form.password2,
           terms: form.terms,
-          //userCtx: req.userCtx
           //breadcrumbs: [
-          //  {url: "./", title: "AIM PRoblem Lists"},
+          //  {url: "./", title: "AIM Problem Lists"},
           //  {title: "Register"}],
         });
 
@@ -156,7 +160,6 @@ exports.setup = function(app, db, secret) {
         });
       });
 
-    console.log("register post");
     });
   }
 };
