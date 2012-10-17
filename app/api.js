@@ -33,7 +33,7 @@ exports.setup = function(app, db) {
       });
       if (!pl) return cb("not found");
       pl = _.clone(pl);
-      pl.versions = docs;
+      pl.versions = docs; 
       var path = pl.path.concat([pl._id]);
       // Retrieve immediate children of problem list, for convenience
       db.view("tree", {
@@ -227,13 +227,17 @@ exports.setup = function(app, db) {
       return [];
     });
   }
-
+  
+  // modify the roles for a problem list
   app.post("/api/:pl/roles", function(req, res, next) {
     getList(req.params.pl, null, function(err, pl) {
-      var perms = getPermissions(req, pl);
-      if (!perms.list.edit) return next();
-      pl.roles = req.body;
-      apiSave(pl, res);
+      // TODO: better way of getting id
+      db.openDoc(pl._id, function(err, doc) {
+        var perms = getPermissions(req, doc);
+        if (!perms.list.edit) return next();
+        doc.roles = req.body;
+        apiSave(doc, res);
+      });
     });
   });
 
