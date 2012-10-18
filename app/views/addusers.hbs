@@ -1,0 +1,28 @@
+<h2>Add Users</h2>
+
+{{ error }}
+
+<div>
+  <form action="/_addusers" enctype="multipart/form-data" method="post" id="adduser-form">
+    <input type="file" name="datafile" multiple="multiple" size="40">
+    <input type="submit" value="Add">
+  </form>
+</div>
+<div>
+  <h3>{{addTitle}}</h3>
+  <ul class="add_user" style="list-style: none;">
+    {{#each addUser}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+</div>
+<div>
+  <h3>{{giveTitle}}</h3>
+  <ul class="give_perm" style="list-style: none;">
+    {{#each givePerm}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+</div>
+
+
