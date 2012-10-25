@@ -1,5 +1,6 @@
 var http = require("http"),
     url = require("url"),
+    bcrypt = require("bcrypt"),
     crypto = require("crypto"),
     child_process = require("child_process"),
     fs = require("fs"),
@@ -99,6 +100,7 @@ app.configure("development", function() {
 });
 
 var getList = require("./api").setup(app, db);
+var apiSave = require("./api").setup(app, db);
 
 var showLogin = function(res) {
   res.writeHead(302, {Location: "/#login"});
@@ -623,6 +625,130 @@ var refreshPDF = function(pl, cb) {
     });
   });
 }
+
+// Mass add a group of people and make them editors/privileged users
+app.get("/_addusers", function(req, res) {
+  res.render("addusers", {
+    layout: "views/addusers.hbs",
+    title: "AIM Problem Lists",
+    userCtx: req.userCtx,
+  });
+});
+
+// get uploaded file, parse the file for users and permissions,
+// add new users, and give users permissions for specific problem list
+app.post("/_addusers", function(req, res) {
+  // get and rename file
+  fs.rename(req.files.datafile.path, "/tmp/newusers", function(err) {
+    if (err) {
+      fs.unlink("/tmp/newusers");
+      fs.rename(req.files.datafile.path, "/tmp/newusers");
+    }
+  });
+
+  fs.readFile("/tmp/newusers", "utf8", function(err, data) {
+    if (err) {
+      res.render("addusers", {
+        layout: "views/addusers.hbs",
+        title: "AIM Problem Lists",
+        userCtx: req.userCtx,
+        error: "Could not open file. " + err,
+      });
+    } else {
+      // Parse the file using newlines and semicolons
+      var lines = data.split("\n");
+      var new_users = new Array();
+     
+      // data layout: Name;email;pw;problemList;privilege
+      for (var i=0; i<lines.length-1; i++) {
+        var splt = lines[i].split(";");
+        new_users[i] = {
+          name: splt[0],
+          email: splt[1],
+          pw: splt[2],
+          problst: splt[3],
+          priv: splt[4]
+        };
+      }
+      
+      // array for messages from add_user and give_perms
+      var addUserMsg = [];
+      var givePermMsg = [];
+
+      // Add users to database, async
+      function add_user(elem, cb) {
+          bcrypt.genSalt(10, function(err, salt) {
+            bcrypt.hash(elem["pw"], salt, function(err, hash) {
+              var email = elem["email"],
+                user = {
+                _id: "org.aimpl.user:" + email,
+                type: "user",
+                name: email,
+                screen_name: elem["name"] || "Anonymous",
+                password: hash
+              };
+              db.saveDoc(user, function(err, results) {
+                if (results.error) {
+                  addUserMsg.push(user["name"] + " is already registered.");
+                  cb(null);
+                }
+                else {addUserMsg.push("Added " + user["name"]); cb(null);}
+              });
+            });
+          }); 
+      }
+
+      // Give the users privileges requested
+      // put in dictionary['org.aimpl.user:email@addr.com'] = 'editor'
+      // the end is editor, priv, or admin
+      function give_perms(elem, cb) {
+        getList(elem["problst"], null, function(err, pl) {
+          db.openDoc(pl._id, function(err, doc) {
+            if (err) cb(msg + '\n' + "Error getting the Problem List: " + elem["problst"] + " Error: " + err);
+            else {
+              var user_id = "org.aimpl.user:" + elem["email"];
+              doc.roles[user_id] = elem["priv"];
+              db.saveDoc(doc, function(err, results) {
+                if (err) cb(err);
+                else {
+                  givePermMsg.push(user_id + " now has permissions: " + elem["priv"] + " on problem list: " + elem["problst"]);
+                  cb(null);
+                }
+              });
+            }
+          });
+        });
+      }
+
+      // complete add_user and give_perms in series
+      async.forEachSeries(new_users, add_user, function(err, msg) {
+        if (err) console.log(err);
+        else {
+          async.forEachSeries(new_users, give_perms, function(err, msg) {
+            if (err) {
+              res.render("addusers", {
+                layout: "views/addusers.hbs",
+                title: "AIM Problem Lists",
+                error: "Could not give permissions.",
+              });
+            }
+            else {
+              res.render("addusers", {
+                layout: "views/addusers.hbs",
+                title: "AIM Problem Lists",
+                addTitle: "New Users:",
+                addUser: addUserMsg,
+                giveTitle: "Set Permissions:",
+                givePerm: givePermMsg,
+              });
+            }
+          });
+        }
+      });
+    }
+  });
+  
+});
 
 if (!module.parent) {
   app.listen(8888, "127.0.0.1");
