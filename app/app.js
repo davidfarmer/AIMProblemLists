@@ -471,6 +471,7 @@ app.get("/:pl/roles", function(req, res, next) {
       menu: pl.menu,
       users: JSON.stringify(users),
       userRoles: JSON.stringify(pl.roles || {}),
+      userCtx: req.userCtx,
       perms: perms,
       perms_json: JSON.stringify(perms)
     });
