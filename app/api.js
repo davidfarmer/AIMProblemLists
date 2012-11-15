@@ -121,11 +121,22 @@ exports.setup = function(app, db) {
 
   app.post("/api/delete/:id", function(req, res, next) {
     db.openDoc(req.params.id, function(err, doc) {
-      var perms = getPermissions(req, doc);
-      if ((perms[type] || {})["delete"]) {
-        apiSave({_id: doc._id, _rev: doc._rev, _deleted: true}, res);
+      // check to see if document has a roles propery,
+      // if not get the parent doc... 
+      // why use doc.path.length, instead of doc.type?
+      if (doc.path.length > 1) {
+        db.openDoc(doc.path[1], function(err, parentDoc) {
+          del(getPermissions(req, parentDoc), doc);
+        });
+      } else {
+          del(getPermissions(req, doc), doc);
       }
     });
+    function del(perms, doc) {
+        if ((perms[doc.type] || {})["delete"]) {    // changed from type to doc.type
+          apiSave({_id: doc._id, _rev:doc._rev, _deleted: true}, res);
+        }
+    }
   });
 
   app.post("/api/queue/:parentId?", function(req, res, next) {
@@ -171,8 +182,9 @@ exports.setup = function(app, db) {
 
   app.post("/api/queue/:id/approve", function(req, res, next) {
     var doc = req.body;
-    if (doc.path.length) {
-      db.openDoc(_.last(doc.path), function(err, parentDoc) {
+    // need to get perms from a document that has roles
+    if (doc.path.length > 1) {
+      db.openDoc(doc.path[1], function(err, parentDoc) {
         var perms = getPermissions(req, parentDoc);
         approve(perms, doc, parentDoc);
       });
@@ -199,21 +211,31 @@ exports.setup = function(app, db) {
         });
       } else {
         // Addition
+        doc._id = _.last(doc.path);  // _id is missing from doc when taken from req.body
         delete doc.pending;
-        apiSave(doc, res);
+        apiSave(doc, res);  // need _id or a new doc is created
       }
     }
   });
 
   app.post("/api/queue/:id/reject", function(req, res, next) {
-    db.openDoc(req.params.id, function(err, doc) {
-      var perms = getPermissions(req);
+    var doc = req.body; 
+    // get permissions from a parent document that has roles
+    if (doc.path.length > 1) {
+      db.openDoc(doc.path[1], function(err, parentDoc) {
+        var perms = getPermissions(req, parentDoc);
+        reject(perms, doc, parentDoc);
+      });
+    } else {
+      reject(getPermissions(req), doc);
+    }    
+    function reject(perms, doc, parentDoc) {
       if (perms[doc.type].approve) {
         deleteSubtree(doc.path.concat([doc._id]), function(err, result) {
           res.send(result);
         });
       }
-    });
+    }
   });
 
   function tree(node, nextPath) {
