@@ -71,11 +71,13 @@
   }
 
   function approveReject(model, type, el, isAdd) {
-    var id = _.last(model.attributes.path);
+    var id = _.last(model.attributes.path);  // parent id or id of original document
+    // id of document(new or edit) to approve/reject
     var url = '/api/queue/' + model.id + '/' + type;
     if (isAdd) {
       model.attributes.order = $('.editable[data-id="' + id + '"] .children').eq(0).find("li").size() + 1;
       model.attributes.list_pos = model.attributes.order;
+      model.attributes.number = "";
     }
     $.ajax({
       url: url,
@@ -87,7 +89,8 @@
         model.attributes._rev = data._rev;
         model.collection.remove(model);
         if (type === 'approve') {
-          if (!isAdd) model.attributes._id = id;
+          if (!isAdd)
+            model.attributes._id = id;    // replace the id of edit document with the original document id
           var $target = !isAdd
             ? $('.editable[data-id="' + id + '"] .render').eq(0).empty()
             : $('<li/>').attr("data-id", model.id).attr("class", model.attributes.type).appendTo($('.editable[data-id="' + id + '"] .children').eq(0));
@@ -288,7 +291,7 @@
       var attrs = toAttrs(form.find('*:input'));
       if (attrs.by && attrs.by.length === 32) {
         $.ajax({
-          url: "http://www.jasondavies.com/peopledevdb/_design/aimpeople/_show/doc/" + attrs.by,
+          url: "http://www.jasondavies.com/peopledevdb/_design/aimpeople/_show/doc/" + attrs.by,  // what is this?
           success: function(doc) {
             attrs.by_name = doc ? doc.name : null;
             cb(attrs);
