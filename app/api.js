@@ -61,7 +61,7 @@ exports.setup = function(app, db) {
 
   // TODO use bulk save API.
   function apiBulkSave(docs, res) {
-    async.parallel(docs.map(function(doc) {
+    async.series(docs.map(function(doc) { // changed from parallel to series, was causing crash
       return function(cb) {
         db.saveDoc(doc, cb);
       };
@@ -121,7 +121,7 @@ exports.setup = function(app, db) {
 
   app.post("/api/delete/:id", function(req, res, next) {
     db.openDoc(req.params.id, function(err, doc) {
-      // check to see if document has a roles propery,
+      // check to see if document has a roles property,
       // if not get the parent doc... 
       // why use doc.path.length, instead of doc.type?
       if (doc.path.length > 1) {
@@ -143,17 +143,23 @@ exports.setup = function(app, db) {
     db.openDoc(req.params.parentId, function(err, parent) {
       var doc = req.body;
       if (_.isArray(doc)) {
-        if (doc.reduce(function(a, doc) {
-          var perms = getPermissions(req, doc);
-          return a && perms[doc.type][doc.type === parent.type ? "edit" : "add"];
-        }, true)) {
-          apiBulkSave(doc, res);
-        }
+        db.openDoc(doc[0].path[1], function(err, lstDoc) {
+          if (doc.reduce(function(a, doc) {
+              var perms = getPermissions(req, lstDoc);
+              return a && perms[doc.type][doc.type === parent.type ? "edit" : "add"];     
+          }, true)) {
+            apiBulkSave(doc, res);
+          }
+        });
       } else {
-        var perms = getPermissions(req, doc);
-        if (perms[doc.type][doc.type === parent.type ? "edit" : "add"]) {
-          apiSave(doc, res);
-        }
+          if (doc.path.length > 1) {
+            db.openDoc(doc.path[1], function(err, parentDoc) {
+              var perms = getPermissions(req, parentDoc);
+              if (perms[doc.type][doc.type === parent.type ? "edit" : "add"]) {
+                apiSave(doc, res);
+              }
+            }); 
+          }
       }
     });
   });
@@ -182,9 +188,8 @@ exports.setup = function(app, db) {
 
   app.post("/api/queue/:id/approve", function(req, res, next) {
     var doc = req.body;
-    // need to get perms from a document that has roles
-    if (doc.path.length > 1) {
-      db.openDoc(doc.path[1], function(err, parentDoc) {
+    if (doc.path.length) {
+      db.openDoc(_.last(doc.path), function(err, parentDoc) {
         var perms = getPermissions(req, parentDoc);
         approve(perms, doc, parentDoc);
       });
@@ -204,16 +209,19 @@ exports.setup = function(app, db) {
         delete doc.pending;
         delete doc.path;
         _.extend(parentDoc, doc);
-        // Overwrite parent doc
-        db.saveDoc(parentDoc, function(err, result) {
-          // Delete pending doc
-          apiSave(deleteDoc, res);
+        // Delete pending doc
+        db.saveDoc(deleteDoc, function(err, result) {
+            // Overwrite parent doc
+            apiSave(parentDoc, res);
         });
+        // Overwrite parent doc
+        //db.saveDoc(parentDoc, function(err, result) {
+          // Delete pending doc
+          //apiSave(deleteDoc, res);
+        //});
       } else {
-        // Addition
-        doc._id = _.last(doc.path);  // _id is missing from doc when taken from req.body
         delete doc.pending;
-        apiSave(doc, res);  // need _id or a new doc is created
+        apiSave(doc, res);
       }
     }
   });
