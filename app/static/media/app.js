@@ -96,6 +96,8 @@
             : $('<li/>').attr("data-id", model.id).attr("class", model.attributes.type).appendTo($('.editable[data-id="' + id + '"] .children').eq(0));
           delete model.attributes.pending;
           allData[isAdd ? model.id : id] = model.attributes;
+          if (!isAdd)
+            allData[id].path.pop();  // remove the extra id from the path
           // Reset numbers
           if (model.attributes.type === "section") {
             renderMenu();
