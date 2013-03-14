@@ -12,7 +12,9 @@
 % If at all possible, please do not define any new macros.  Each
 % macro you introduce has the potential to cause problems with the
 % long-term maintenance of the problem list.
-<%= MACROS.join('\n') %>
+
+% removed \n from join and moved it to MACROS in app.js
+<%= MACROS.join('') %>
 
 \begin{document}
 \title{<%= list.title %>}
