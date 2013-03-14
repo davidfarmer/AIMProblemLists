@@ -197,8 +197,9 @@ exports.setup = function(app, db) {
       approve(getPermissions(req), doc);
     }
     function approve(perms, doc, parentDoc) {
+      // perms are not correct and never checked for...
       if (parentDoc && parentDoc.type === doc.type) { // TODO unify pblock and problem
-        // Edit
+        // Edit doc
         var deleteDoc = {
           _id: doc._id,
           _rev: doc._rev,
@@ -220,6 +221,7 @@ exports.setup = function(app, db) {
           //apiSave(deleteDoc, res);
         //});
       } else {
+        // New doc
         delete doc.pending;
         apiSave(doc, res);
       }

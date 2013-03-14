@@ -2115,6 +2115,7 @@ Problem block doesn't include a problem!^^J
 \def\xenumerate{enumerate}
 \def\xequation{equation}
 \def\xstarequation{equation*}
+\def\xstaralign{align*}
 \def\xtabular{tabular}
 \def\xstartabular{tabular*}
 \def\disablebegin#1{\def\one{#1}
@@ -2128,6 +2129,9 @@ Problem block doesn't include a problem!^^J
 \ifx\one\xstarequation
 \def\go{\savebegin{equation*}}
 \else
+\ifx\one\xstaralign
+\def\go{\savebegin{align*}}
+\else
 \ifx\one\xenumerate
 \def\go{\savebegin{enumerate}}
 \else\let\go\relax
@@ -2137,7 +2141,7 @@ Sorry, no \string\begin\string{#1\string}...\string\end\string{#1\string}
 environments allowed within^^J
 \string\begin\string{problem\string}...\string\end\string{problem\string}^^J
 ================================================^^J
-}\fi\fi\fi\fi\fi%
+}\fi\fi\fi\fi\fi\fi%
 \global\everypar{}
 \go
 }

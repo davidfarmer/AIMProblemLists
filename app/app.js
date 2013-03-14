@@ -26,11 +26,12 @@ function compile(src) {
 
 var SECRET = require("./secrets").SECRET;
 
+// added \n to the end
 var MACROS = [
-  "\\newcommand{\\Cat}{{\\rm Cat}}",
-  "\\newcommand{\\A}{\\mathcal A}",
+  "\\newcommand{\\Cat}{{\\rm Cat}}\n",
+  "\\newcommand{\\A}{\\mathcal A}\n",
   "\\newcommand{\\freestar}{ \\framebox[7pt]{$\\star$} }",
-  "\\newcommand{\\C}{\\mathbb C}",
+/*  "\\newcommand{\\C}{\\mathbb C}",
   "\\newcommand{\\F}{\\mathbb F}",
   "\\newcommand{\\N}{\\mathbb N}",
   "\\newcommand{\\Q}{\\mathbb Q}",
@@ -38,7 +39,7 @@ var MACROS = [
   "\\newcommand{\\Z}{\\mathbb Z}",
   "\\newcommand{\\abs}[1]{\\lvert #1\\rvert}",
   "\\newcommand{\\A}{\\mathbb A}",
-  "\\newcommand{\\P}{\\mathbb P}"
+  "\\newcommand{\\P}{\\mathbb P}" */
 ];
 var MACROS_HTML = MACROS.map(function(m) { return "\\(" + m + "\\)"; }).join("\n");
 
@@ -384,10 +385,13 @@ archives("/bib", function(pl, req, res, next) {
 
 archives("/pdf", function(pl, req, res, next) {
   refreshPDF(pl, function(err, path) {
-    connect.middleware.static.send(req, res, next, {
-      root: __dirname + "/pdfs",
-      path: path
-    });
+//    connect.middleware.static(req, res, next);
+    if (err) { console.log(err); } //remove
+    res.sendfile('./pdfs/' + path);     // serve files dynamically
+    //connect.middleware.static.send(req, res, next, {
+//      root: __dirname + "/pdfs",
+//      path: path
+//    });
   });
 });
 
