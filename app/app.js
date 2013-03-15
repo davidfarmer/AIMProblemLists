@@ -387,7 +387,7 @@ archives("/pdf", function(pl, req, res, next) {
   refreshPDF(pl, function(err, path) {
 //    connect.middleware.static(req, res, next);
     if (err) { console.log(err); } //remove
-    res.sendfile('./pdfs/' + path);     // serve files dynamically
+    res.sendfile(__dirname + '/pdfs/' + path);     // serve files dynamically
     //connect.middleware.static.send(req, res, next, {
 //      root: __dirname + "/pdfs",
 //      path: path
