@@ -11,7 +11,13 @@
   </div>
 {{/pending}}
 <div>
-  <h4>{{#tag}}{{ this }}{{/tag}}{{^tag}}Problem{{/tag}} <span class="number">{{ sec_num }}{{ number }}</span>.</h4>
+  <h4> 
+    {{#if number}}
+      {{#tag}}{{ this }}{{/tag}}{{^tag}}Problem{{/tag}} <span class="number">{{ sec_num }}{{ number }}</span>.
+    {{else}}
+      New Problem.
+    {{/if}}
+  </h4>
   {{#by_name}}
     <span class="probheadby">[<a href="http://www.jasondavies.com/aimpeople/{{../by}}">{{{ this }}}</a>]</span>
   {{/by_name}}
